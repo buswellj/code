@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Killing node"
+killall -9 node
+
 echo "Starting node"
 node ./index.js &
 echo "waiting for node to start..."
