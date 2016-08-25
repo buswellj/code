@@ -19,7 +19,7 @@ Fibonacci number sequence in JSON format.
  Replace X with a number between 0 and 1477. It will return the sequence in
  JSON format. The supported format is:
 
- { "id": INTEGER, "result": CALCULATED_VALUE }
+ { "sequence": [{ "id": INTEGER, "result": CALCULATED_VALUE }] }
 
 # Starting the service
 
