@@ -36,4 +36,10 @@ Then point a browser at the address displayed on the console. Or use curl:
 
  curl -H "Content-Type: application/json" -X GET http://localhost:3000/api/1/generate/5
 
+#Testing
 
+There is a basic test script to test functionality. You can run it by executing
+
+ ./test.sh
+
+note: for production would do the unit testing in mocha / supertest for node.js testing
