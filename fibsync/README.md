@@ -26,8 +26,11 @@ Fibonacci number sequence in JSON format.
 Requires Node.JS version 4.5.0 (LTS) or later. To start the service:
 
  cd fibsync
+
  npm install
+
  node ./index.js
+
 
 Then point a browser at the address displayed on the console. Or use curl:
 
