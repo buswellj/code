@@ -1,0 +1,6 @@
+<?xml version='1.0' standalone='yes'?>
+<ntpConfig
+	lastModifiedBy=''
+	lastModifiedDate='2008-10-01 20:07:03'>
+	<servers name='10.254.254.252'/>
+</ntpConfig>

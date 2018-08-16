@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!--
+
+ o3 magazine is a trademark of Spliced Networks LLC.
+ Spliced Networks (tm), Spliced Wireless (tm), AppOS (tm) and
+ Opaque Networks (tm) are trademarks of Spliced Networks LLC.
+
+ Linux is a registered trademark of Linus Torvalds.
+
+ Copyright (c) 2002-2006 Spliced Networks LLC
+ All rights reserved.
+
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+  <title>o3: The Open Source Enterprise Data Networking Magazine</title>
+  <style type="text/css">
+   @import "/o3.css";
+  </style>
+  <!--[if lt IE 7]>
+   <script defer type="text/javascript" src="/js/pngfix.js"></script>
+  <![endif]-->
+ </head>
+<body>
+
+ <div id="o3outer">
+  <p />
+ </div>
+
+ <div id="o3tmenu">
+  <div id="o3tml">
+   &nbsp;
+  </div>
+  <form action="http://www.google.com/search" method="get" style="padding-top: 17px">
+   <div id="o3tmr">
+    <a href="/subscribe/">Subscribe</a>&nbsp; | <!-- &nbsp;<a href="http://login.o3magazine.com">Login</a>&nbsp; |--> &nbsp;<a href="#"><img src="/i/usflag.jpg" width="17" height="10" alt="" />&nbsp; United States</a><br />
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.o3magazine.co.uk"><img src="/i/ukflag.jpg" width="20" height="10" alt="" />&nbsp;&nbsp;United Kingdom / Europe </a><p />
+    <input type="hidden" name="domains" value="o3magazine.com" />
+    <input type="text" id="sBox" class="sbox" size="20" maxlength="255" name="q" value="search" />
+    <input type="hidden" name="sitesearch" value="o3magazine.com" />
+   </div>
+  </form>
+  &nbsp;<br />
+ </div>
+
+ <div id="o3top">
+  <img src="/i/o3logo.jpg" width="68" height="60" alt="" />
+  <img src="/i/o3banner.jpg" width="350" height="60" alt="" />
+ </div>
+
+ <div id="o3page">
+
+  <div id="o3menu">
+   <div id="tabspac"><img src="/i/blank.png" width="40" height="24" alt="" /></div>   
+   <div id="o3tabF"><a href="/"><img src="/i/blank.png" width="110" height="24" alt="" /></a></div>
+   <div id="o3tabA"><a href="/current/"><img src="/i/blank.png" width="110" height="24" alt="" /></a></div>
+   <div id="o3tabB"><a href="/pastissues/"><img src="/i/blank.png" width="110" height="24" alt="" /></a></div>
+   <div id="tabarticles"><a href="/articles/"><img src="/i/blank.png" width="110" height="24" alt="" /></a></div>
+   <div id="o3tabD"><a href="/advertise/"><img src="/i/blank.png" width="110" height="24" alt="" /></a></div>
+   <div id="o3tabE"><a href="/about/"><img src="/i/blank.png" width="110" height="24" alt="" /></a></div>
+  </div>
+  <div id="o3main">
+   <p />
+   &nbsp;<br />
+   <a href="http://www.canadaonrails.com"><img src="/i/bannertest.gif" width="350" height="50" alt="" style="padding-left: 175px" /></a>
+   <p />
+   <hr />
+   <p />
+  </div>
+  <div id="o3article">
+   <p />
+    <h1 class="headline2">Linux Multi-Layer Switching</h1><br />
+     <a href="/pastissues/issue1/">&nbsp;&nbsp; Published November 2005</a>
+    <p>
+     At first glance LISA, the Linux Switching Appliance project looks like a very interesting project, providing Layer 2 and Layer 3 packet switching. Originally we had planned to write an article specifically on LISA, unfortunately, we quickly discovered that LISA is still very much in a developmental stage, so this article has been expanded to cover the wider range of switching solutions for Linux. This is an introductory article, over the coming months the NETWORKING segment of O3 will go into detail on implementing various networking solutions in Linux and using open source projects to test and extend the security of traditional network protocols.
+    </p> 
+    <p>
+    We tested LISA under Linux 2.6.10, it consists of a kernel patch providing the Ethernet Switch module under Networking Options and a couple of userspace tools. The project provides a mini-distribution, however all you really need is the patched kernel and the swctl userspace tool that is provided by the project.
+    </p>
+    <p>
+    The swctl tool allows you to add/remove interfaces from the switch, add/remove vlans from the vlan database, create trunks and create virtual interfaces for a given vlan. We tested its layer 2/3 switching capabilities, performance was pretty good and the switches forwarding database worked as expected. Interoperability with other VLAN speaking devices seemed to work well, we tested LISA connected to Cisco Catalyst 5505 and Nortel 3408 Application Switches, layer 2 and layer 3 connectivity over the VLANs, and VLAN routing worked.
+    </p>
+    <p>
+    The downside to this project is clearly its future, the last release was back in June 2005, and it looks like a final year project for two Romanian students. If you plan to seriously consider using LISA, despite the sponsors, I would wait and see if the project continues development unless you plan to maintain the code yourself. At the time this article was written the latest release of LISA requires some patching to work with Linux 2.6.14. The userspace tools are hard-coded, so you have to modify the path to the Linux header files in each Makefile, and with changes to the skb code in 2.6.14, you will need to modify the calls to deliver_skb() and other possibly other skb routines that the switching code uses.
+    </p>
+    <p>
+    Overall, LISA has a good deal of potential, whether its current developers plan to continue development beyond University remains to be seen. LISA can be obtained from <a href="http://lisa.ines.ro">http://lisa.ines.ro/</a>.
+    </p>
+    <p>
+    <b>Spanning Tree Protocol (802.1d)</b><br /> 
+    Most enterprise layer 2 switches support IEEE 802.1d Spanning Tree Protocol, while LISA itself doesn't provide STP, the Linux bridging suite (<a href="http://bridge.sourceforge.net">http://bridge.sourceforge.net</a>) does provide good STP support. STP allows multiple bridges to work together by providing path redundancy while eliminating loops in the network, it is a Layer 2 protocol. STP works by sending out a special packet called a BPDU (bridge packet data unit) communicating with other bridges to discover how each is interconnected. The exchange of BPDUs results in the election of a root bridge. This is called spanning tree convergence. Once an STP has converged, each bridge sets a link to either a FORWARDING or a BLOCKED state. It is this determination of BLOCKED or FORWARDING when multiple active paths exist between bridges that prevents loops in the network. Spanning tree loops are not a good thing, they can flood the network, and more often than not lead to network failure. The best way to describe the BLOCKED state is that it is an active link sitting in standby.
+    </p>
+    <img src="/i/stp-diagram.jpg" alt="" width="274" height="288" style="padding-left: 25%"/>
+    <p>
+    In diagram stp.1 we have 5 switches, during convergence a root bridge is elected through the exchange of BPDUs as mentioned above. Once the root bridge is selected, all links not required to reach the root bridge are placed into a BLOCKED state. In our diagram, switch 2 is best candidate for becoming the root switch. You can see how convergence plays out in that situation in the second diagram stp.2.
+    </p>
+    <img src="/i/stp-diagram2.jpg" alt="" width="274" height="288" style="padding-left: 25%"/>
+    <p>
+    Spanning tree does not have any authentication, and a degree of trust must be assumed for each bridge/switch participating in the spanning tree. While this is typically a non-issue for switched environments, when considering the use of STP support on a Linux system through the bridging suite, you need to make sure that you don't create the capability of a remote attacker injecting STP BPDUs into your network either by compromising the bridge or the bridge simply forwarding packets received, this is especially important when bridging between a private network and the Internet or public WiFi network. STP filtering is possible with ebtables (<a href="http://ebtables.sourceforge.net">http://ebtables.sourceforge.net</a>) as part of the bridging suite.
+    </p>
+    <p>
+    There are two extensions to Spanning Tree that are typically of interest these are 802.1w and 802.1s. 802.1s is multiple spanning trees and implements spanning tree groups. A number of companies offer Layer 2 / Layer 3 switching solutions as proprietary solutions that work under Linux, one such company is ipinfusion (www.ipinfusion.com). At the time of this article, no open source 802.1s project was found. 802.1w is the rapid reconfiguration of spanning tree, often called rapid spanning tree, fast spanning tree or fast convergence. 802.1w becomes important in larger more complex switched environments where traditional spanning tree convergence can take a longer period of time due to the complexity of the network. 802.1w support is planned for the Linux bridging suite, and an RSTP library and simulator exist over at <a href="http://rstplib.sourceforge.net">http://rstplib.sourceforge.net</a>.
+    </p>
+    <p>
+    <b>Layer 2 Filtering, ebtables, VLANs and VMPS</b><br />
+    An important part of the bridge suite is ebtables, ebtables is essentially the iptables for the layer 2 world. ebtables can filter ethernet protocols, mac addresses, simple IP headers, arp headers, 802.1q, interfaces. It can also perform MAC address translation, logging, frame counters, mark and match frames.
+    </p>
+    <p>
+    Another important part to Ethernet switching is VLAN support. Linux has decent 802.1Q support. VLAN (Virtual LAN) creates a logical Ethernet broadcast domain, this enables a switch for example to have multiple devices in different networks plugged into the same switch, and behave as if you had a separate switch for each network. VLANs in Linux are relatively easy to setup, you just mark the interface (eg. eth0) as up, then use the vconfig utility to add the interface to a particular vlan. Linux sees the vlan as a typical network interface, you can assign an IP to it and so forth. Some network drivers in Linux need specific patches to make them work with 802.1Q.
+    </p>
+    <p>
+    VLAN Management Policy Server (VMPS) uses a special protocol called VQP (VLAN Query Protocol) to automatically determine VLAN membership based on the MAC address of the device connecting to the network. VMPS is supported on Cisco Catalyst switches, and the OpenVMPS project (<a href="http://vmps.sourceforge.net">http://vmps.sourceforge.net</a>) provides an open source implementation.
+    </p>
+    <p>
+    <b>Multiprotocol Label Switching (MPLS)</b><br />
+    Another type of switching is MPLS, Multiprotocol Label Switching. MPLS works by having a label edge router assign a label to incoming packets. Packets are forwarded along a label switch path (LSP) where each label switch router (LSR) makes forwarding decisions based solely on the contents of the label. At each hop, the LSR removes the existing label and applies a new label which tells the next hop how to forward the packet. LSPs provide a variety of solutions such as performance guarantees, routing around network congestion or to create IP tunnels for network based VPNs.
+    </p>
+    <p>
+    Linux has excellent MPLS support, there is an MPLS forwarding plane for the 2.6.x kernel, and an implemention of LDP (RFC3036). The MPLS project can be found at <a href="http://mpls-linux.sourceforge.net">http://mpls-linux.sourceforge.net</a> and <a href="http://www.mplsrc.com">http://www.mplsrc.com</a> is an excellent source of information on MPLS if you are interested in learning more about MPLS.
+    </p>
+    <p>
+    <b>Testing Layer 2 Network Security</b><br />
+    Yersinia is a network security tool designed to take advantage of weaknesses in several protocols including Spanning Tree Protocol, Cisco Discovery Protocol, Dynamic Trunking Protocol, DHCP, HSRP, 802.1q, Inter-Switch Link Protocol (ISL) and VLAN Trunking Protocol. Yersinia is an open source project and can be found at <a href="http://yersinia.sourceforge.net">http://yersinia.sourceforge.net</a>. In a future issue, we will take an in-depth look at Yersinia, and the attacks used against network protocols most enterprises have deployed in their production networks.
+    </p>
+    <b>&nbsp;&nbsp;note: Layer 4 switching with Linux Virtual Server information is in the original <a href="/pastissues/issue1/">PDF</a> article</b><br />
+    <p>
+    To return to the article listing please click <a href="/articles/">here</a>.
+    </p>
+  </div>
+
+ &nbsp;<br />
+ </div>							<!-- end: o3page -->
+ <div id="o3footer">
+  <div id="o3footl">
+   &nbsp;copyright &copy; 2002-2006 <a href="http://www.splicednetworks.com">Spliced Networks LLC</a> &nbsp;
+  </div>
+  <div id="o3footr">
+   <a href="/footer/feedback/">feedback</a>&nbsp; | &nbsp;<a href="/footer/policy/">privacy policy</a>&nbsp; | &nbsp;<a href="/footer/contact/">contact</a>
+  </div>
+  &nbsp;
+ </div>
+</body>
+</html>

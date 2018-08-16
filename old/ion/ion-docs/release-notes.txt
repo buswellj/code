@@ -1,0 +1,182 @@
+Release Notes for Ion Linux
+----------------------------
+
+For the latest Ion Linux release notes, please refer to:
+
+ http://www.ionlinux.com/release-notes.txt
+
+Feature Requests
+
+v0.4:
+ - Add ext3 Posix ACLs (http://acl.bestbits.at/)
+ - Add NSA SELinux support
+ - Look at Socket and Networking Security Hooks
+ - Crytpgraphic API
+ - LVM
+ - RAID
+ - XFS / ReiserFS4
+ - wrapper scripts (pico -w)
+ - vi ?
+ - Add Lilo patch
+ - automate configuration of samhain
+ - Add PAM support
+ - Targetted builds (i386/i586/optimized) 
+
+Release Notes:
+
+v0.3.3
+ - Fixed modules
+ - Installer needs patched lilo or run lilo from install 
+
+v0.3.2
+ - Fixed lilo patches
+ - Modified kernel config
+
+v0.3.1
+ - Fixed build environment issue
+
+v0.3.0
+ - Rebuilt 0.2.5
+ - init-misc-0.1.10
+ - lilo patches
+
+v0.2.5
+ - Added patch to cleanup kernel text on boot
+ - init-misc-0.1.9
+ - added fcron to init.d
+ - kernel 2.6.0-test9
+
+v0.2.4
+ - fixed motd
+ - fixed failed login issue.net problem
+ - fixed non-root ssh issue
+ - fixed non-root fcron issue
+
+v0.2.3
+ - gnu package upgrades
+ - gcc 3.3.1
+
+v0.2.2:
+ - Upgraded Kernel
+ - Minor bug fixes
+
+v0.2.1:
+ - init-scripts: fixed missing wc issue 
+ - fixed ip ip/down failure problem
+ - fixed /dev/null
+ - fixed ssh client non-root issue
+
+v0.2.0:
+ - New installer
+ - New init scripts
+ - Add Ion Linux kernel patches
+ - Fix default-config for linux 2.6.0-test4
+
+v0.1.22:
+ - compress man pages
+ - Add init.c patch
+ - Add init-scripts
+ - Ion Linux default homepage
+ - JFS support
+ - Add gnupg
+ - Add postfix to build environment
+ - Restore fcron in build environment
+ - upgraded e2fsprogs (1.34)
+
+v0.1.21:
+ - Fixed iproute2 installation
+ - Added postfix (manually in chroot)
+ - Restored fcron (manually in chroot)
+
+v0.1.20:
+ - Restored missing libpcap and tcpdump
+ - Fixed tar genutils.c patch
+ - Added yafc makepath patch
+
+v0.1.19:
+ - Upgraded kernel 2.4.22
+ - Added strace
+ - 0.1.18 build failed due to build script change, respin
+
+v0.1.18:
+ - 0.1.17 build failed, missing 2.4.21 config respin
+
+v0.1.17:
+ - 0.1.16 build was interrupted, respin
+
+v0.1.16:
+ - Fixed small bugs and code clean up
+
+v0.1.15:
+ - Fixed bug with make modules in 2.6.0 regarding depmod
+ - Fixed bug with 2.6.0 stock kernel config missing sockets/ext3 support
+ - Fixed tar 1.13 with genutils.c patch
+ - Fixed iproute2 build, was missing symlink for /usr/src/linux
+ - Added clean-up code to automated build system
+ - Moved chroot logs from /shared/src to /tmp
+ - Added scripts to update ion-release correctly in /etc
+ - Added support for db4
+ - Added host
+ - Fixed lilo to install /boot files correctly
+
+v0.1.14:
+ - Added new buildcd scripts to build environment (fb)
+ - Added cd management scripts to build environment (fb)
+ - Added build-installer script (fb)
+ - Added version display in build script for non-gnu apps
+ - Added openssl, openssh, dhcpcd, fcron, gdm, inetutils
+ - Added jwhois, netkit-rsh, rsync, screen, iptables, iproute2
+ - Added mod_init_tools, yafc, nano, LFT, man, tcpwrappers, hping2
+ - Added readline, libpcap, tcpdump, lynx
+ - Added Linux 2.6.0 support
+
+v0.1.13:
+ - Tested automated build system
+
+v0.1.12:
+ - Test build failed
+
+v0.1.11:
+ - Added support for build logging inside chroot environment
+ - Split chroot build into two scripts
+
+v0.1.10:
+ - Added full build logging (stderr + stdout)
+ - Cleaned up build scripts
+
+v0.1.9:
+ - Modified automated build environment
+
+v0.1.8:
+ - Fixed build related problems
+
+v0.1.7:
+ - Fixed bash re-login problem during automated build
+
+v0.1.6:
+ - Split build system into multiple scripts
+
+v0.1.5:
+ - Moved build environment to hydrogen (Athlon XP 2800+)
+ - First test build on hydrogen
+
+v0.1.4:
+ - Fixed lilo installation problems
+ - Added missing boot.b
+ - Added custom issue and motd files
+ - Added support for openssl, openssh
+ - Added athlon and i686 kernels 
+
+v0.1.3:
+ - Added automated build script system
+ - Fixed build problems
+ - Added gcc-2.95.3 for kernel builds
+
+v0.1.2:
+ - Replaced static toolchain with shared toolchain
+
+v0.1.1:
+ - Fixed gcc-3.3 related build problems
+
+v0.1.0:
+ - Initial Build

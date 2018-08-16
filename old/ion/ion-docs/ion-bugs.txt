@@ -1,0 +1,199 @@
+Ion Linux
+Developers Bug List
+
+Note: X indicates the issue has been fixed
+====================
+
+
+--[ Release 0.2.0 ]--
+
+ * fb: WIP when loading screen on hydrogen it doesn't load .bashrc from userdir
+       also it kills any scrollback buffer.
+       I am looking into this.
+ * motd - ion linux 0.2.0 '|' <-- needs to be moved over
+ * bringing interfaces up / down causing ip link set & ifconfig to hang
+   processes can't be killed
+ * fb: WIP bash rc scripts need to be fixed for non-root user (prompt + path)
+ * ssh client does not work as non-root
+ * fb: WIP /dev/null is no world writable
+ * fb: WIP /tmp is not world writable (partition'd) -- installer issue
+ * downgrade flex to 2.5.27
+ * create kmake (wrapper for kernel building) script
+ * missing pci utils
+ * missing wget, cvs, portmap ?
+ * kernel configs need to be optimized better
+ * fb: WIP init-scripts: dump dmesg on shutdown/reboot
+ * fb: WIPinit-scripts: missing wc, fails to boot if /usr is on different partition
+ * fb: WIP installer: does not install/create /etc/resolv.conf
+ X ip can act flakey (could be relate to 2.5-test5 failure or flakey kernel)
+
+--[ Release 0.1.22 ]--
+
+ X fb: Patch Init to not display certain things
+ * fb: WIP installer: should eject cd at end of install 
+ * strip non-local locales (eg. anything not en)
+ * Failed login issue displays without parsing macros
+
+--[ Release 0.1.21 ]--
+
+ X initscripts: no usuable address families found
+ X initscripts: socket (no such file or directory)
+ X initscripts: syslogd does not create /dev/log
+ X fb: patch util-linux to not display
+	"Adding **k swap on /dev/*. Priority:1 extents:1"
+ X fb: Kernel needs socket support for syslog
+ X man pages need to be compressed
+  
+--[ Release 0.1.20 ]--
+
+ - Build did not complete due to filesystem error
+
+--[ Release 0.1.19 ]--
+
+ X fb: at 3am Aug 30th, it appears that 0.1.19 was done building
+   the /proc directory is still listed there taking up space
+   and will give tar fits.  Just an FYI that i saw it there,
+   donno if it will disappear or not.
+
+   jb: ** fixed /proc issue by adding umount to chroot script,
+          was being auto-mounted by some make installs!!
+
+--[ Release 0.1.18 ]--
+
+ - Release bombed due to problem with binutils
+
+--[ Release 0.1.17 ]--
+ 
+ - Release bombed due to missing 2.4.21 config
+
+--[ Release 0.1.16 ]--
+
+ - Release bombed due to problem with broken 2.4.21 config
+
+--[ Release 0.1.15 ]--
+
+ X ./build.sh: line 216: unexpected EOF while looking for matching `"'
+   ./build.sh: line 218: syntax error: unexpected end of file
+
+ X iproute2
+
+ X yafc missing
+
+
+
+--[ Release 0.1.14 ]--
+
+All of these issues were manually fixed in chroot environment
+before final release of 0.1.14. Need to fix before building
+next release. 
+
+ X fb: When building 260test3 on ion, make modules bitched bout
+   depmod.  need symlink from /usr/sbin/depmod to /sbin/depmod
+
+ X fb: Problems with stock ION 2.6.0-test3 kernel
+       EXT3 is missing
+       Unix domain sockets is needed by sysklogd
+        Because it is missing, sysklogd bitches at bootup
+
+ X tar 1.13 fails to build because of a bug with
+   tests/genutils.c on line 165. Need to add a patch
+   before compiling that removes the fputs code on line 165.
+
+ X iproute2 does not build because there is no kernel
+   linked to /usr/src/linux. Need to symlink the 2.4.x kernel
+   to /usr/src/linux. It requires the kernel be built, so
+   we will have to build a false generic kernel so that this
+   is satisifed before trying to compile.
+
+ X chroot-b script needs to remove /shared
+
+ X logs need to be in /tmp (for chroot-a/b output)
+
+ X need to automated called chroot-a / chroot-b
+
+ X script needs to automatically place the proper ION release
+   in /etc/ion files.
+
+ X missing libdb4 (db4-)
+
+	cd build_unix
+	../dist/configure --prefix=/usr
+	make
+	make install
+
+The following was NOT done to 0.1.14:
+
+ * scripts/extract-ikconfig
+
+ X add a script to auto-test the completed distribution,
+   should check for the existance of all necessary files.
+
+	chroot /ion/release/0.1/14 /usr/bin/env -i \
+	 HOME=/root TERM=$TERM PS1='\u:\w\$ ' \
+	 PATH=/bin:/usr/bin:/sbin:/usr/sbin:/shared/bin \
+	 /bin/bash --login
+
+ * missing host (use http://www.weird.com/~woods/projects/host.html)
+
+ X iptables in /usr/local
+
+ X missing /boot files :
+
+	fix:
+
+		lilo build do:
+
+			make all
+			make boot-menu.b
+			make boot-text.b
+			make boot-bmp.b
+			
+			make install
+
+			cp boot-*.b /boot
+			cp chain.b /boot
+			cp os2_d.b /boot
+
+			ln -s boot-text.b /boot/boot.b
+
+		create lilo.conf:
+
+# Ion Linux    
+# lilo.conf
+#
+#
+#lba32
+#serial=0,9600  
+#read-only
+
+boot = /dev/hda 
+map = /boot/.map
+install = /boot/boot.b
+message = /boot/message
+prompt   
+timeout=5
+delay=30
+loader=/boot/chain.b
+default=ion
+vga=normal
+
+image=/boot/ion-default
+        label=ion
+        read-only
+        root=/dev/hda1
+        append=""
+
+other=/hda/hda
+        label=boot
+
+
+		create message:
+
+
+Ion Linux Operating System 
+Ion Linux (tm) 0.1.14 [OEM edition]
+
+Copyright (c) 2002-2003 Spliced Networks
+
+
+

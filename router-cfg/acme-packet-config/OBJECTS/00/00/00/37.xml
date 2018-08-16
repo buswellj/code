@@ -1,0 +1,12 @@
+<?xml version='1.0' standalone='yes'?>
+<steeringPool
+	ipAddress='10.253.0.21'
+	startPort='49152'
+	endPort='52000'
+	realmID='core-gx'
+	lastModifiedBy='admin@console'
+	lastModifiedDate='2008-10-09 19:15:33'>
+	<networkInterfaceId
+		name=''
+		subPortId='0'/>
+</steeringPool>

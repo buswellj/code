@@ -1,0 +1,4 @@
+/etc/lilo.conf
+/etc/resolv.conf
+/etc/hosts
+

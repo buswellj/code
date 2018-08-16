@@ -1,0 +1,39 @@
+<?xml version='1.0' standalone='yes'?>
+<localPolicy
+	activateTime=''
+	deactivateTime=''
+	state='enabled'
+	anonymousPriority='none'
+	description=''
+	lastModifiedBy='admin@10.254.254.252'
+	lastModifiedDate='2008-12-16 13:23:23'>
+	<to addr='*' type='Hostname'/>
+	<from addr='*' type='Hostname'/>
+	<sourceRealm name='core-excel'/>
+	<policyAttribute
+		nextHop='64.194.210.97'
+		action='none'
+		isTermRoute='disabled'
+		destRealm='peer-excel'
+		cost='10'
+		appProtocol=''
+		carrierName=''
+		startTime='0000'
+		endTime='2400'
+		dow='U-S'
+		state='enabled'>
+	</policyAttribute>
+	<policyAttribute
+		nextHop='67.16.111.69'
+		action='none'
+		isTermRoute='disabled'
+		destRealm='peer-gx'
+		cost='5'
+		appProtocol=''
+		carrierName=''
+		startTime='0000'
+		endTime='2400'
+		dow='U-S'
+		state='enabled'>
+	</policyAttribute>
+</localPolicy>

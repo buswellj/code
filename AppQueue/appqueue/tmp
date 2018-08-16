@@ -1,0 +1,9 @@
+#for i in $(cat list); do \
+# echo "void" >> foo; \
+# echo "$i(void)" >> foo; \
+# echo "{" >> foo; \
+# echo "}" >> foo; \
+# echo "" >> foo; \
+#done;
+
+for i in $(cat list); do echo "void $i(void);" >> foo2; done

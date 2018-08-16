@@ -1,0 +1,173 @@
+Open Kernel Attached Operating System (OpenKaOS)
+version 3.0.0
+
+Copyright (c) 2009 - 2014 Opaque Systems LLC
+
+##############################################################################
+
+LICENSE:	GNU General Public License Version 2.0
+
+##############################################################################
+
+Helpful Links:
+
+http://www.opaquesystems.com/openkaos/
+http://www.ohloh.net/p/openkaos
+
+##############################################################################
+
+What is OpenKaOS ?
+
+OpenKaOS is a lightweight multi-purpose Linux based platform. It was originally 
+designed for virtualized and cloud computing environments, but it works well 
+for a wide range of applications. OpenKaOS is a lightweight platform, less than 
+10MB in size. OpenKaOS is an excellent choice for building virtual appliances, 
+embedded appliances or any other scenario where you need a lightweight Linux 
+platform. 
+
+The OpenKaOS Platform Build System, contained in the build/ directory of this
+source distribution, enables you to build a Linux platform from scratch from
+just a handful of shell commands.
+
+##############################################################################
+
+Why is it called OpenKaOS ?
+
+OpenKaOS leverages a feature in the Linux 2.6+ kernels that enables an initramfs
+image to be embedded within the bootable Linux kernel. The OS is so small and
+modular that it can easily fit within the initramfs image. The OS is 
+essentially "attached" to the Kernel. This eliminates some points of failure,
+has some potential security benefits depending on your build, and allows for
+a switch/router style firmware image to be generated from the combination
+of kernel + OS.
+
+##############################################################################
+
+How do I build OpenKaOS?
+
+Using a recent Linux system (Arch Linux is a good choice, but Fedora, Ubuntu,
+Linux Mint etc will all work just fine) with gcc, make, sudo. Make sure your
+non-root user performing the build is in the sudoers file. The quickest way
+to do this is to add the user to the wheel group, and check /etc/sudoers to
+make sure the wheel configuration option with NOPASSWD is uncommented.
+
+Assuming you have a reasonable working environment...
+
+First create a workspace:
+
+	> cd build
+	> ./wsbld.sh
+	> ./fetch-opensrc.sh
+
+This creates a workspace in ~/kaos-ws/. The workspaces are tagged with the
+current unix-time. The second script retrives the open source code and some
+patch files. These are stored the pkg/ directory in the newly created
+workspace. The opensrc code directories are also tagged with the unix time
+that the script was run. You can have multiple sources within a single
+workspace.
+
+	> ls ~/kaos-ws/
+
+	  kaos-1307664362
+
+	> ls ~/kaos-ws/kaos-1307664362/
+
+	  pkg
+
+	> ls ~/kaos/kaos-1307664362/pkg/
+
+	  opensrc-1307664369
+	
+	> ls ~/kaos/kaos-1307664362/pkg/opensrc-1307664369
+
+	  archive   binutils   cracklib         expect     gawk     
+	  glibc     grub       inetutils	libtool	   udev
+	  iproute2  linux      man-pages        ncurses    perl     
+	  readline  tar        util-linux	groff	   zlib
+	  autoconf  bison      dejagnu          file       gcc      
+	  gmp       gzip       kbd       	less	   make
+	  m4        module-init-tools           notused    pkg-config
+          sed       tcl        xz		grep	   iana-etc
+	  automake  bzip2      diffutils        findutils  gdbm         
+	  mpc       patch      procps           shadow     texinfo 
+	  bash      coreutils  e2fsprogs        flex       gettext
+	  man-db    mpfr       patches          psmisc     sysklogd
+
+The fetch-opensrc.sh script uses third-party servers to retrieve the source code.
+Sometimes these servers have changed or are unavailable. Make sure you check the
+output for fetch-opensrc.sh for errors.
+
+To start the build simply run:
+
+	> ./bld-kaos.sh opensrc-1307664369
+
+If you want to redirect and log the output:
+
+	./bld-kaos.sh opensrc-1307664369 1>>~/build-1.0.log 2>>~/build-1.0.err
+
+This will place the stdout in build-1.0.log and stderr in build-1.0.err.
+
+When the build is complete you will see new bld-<timestamp> and log-<timestamp> 
+directories in the workspace you used. The completed SDK / chroot environment 
+is in bld-<timestamp>/bld.
+
+##############################################################################
+
+How do I test OpenKaOS?
+
+Run the chroot-fcs.sh script referencing the build:
+
+	> ls ~/kaos-ws/kaos-1307664362/
+
+	bld-1308375981 log-1308375981 pkg
+
+	> ./chroot-fcs.sh bld-1308375981
+
+	Kernel Attached Operating System (KaOS)
+	Copyright (c) 2009-2011 Carbon Mountain LLC
+
+	Build Environment: bld-1308375981
+
+  	  [.] Loading environment 
+      	      Env is /home/kaos/kaos-ws/kaos-1307664362/bld-1308375981
+      	      Build is /home/kaos/kaos-ws/kaos-1307664362/bld-1308375981/bld/
+
+ 	  [.] Mounting Virtual File Systems
+	      /dev on /home/kaos/kaos-ws/kaos-1307664362/bld-1308375981/bld/dev type none (rw,bind)
+	      devpts on /home/kaos/kaos-ws/kaos-1307664362/bld-1308375981/bld/dev/pts type devpts (rw)
+	      shm on /home/kaos/kaos-ws/kaos-1307664362/bld-1308375981/bld/dev/shm type tmpfs (rw)
+	      proc on /home/kaos/kaos-ws/kaos-1307664362/bld-1308375981/bld/proc type proc (rw)
+	      sysfs on /home/kaos/kaos-ws/kaos-1307664362/bld-1308375981/bld/sys type sysfs (rw)
+
+	  [.] Entering chroot
+
+	root:/#
+
+Simply type exit to leave the OpenKaOS environment.
+
+##############################################################################
+
+How do I create a bootable image?
+
+Run the pkg-kaos.sh script:
+
+	> ./pkg-kaos.sh bld-1308375981
+
+This will generate:
+
+	KaOS-1.0.0.1308375981-x64.native.tar	(PXE / USB / ISO image)
+	KaOS-1.0.0.1308375981-x64.vmware.tar	(VMware OVF / VMDK image)
+	KaOS-1.0.0.1308375981-x64.kvm.tar	(KVM / QCOW2 image)
+	KaOS-1.0.0.1308375981-x64.app.tar	(Chroot image)
+
+For information on how to deploy these images, refer to the OpenKaOS website.
+
+##############################################################################
+
+I want more information or help?
+
+Check the project page at http://www.opaquesystems.com/openkaos/
+
+##############################################################################
+
+

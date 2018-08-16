@@ -1,0 +1,19 @@
+<?xml version='1.0' standalone='yes'?>
+<localPolicy
+	activateTime=''
+	deactivateTime=''
+	state='enabled'
+	anonymousPriority='none'
+	description=''
+	lastModifiedBy='admin@10.254.254.252'
+	lastModifiedDate='2008-10-24 21:51:22'>
+	<to addr='*' type='Hostname'/>
+	<from addr='*' type='Hostname'/>
+	<sourceRealm name='core-timmy'/>
+	<policyAttribute
+		nextHop='12.178.116.235'
+		action='none'
+		destRealm='peer-timmy'
+		appProtocol=''>
+	</policyAttribute>
+</localPolicy>

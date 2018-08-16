@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo ""
+echo "Ion Linux Kernel Make Script"
+echo "Version 1.0 (gcc-2.95.3)"
+echo "------------------------------"
+echo ""
+echo "Passing "$*" to make"
+echo ""
+
+
+make CC=/opt/gcc-2.95.3/bin/gcc $*
+
+

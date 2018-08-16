@@ -1,0 +1,12 @@
+<?xml version='1.0' standalone='yes'?>
+<steeringPool
+	ipAddress='209.173.140.2'
+	startPort='49152'
+	endPort='52000'
+	realmID='peer-excel'
+	lastModifiedBy='admin@console'
+	lastModifiedDate='2008-10-02 15:04:32'>
+	<networkInterfaceId
+		name=''
+		subPortId='0'/>
+</steeringPool>

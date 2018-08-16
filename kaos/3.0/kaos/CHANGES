@@ -1,0 +1,137 @@
+KaOS 3.0.0 (released 01-Mar-2014)
+ - Updated Copyright notices to 2014
+ - Updated Copyright notices from Carbon Mountain to Opaque Systems LLC
+ - Added util-linux to toolchain build
+ - Updated patches to toolchain build
+ - Updated version specific build command changes in toolchain script
+ - automake 1.14.1
+ - binutils 2.24
+ - bison 3.0.2
+ - check 0.9.12
+ - coreutils 8.22
+ - e2fsprogs 1.42.9
+ - file 5.17
+ - gcc 4.8.2
+ - gdbm 1.11
+ - gettext 0.18.3.2
+ - glibc 2.19
+ - gmp 5.1.3
+ - grep 2.16
+ - inetutils 1.9.2
+ - iproute2 3.12.0
+ - kbd 2.0.1
+ - kmod 16
+ - libpipeline 1.2.6
+ - linux 3.13.3
+ - m4 1.4.17
+ - make 4.0
+ - man-db 2.6.6
+ - man-pages 3.59
+ - mpc 1.0.2
+ - perl 5.18.2
+ - procps-ng 3.3.9
+ - shadow 4.1.5.1
+ - tar 1.27.1
+ - tcl 8.6.1
+ - tzdata 2013i
+ - texinfo 5.2
+ - systemd 208
+ - util-linux 2.24.1
+ - cracklib 2.9.1
+ - pcre 8.34
+ - syslinux 6.02
+ - glib 2.38.2
+
+KaOS 2.0.0 (released 04-Sep-2013)
+ - Added new sub-system for releasing KaOS images
+ - Removed pkg-kaos packaging system for KaOS
+ - Fixed perl 5.18.0 / 5.18.1 mapping
+ - Fixed bug with libstdc++.la parsing
+ - Added CFLAG/CXXFLAG optimizations for entire build
+ - Cleaned up build scripts
+ - Removed broken upstream glibc patch
+ - Updated paths for /run support
+ - Added lib64 support to /usr/local
+ - Swapped tty and tape group ids to comply with LSB
+ - Set permissions on /btmp
+ - completely removed gperf (was previously commented out)
+ - remove chroot-adj scripts from glibc build
+ - commented out 32-bit x86 specific CFLAGS from glibc build <<-- ????
+ - remove add-ons parameter from glibc build
+ - set kernel version to 2.6.32 for glibc (Was 2.6.22.6)
+ - removed iconvdata copy
+ - added code to fix RPC/NIS headers
+ - updated timezone configuration
+ - added logging of chroot-adj3.sh output checks to inspection log
+ - update zlib build options to simply them
+ - remove new.cc and selective.exp changes from binutils
+ - add bfd.texinfo changes
+ - added 32-bit compile notice to gmp
+ - added docdir to mpfr
+ - removed fixinc patch from gcc's Makefile.in
+ - added autogen and mudflap fixes to gcc build
+ - added --disable-install-libiberty to gcc build
+ - increased gcc ulimit test to 32768
+ - moved misplaced gdb/auto-load/usr/lib in gcc build
+ - added manpage fix to bzip2
+ - updated glib
+ - modified pkg-config to use internal-glib instead of external glib
+ - updated cracklib
+ - moved cracklib / shadow build to bld-sdk.sh from bld-sdk2.sh script
+ - moved psmisc to bld-sdk.sh from bld-sdk2.sh
+ - moved procps up the script
+ - added new configure options to procps
+ - added quick patch for e2fsprogs test suite
+ - disabled coreutils testing (commented out)
+ - added test and [ and man pages move commands for coreutils build
+ - glibc patch for m4
+ - moved flex from bld-sdk2.sh to bld-sdk.sh
+ - removed flex patch
+ - remove flex tests that require bison
+ - removed YYENABLE_NLS define from bison
+ - disabled bash testing (not needed -- sanity tests done by CM)
+ - added bc
+ - added --enable-libgdbm-compat to gdbm
+ - commented out install-info from gdbm
+ - added glib patch to inet-utils
+ - added -k to make test for perl
+ - added test patch to automake
+ - disabled automake testing
+ - disabled gawk testing
+ - disabled findutils testing
+ - disabled gettext testing
+ - disabled xz testing
+ - disabled gzip testing
+ - updated iproute2 modifications for arpd removal
+ - added new quick patches to kbd - keymap loading fix, resizecons removal
+ - disabled vlock in kbd, removed moving some files to /bin from /usr/bin
+ - added kmod
+ - updated libpipeline build commands
+ - added make patches
+ - disable make checks
+ - disable mandb testing
+ - removed module-init-tools
+ - removed patch patch
+ - removed sysvinit from build script
+ - add glibc quick fix to tar
+ - added patch to textinfo
+ - added udev/systemd
+
+KaOS 1.0.1 (released 04-Sep-2011)
+ - Fixed popt in pkg-config
+ - Updated binutils, linux-kernel, util-linux, gdbm, diffutils, file, udev
+ - Updated gawk, iproute2, tcl, gcc, perl, less, glib, psmic, grep and xz
+ - Updated patches and build scripts
+
+KaOS 1.0.0 (released 18-Jun-2011)
+ - Migrated code from KaOS-SDK project
+ - Updated opensrc packages
+ - Removed Management CLI
+ - Made release more generic Linux build
+
+KaOS 0.6.1 (released 02-Jun-2010)
+ - Management CLI updates
+
+
+KaOS 0.6.0 (released 21-May-2010)
+ - Initial Public Release

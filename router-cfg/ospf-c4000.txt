@@ -1,0 +1,392 @@
+Current configuration:
+!
+version 12.0
+service timestamps debug uptime
+service timestamps log uptime
+no service password-encryption
+service udp-small-servers
+service tcp-small-servers
+!
+hostname cisco4000
+!
+boot system flash c4000-i-mz.120-23.bin
+boot system flash c4000-js-mz.120-24.bin
+enable secret 5 $1$fKkr$IF5qvhj5n9gH0mURwqD.s.
+enable password cisco4000
+!
+ip subnet-zero
+no ip bootp server
+ip domain-name lab.splicednetworks.net
+ip name-server 10.123.4.2
+clock timezone EST -5
+clock summer-time EDT recurring
+!
+!
+!
+interface Null0
+ no ip unreachables
+!
+interface Ethernet0
+ ip address 172.22.1.3 255.255.255.0
+ ip broadcast-address 172.22.1.255
+ no ip directed-broadcast
+ no ip mroute-cache
+ media-type 10BaseT
+!
+interface Ethernet1
+ ip address 10.123.4.40 255.255.255.0
+ ip broadcast-address 10.123.4.255
+ no ip directed-broadcast
+ no ip route-cache
+ no ip mroute-cache
+ media-type 10BaseT
+!
+interface Ethernet2
+ ip address 10.20.2.1 255.255.255.0
+ ip broadcast-address 10.20.2.255
+ no ip directed-broadcast
+ no ip route-cache
+ no ip mroute-cache
+ media-type 10BaseT
+!
+interface Serial0
+ no ip address
+ no ip directed-broadcast
+ no ip route-cache
+ no ip mroute-cache
+ shutdown
+!
+interface Serial1
+ no ip address
+ no ip directed-broadcast
+ no ip route-cache
+ no ip mroute-cache
+ shutdown
+!
+router ospf 99
+ router-id 2.2.2.2
+ area 0.0.0.1 nssa
+ area 0.0.0.1 range 172.22.1.0 255.255.255.0
+ redistribute connected subnets
+ network 172.22.1.0 0.0.0.255 area 0.0.0.1
+ network 192.168.80.0 0.0.0.255 area 0.0.0.1
+!         
+ip classless
+!
+route-map setmed permit 10
+ set metric 200
+!
+!
+!
+line con 0
+ transport input none
+line aux 0
+ transport input all
+line vty 0
+ password cisco
+ login
+line vty 1
+ access-class 10 in
+ exec-timeout 0 30
+ password cisco
+ login
+ transport input telnet
+line vty 2 4
+ password cisco
+ login
+!
+end
+
+cisco4000#show ip ospf
+ Routing Process "ospf 99" with ID 2.2.2.2
+ Supports only single TOS(TOS0) routes
+ It is an autonomous system boundary router
+ Redistributing External Routes from,
+    connected, includes subnets in redistribution
+ SPF schedule delay 5 secs, Hold time between two SPFs 10 secs
+ Minimum LSA interval 5 secs. Minimum LSA arrival 1 secs
+ Number of external LSA 3. Checksum Sum 0x1529F 
+ Number of DCbitless external LSA 0
+ Number of DoNotAge external LSA 0
+ Number of areas in this router is 3. 2 normal 0 stub 1 nssa
+    Area BACKBONE(0) (Inactive)
+        Number of interfaces in this area is 0
+        Area has no authentication
+        SPF algorithm executed 6 times
+        Area ranges are
+        Number of LSA 1. Checksum Sum 0x68F7  
+        Number of DCbitless LSA 0
+        Number of indication LSA 0
+        Number of DoNotAge LSA 0
+    Area 0.0.0.1
+        Number of interfaces in this area is 1
+        It is a NSSA area
+        Perform type-7/type-5 LSA translation
+        Area has no authentication
+        SPF algorithm executed 96 times
+        Area ranges are
+           172.22.1.0/24 Passive Advertise 
+        Number of LSA 6. Checksum Sum 0x338A0 
+        Number of DCbitless LSA 1
+        Number of indication LSA 0
+        Number of DoNotAge LSA 0
+    Area 0.0.0.2
+        Number of interfaces in this area is 0
+        Area has no authentication
+        SPF algorithm executed 10 times
+        Area ranges are
+        Number of LSA 1. Checksum Sum 0x64F9  
+        Number of DCbitless LSA 0
+        Number of indication LSA 0
+        Number of DoNotAge LSA 0
+
+cisco4000#show ip ospf neighbor 
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+1.1.1.1           1   FULL/BDR        00:00:37    172.22.1.1      Ethernet0
+
+cisco4000#show ip ospf database 
+
+       OSPF Router with ID (2.2.2.2) (Process ID 99)
+
+
+                Router Link States (Area 0)
+
+Link ID         ADV Router      Age         Seq#       Checksum Link count
+2.2.2.2         2.2.2.2         513         0x800001D0 0x68F7   0
+
+                Router Link States (Area 0.0.0.1)
+
+Link ID         ADV Router      Age         Seq#       Checksum Link count
+1.1.1.1         1.1.1.1         771         0x80000185 0xDA8E   2
+2.2.2.2         2.2.2.2         513         0x8000020B 0xC3B4   1
+
+                Net Link States (Area 0.0.0.1)
+
+Link ID         ADV Router      Age         Seq#       Checksum
+172.22.1.3      2.2.2.2         513         0x800000F8 0x98C8  
+
+                Type-7 AS External Link States (Area 0.0.0.1)
+
+Link ID         ADV Router      Age         Seq#       Checksum Tag
+10.20.2.0       2.2.2.2         513         0x800001CD 0x15CC   0
+10.123.4.0      2.2.2.2         513         0x800001CD 0x2652   0
+172.22.1.0      2.2.2.2         513         0x800001CD 0xC578   0
+
+                Router Link States (Area 0.0.0.2)
+
+Link ID         ADV Router      Age         Seq#       Checksum Link count
+2.2.2.2         2.2.2.2         513         0x800001D2 0x64F9   0
+
+                Type-5 AS External Link States
+
+Link ID         ADV Router      Age         Seq#       Checksum Tag
+10.20.2.0       2.2.2.2         513         0x800001CD 0x8525   0
+10.123.4.0      2.2.2.2         513         0x800001CD 0x96AA   0
+172.22.1.0      2.2.2.2         513         0x800001CD 0x36D0   0
+
+>> Configuration# dump
+script start "Alteon AD4" 4  /**** DO NOT EDIT THIS LINE!
+/* Configuration dump taken 11:09:34 Mon May 12, 2003
+/* Version 0.0.0,  Base MAC address 00:60:cf:47:db:50
+/c/sys
+        bannr "Alteon AD4dc - Switch #2"
+        tnet ena  
+/c/port 1
+        pvid 2
+/c/port 3
+        pvid 3
+/c/port 4
+        pvid 4
+/c/port 6
+        pvid 6
+/c/port 7
+        pvid 7
+/c/port 8
+        pvid 8
+/c/vlan 1
+        def 2 5 9 
+/c/vlan 2
+        ena
+        name "Management"
+        def 1
+/c/vlan 3
+        ena
+        name "Port 3"
+        def 3
+/c/vlan 4
+        ena
+        name "Port 4"
+        def 4
+/c/vlan 6
+        ena
+        name "port 6"
+        def 6
+/c/vlan 7
+        ena
+        name "Europa"
+        def 7
+/c/vlan 8
+        ena
+        name "Port 8"
+        def 8
+/c/stp 1/off
+/c/stp 1/clear
+/c/stp 1/add 1 2 3 4 6 7 8
+/c/sys/syslog
+        host 10.123.4.9
+/c/ip/ospf/on
+/c/ip/ospf/rtrid 1.1.1.1
+/c/ip/ospf/aindex 0
+        ena
+        areaid 0.0.0.1
+        type nssa
+        metric 1
+        auth none
+        spf 10
+/c/ip/ospf/if 1   
+        ena
+        aindex 0  
+        prio 1
+        cost 1
+        hello 10  
+        dead 40   
+        trans 1   
+        retra 5   
+
+/c/ip/ospf/if 2   
+        ena
+        aindex 0  
+        prio 1
+        cost 1
+        hello 10  
+        dead 40   
+        trans 1   
+        retra 5   
+
+/c/ip/if 1
+        ena
+        addr 172.22.1.1
+        mask 255.255.255.0
+        broad 172.22.1.255
+        vlan 4
+/c/ip/if 2
+        ena
+        addr 192.168.80.1
+        vlan 3
+/c/ip/if 256
+        ena
+        addr 10.123.4.185
+        mask 255.255.255.0
+        broad 10.123.4.255
+        vlan 2
+/c/ip/gw 1
+        ena
+        addr 10.123.4.1
+/c/slb/port 3
+        client ena
+/c/slb/port 6
+        server ena
+/
+script end  /**** DO NOT EDIT THIS LINE!
+
+>> IP Routing# dump
+    Destination         Mask          Gateway        Type      Tag    Metr If
+  --------------- --------------- --------------- --------- --------- ---- --
+  0.0.0.0         0.0.0.0         10.123.4.1      indirect  static         256
+  10.20.2.0       255.255.255.0   172.22.1.3      indirect  ospf        20  1
+  10.123.4.0      255.255.255.0   10.123.4.185    direct    fixed          256
+  10.123.4.185    255.255.255.255 10.123.4.185    local     addr           256
+  10.123.4.255    255.255.255.255 10.123.4.255    broadcast broadcast      256
+  127.0.0.0       255.0.0.0       0.0.0.0         martian   martian        
+  172.22.1.0      255.255.255.0   172.22.1.1      direct    fixed           1
+  172.22.1.1      255.255.255.255 172.22.1.1      local     addr            1
+  172.22.1.255    255.255.255.255 172.22.1.255    broadcast broadcast       1
+  192.168.80.0    255.255.255.0   192.168.80.1    direct    fixed           2
+  192.168.80.1    255.255.255.255 192.168.80.1    local     addr            2
+  192.168.80.255  255.255.255.255 192.168.80.255  broadcast broadcast       2
+  224.0.0.0       224.0.0.0       0.0.0.0         martian   martian        
+  224.0.0.5       255.255.255.255 0.0.0.0         multicast addr           
+  224.0.0.6       255.255.255.255 0.0.0.0         multicast addr           
+  255.255.255.255 255.255.255.255 255.255.255.255 broadcast broadcast      
+
+>> OSPF Information# nbr
+Intf  NeighborID       Prio  State         Address 
+----  ----------       ----  -----         ------- 
+   1  2.2.2.2             1  Full           172.22.1.3      
+
+>> OSPF Database# all
+
+               Router LSAs (Area 0.0.0.1)
+
+  Link ID         ADV Router      Options Age   Seq#         Checksum
+  2.2.2.2         2.2.2.2         0x28    576   0x8000020B   0xC3B4    
+  1.1.1.1         1.1.1.1         0x8     826   0x80000185   0xDA8E    
+
+               Network LSAs (Area 0.0.0.1)
+
+  Link ID         ADV Router      Options Age   Seq#         Checksum
+  172.22.1.3      2.2.2.2         0x28    576   0x800000F8   0x98C8    
+
+               NSSA LSAs (Area 0.0.0.1)
+
+  Link ID         ADV Router      Options Age   Seq#         Checksum
+  10.123.4.0      2.2.2.2         0x20    576   0x800001CD   0x2652    
+  172.22.1.0      2.2.2.2         0x20    576   0x800001CD   0xC578    
+  10.20.2.0       2.2.2.2         0x20    576   0x800001CD   0x15CC    
+
+>> OSPF Information# routes
+Codes: IA - OSPF inter area, 
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2
+
+ N2 10.20.2.0/24 via 172.22.1.3
+
+>> OSPF Database# nssa
+
+               Area 0.0.0.1
+
+  LS age: 605
+  Options: (No TOS-capability)
+  LS Type: NSSA LSAs
+  Link State ID: 10.123.4.0 (External IP Network Number)
+  Advertising Router: 2.2.2.2
+  LS sequence number: 800001CD
+  LS checksum: 0x2652
+  Length of the LSA: 36
+  Network Mask: 255.255.255.0
+       Metric Type: 2 (Larger than any link state path)
+       Metric: 20
+       Forwarding address: 172.22.1.3
+       External Route Tag: 0
+
+
+  LS age: 605
+  Options: (No TOS-capability)
+  LS Type: NSSA LSAs
+  Link State ID: 172.22.1.0 (External IP Network Number)
+  Advertising Router: 2.2.2.2
+  LS sequence number: 800001CD
+  LS checksum: 0xC578
+  Length of the LSA: 36
+  Network Mask: 255.255.255.0
+       Metric Type: 2 (Larger than any link state path)
+       Metric: 20
+       Forwarding address: 172.22.1.3
+       External Route Tag: 0
+
+
+  LS age: 607                             
+  Options: (No TOS-capability)
+  LS Type: NSSA LSAs
+  Link State ID: 10.20.2.0 (External IP Network Number)
+  Advertising Router: 2.2.2.2
+  LS sequence number: 800001CD
+  LS checksum: 0x15CC
+  Length of the LSA: 36
+  Network Mask: 255.255.255.0
+       Metric Type: 2 (Larger than any link state path)
+       Metric: 20
+       Forwarding address: 172.22.1.3
+       External Route Tag: 0
+

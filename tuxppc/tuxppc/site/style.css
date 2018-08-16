@@ -1,0 +1,99 @@
+   body{
+    margin: 0px;
+    border-spacing: 0px;
+    background: #ffffff
+   }
+   table.content{
+    width: 720px;
+    height: 360px
+   }
+   table.contact{
+   }
+   table.input{
+   }
+   table.tel td{
+   }
+   table.immo td{
+    font-size: 12px
+   }
+   table.tel td{
+    border: 0px solid #cccccc;
+    padding: 0px;
+    margin: 0px
+   }
+   td.link{
+    height: 12px;
+    font-family: verdana;
+    font-size: 10px;
+    color: #222222
+   }
+   td a:link{
+    text-decoration: none;
+    color: #666666
+   }
+   td a:active{
+    text-decoration: none;
+    color: #666666
+   }
+   td a:visited{
+    text-decoration: none;
+    color: #222222
+   }
+   td a:hover{
+    text-decoration: none;
+    color: #aa2222
+   }
+   td.call{
+    height: 12px;
+    font-family: verdana;
+    font-size: 10px;
+    color: #333333
+   }
+   td.copyright{
+    height: 12px;
+    font-family: verdana;
+    font-size: 10px;
+    color: #3333aa
+   }
+   
+   td.content{
+    padding: 10px;
+    border: 1px solid #cccccc;
+    font-family: verdana;
+    font-size: 14px;
+    color: #444444
+   }
+   td input{
+    height: 12px;
+    font-size: 10px;
+    border: 1px solid #cccccc
+   }
+   td textarea{
+    font-size: 12px;
+    color: #444444;
+    border: 1px solid #cccccc
+   }
+   td input.submit{
+    background:#eeeeee;
+    height: 15px;
+    border: 1px outset #cccccc
+   }
+   img.image{
+    height: 297px;
+    width: 250px;
+    border: 1px solid #666666;
+    margin-right: 10px;
+   }
+   div.head{
+    font-size: 12px;
+   }
+   div.sub{
+    font-size: 12px;
+   }
+   div.code{
+    padding: 3px;
+    margin: 3px;
+   	font-size: 12px;
+   	backgound: #dddddd;
+   	border: 1px dashed #cccccc
+   }

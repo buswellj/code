@@ -1,0 +1,40 @@
+
+<!-- name="generator" value="SRSSS 0.3" -->
+<rss version="0.91">
+	<channel>
+		<title>O3 Magazine Subscription</title>
+		<link>http://www.o3magazine.com</link>
+		<description>Issue and Site Announcements for O3 Magazine</description>
+		<language>en-us</language>
+		<item>
+			<title>New o3 website online</title>
+			<link>http://www.o3magazine.com</link>
+			<description>We are pleased to announce the launch of the new o3 website. The new site has been rolled out on a faster US connection. We have also added a European server in the UK.</description>
+		</item>
+		<item>
+			<title>o3 Issue #4 Now Available</title>
+			<link>http://www.o3magazine.com/current.html</link>
+			<description>O3 issue #4 is now available for download via HTTP. Many corporate firewalls block FTP so the HTTP option was added with an additional server to handle the load.</description>
+		</item>
+		<item>
+			<title>O3 Issue #3 Now Available</title>
+			<link>http://www.o3magazine.com/current.html</link>
+			<description>O3 issue #3 is now available for download via HTTP. Many corporate firewalls block FTP so the HTTP option was added with an additional server to handle the load.</description>
+		</item>
+		<item>
+			<title>O3 Issue #2 Now Available</title>
+			<link>http://www.o3magazine.com/current.html</link>
+			<description>O3 issue #2 is now available for download via HTTP. Many corporate firewalls block FTP so the HTTP option was added with an additional server to handle the load.</description>
+		</item>
+		<item>
+			<title>O3 HTTP Downloads</title>
+			<link>http://www.o3magazine.com/current.html</link>
+			<description>O3 is now available for download via HTTP. Many corporate firewalls block FTP so the HTTP option was added with an additional server to handle the load.</description>
+		</item>
+		<item>
+			<title>O3 Subscriber RSS Feed</title>
+			<link>http://www.o3magazine.com/subscribe.html</link>
+			<description>We are pleased to announce the availability of an RSS Subscriber feed for O3. This RSS feed will alert our readers when the next issue of O3 is available as well as enhancements to the site.</description>
+		</item>
+	</channel>
+</rss>

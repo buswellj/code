@@ -1,0 +1,12 @@
+<?xml version='1.0' standalone='yes'?>
+<steeringPool
+	ipAddress='209.173.140.19'
+	startPort='49152'
+	endPort='52000'
+	realmID='peer-timmy'
+	lastModifiedBy='admin@10.254.254.252'
+	lastModifiedDate='2008-10-24 21:54:17'>
+	<networkInterfaceId
+		name=''
+		subPortId='0'/>
+</steeringPool>

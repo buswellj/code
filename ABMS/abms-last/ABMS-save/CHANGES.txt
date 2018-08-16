@@ -1,0 +1,28 @@
+History:
+
+ 03-May-2005: [Release 1.1.7]
+ 29-Sep-2005: [Release 1.1.8]
+ 04-Nov-2005: [Release 1.1.9]
+ 01-Mar-2006: [Release 2.0.0]
+ 05-Sep-2006: [Release 3.0.0]
+ 
+Changed name from Linux Image Management Boot System (LIMBS) to ABMS for 4.0
+ 
+ 23-Mar-2008: [Release 4.0.0rc1]
+ 27-Apr-2008: [Release 4.0.0rc2]
+ 01-Jun-2008: [Release 4.0.0rc3]
+ 11-Jun-2008: [Release 4.0.0rc4]
+ 22-Jun-2008: [Release 4.0.0rc5]
+ 24-Jun-2008: [Release 4.0.0rc6]
+ 09-Jul-2008: [Release 4.0.0]
+
+------------------------------------------------------------------------------------------------------
+
+[Release 4.0.0]
+ July 9th 2008
+
+	*	Optimized command calls and added new abms-cmdapi.c
+	*	Reordered initial boot sequence to process /proc/cmdline earlier in the boot process
+	*	Added support for emfs (expanded management file system)
+	*	Added support for /flash
+

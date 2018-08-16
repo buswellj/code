@@ -1,0 +1,2209 @@
+ACME Net-Net 4250 Firmware C5.1.1 Patch 19 (Build 362)
+Build Date=11/12/08
+Build View=/home/acme/cc/TWEEK_integration
+User=acme@goose
+
+Backup file created on: THU APR 30 01:11:18 2009
+
+local-policy
+	from-address                   
+	                               *
+	to-address                     
+	                               *
+	source-realm                   
+	                               peer-excel
+	description                    
+	activate-time                  N/A
+	deactivate-time                N/A
+	state                          enabled
+	policy-priority                none
+	last-modified-by               admin@10.254.254.14
+	last-modified-date             2009-04-08 00:48:00
+	policy-attribute
+		next-hop                       10.253.0.240
+		realm                          core-excel
+		action                         none
+		terminate-recursion            disabled
+		carrier                        
+		start-time                     0000
+		end-time                       2400
+		days-of-week                   U-S
+		cost                           0
+		app-protocol                   
+		state                          enabled
+		media-profiles                 
+local-policy
+	from-address                   
+	                               *
+	to-address                     
+	                               *
+	source-realm                   
+	                               core-excel
+	description                    
+	activate-time                  N/A
+	deactivate-time                N/A
+	state                          enabled
+	policy-priority                none
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-12-16 13:23:23
+	policy-attribute
+		next-hop                       64.194.210.97
+		realm                          peer-excel
+		action                         none
+		terminate-recursion            disabled
+		carrier                        
+		start-time                     0000
+		end-time                       2400
+		days-of-week                   U-S
+		cost                           10
+		app-protocol                   
+		state                          enabled
+		media-profiles                 
+	policy-attribute
+		next-hop                       67.16.111.69
+		realm                          peer-gx
+		action                         none
+		terminate-recursion            disabled
+		carrier                        
+		start-time                     0000
+		end-time                       2400
+		days-of-week                   U-S
+		cost                           5
+		app-protocol                   
+		state                          enabled
+		media-profiles                 
+local-policy
+	from-address                   
+	                               *
+	to-address                     
+	                               *
+	source-realm                   
+	                               access
+	description                    
+	activate-time                  N/A
+	deactivate-time                N/A
+	state                          enabled
+	policy-priority                none
+	last-modified-by               admin@console
+	last-modified-date             2008-10-02 15:10:40
+	policy-attribute
+		next-hop                       10.253.0.240
+		realm                          core
+		action                         none
+		terminate-recursion            disabled
+		carrier                        
+		start-time                     0000
+		end-time                       2400
+		days-of-week                   U-S
+		cost                           0
+		app-protocol                   
+		state                          enabled
+		media-profiles                 
+local-policy
+	from-address                   
+	                               *
+	to-address                     
+	                               *
+	source-realm                   
+	                               peer-gx
+	description                    
+	activate-time                  N/A
+	deactivate-time                N/A
+	state                          enabled
+	policy-priority                none
+	last-modified-by               admin@10.254.254.14
+	last-modified-date             2009-04-30 01:11:12
+	policy-attribute
+		next-hop                       10.253.0.240
+		realm                          
+		action                         none
+		terminate-recursion            disabled
+		carrier                        
+		start-time                     0000
+		end-time                       2400
+		days-of-week                   U-S
+		cost                           0
+		app-protocol                   
+		state                          enabled
+		media-profiles                 
+local-policy
+	from-address                   
+	                               *
+	to-address                     
+	                               *
+	source-realm                   
+	                               core-gx
+	description                    
+	activate-time                  N/A
+	deactivate-time                N/A
+	state                          enabled
+	policy-priority                none
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-12-16 12:15:41
+	policy-attribute
+		next-hop                       67.16.111.69
+		realm                          peer-gx
+		action                         none
+		terminate-recursion            disabled
+		carrier                        
+		start-time                     0000
+		end-time                       2400
+		days-of-week                   U-S
+		cost                           0
+		app-protocol                   
+		state                          enabled
+		media-profiles                 
+local-policy
+	from-address                   
+	                               *
+	to-address                     
+	                               *
+	source-realm                   
+	                               peer-timmy
+	description                    
+	activate-time                  N/A
+	deactivate-time                N/A
+	state                          enabled
+	policy-priority                none
+	last-modified-by               admin@10.254.254.14
+	last-modified-date             2009-04-08 00:59:43
+	policy-attribute
+		next-hop                       10.253.0.240
+		realm                          core-timmy
+		action                         none
+		terminate-recursion            disabled
+		carrier                        
+		start-time                     0000
+		end-time                       2400
+		days-of-week                   U-S
+		cost                           0
+		app-protocol                   
+		state                          enabled
+		media-profiles                 
+local-policy
+	from-address                   
+	                               *
+	to-address                     
+	                               *
+	source-realm                   
+	                               core-timmy
+	description                    
+	activate-time                  N/A
+	deactivate-time                N/A
+	state                          enabled
+	policy-priority                none
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-10-24 21:51:22
+	policy-attribute
+		next-hop                       12.178.116.235
+		realm                          peer-timmy
+		action                         none
+		terminate-recursion            disabled
+		carrier                        
+		start-time                     0000
+		end-time                       2400
+		days-of-week                   U-S
+		cost                           0
+		app-protocol                   
+		state                          enabled
+		media-profiles                 
+local-policy
+	from-address                   
+	                               *
+	to-address                     
+	                               *
+	source-realm                   
+	                               peer-global
+	description                    
+	activate-time                  N/A
+	deactivate-time                N/A
+	state                          enabled
+	policy-priority                none
+	last-modified-by               admin@10.254.254.14
+	last-modified-date             2009-04-21 15:14:07
+	policy-attribute
+		next-hop                       10.253.0.240
+		realm                          core-global
+		action                         none
+		terminate-recursion            disabled
+		carrier                        
+		start-time                     0000
+		end-time                       2400
+		days-of-week                   U-S
+		cost                           0
+		app-protocol                   
+		state                          enabled
+		media-profiles                 
+local-policy
+	from-address                   
+	                               *
+	to-address                     
+	                               *
+	source-realm                   
+	                               core-global
+	description                    
+	activate-time                  N/A
+	deactivate-time                N/A
+	state                          enabled
+	policy-priority                none
+	last-modified-by               admin@10.254.254.14
+	last-modified-date             2009-04-21 15:15:06
+	policy-attribute
+		next-hop                       67.16.114.61
+		realm                          peer-global
+		action                         none
+		terminate-recursion            disabled
+		carrier                        
+		start-time                     0000
+		end-time                       2400
+		days-of-week                   U-S
+		cost                           0
+		app-protocol                   
+		state                          enabled
+		media-profiles                 
+media-manager
+	state                          enabled
+	latching                       enabled
+	flow-time-limit                86400
+	initial-guard-timer            300
+	subsq-guard-timer              300
+	tcp-flow-time-limit            86400
+	tcp-initial-guard-timer        300
+	tcp-subsq-guard-timer          300
+	tcp-number-of-ports-per-flow   2
+	hnt-rtcp                       disabled
+	algd-log-level                 NOTICE
+	mbcd-log-level                 NOTICE
+	red-flow-port                  1985
+	red-mgcp-port                  1986
+	red-max-trans                  10000
+	red-sync-start-time            5000
+	red-sync-comp-time             1000
+	media-policing                 enabled
+	max-signaling-bandwidth        10000000
+	max-untrusted-signaling        100
+	min-untrusted-signaling        30
+	app-signaling-bandwidth        0
+	tolerance-window               30
+	rtcp-rate-limit                0
+	min-media-allocation           32000
+	min-trusted-allocation         1000
+	deny-allocation                1000
+	anonymous-sdp                  disabled
+	arp-msg-bandwidth              32000
+	fragment-msg-bandwidth         0
+	rfc2833-timestamp              disabled
+	default-2833-duration          100
+	rfc2833-end-pkts-only-for-non-sig enabled
+	translate-non-rfc2833-event    disabled
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-12-11 21:11:57
+network-interface
+	name                           cat5k5-sw1-p2-1
+	sub-port-id                    0
+	description                    Public SIP Interface
+	hostname                       sbc0.pbflex.com
+	ip-address                     209.173.140.2
+	pri-utility-addr               
+	sec-utility-addr               
+	netmask                        255.255.255.0
+	gateway                        209.173.140.1
+	sec-gateway                    
+	gw-heartbeat
+		state                          disabled
+		heartbeat                      0
+		retry-count                    0
+		retry-timeout                  1
+		health-score                   0
+	dns-ip-primary                 209.173.139.45
+	dns-ip-backup1                 
+	dns-ip-backup2                 
+	dns-domain                     pbflex.com
+	dns-timeout                    11
+        hip-ip-list                    209.173.140.2
+	ftp-address                    
+        icmp-address                   209.173.140.2
+	snmp-address                   
+	telnet-address                 
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-10-02 15:35:40
+network-interface
+	name                           cat5k5-sw1-p2-5
+	sub-port-id                    0
+	description                    Private SIP Interface
+	hostname                       sbc0-int.pbflex.com
+	ip-address                     10.253.0.2
+	pri-utility-addr               
+	sec-utility-addr               
+	netmask                        255.255.255.0
+	gateway                        10.253.0.1
+	sec-gateway                    
+	gw-heartbeat
+		state                          disabled
+		heartbeat                      0
+		retry-count                    0
+		retry-timeout                  1
+		health-score                   0
+	dns-ip-primary                 
+	dns-ip-backup1                 
+	dns-ip-backup2                 
+	dns-domain                     
+	dns-timeout                    11
+        hip-ip-list                    10.253.0.2
+	ftp-address                    
+        icmp-address                   10.253.0.2
+	snmp-address                   
+	telnet-address                 
+	last-modified-by               admin@console
+	last-modified-date             2008-10-02 14:51:09
+network-interface
+	name                           cat5k5-sw1-p2-2
+	sub-port-id                    0
+	description                    SIP Trunking Customers
+	hostname                       sip0.pbflex.com
+	ip-address                     209.173.139.217
+	pri-utility-addr               
+	sec-utility-addr               
+	netmask                        255.255.255.0
+	gateway                        209.173.139.1
+	sec-gateway                    
+	gw-heartbeat
+		state                          disabled
+		heartbeat                      0
+		retry-count                    0
+		retry-timeout                  1
+		health-score                   0
+	dns-ip-primary                 209.173.139.45
+	dns-ip-backup1                 
+	dns-ip-backup2                 
+	dns-domain                     pbflex.com
+	dns-timeout                    11
+        hip-ip-list                    209.173.139.218
+	ftp-address                    
+        icmp-address                   209.173.139.218
+	snmp-address                   
+	telnet-address                 
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-12-22 20:14:07
+ntp-config
+	server                         10.254.254.252
+	last-modified-by               
+	last-modified-date             2008-10-01 20:07:03
+phy-interface
+	name                           cat5k5-sw1-p2-1
+	operation-type                 Media
+	port                           0
+	slot                           0
+	virtual-mac                    
+	admin-state                    enabled
+	auto-negotiation               enabled
+	duplex-mode                    FULL
+	speed                          100
+	last-modified-by               
+	last-modified-date             2008-10-02 00:40:29
+phy-interface
+	name                           cat5k5-sw1-p2-5
+	operation-type                 Media
+	port                           0
+	slot                           1
+	virtual-mac                    
+	admin-state                    enabled
+	auto-negotiation               enabled
+	duplex-mode                    FULL
+	speed                          100
+	last-modified-by               admin@console
+	last-modified-date             2008-10-02 14:49:14
+phy-interface
+	name                           cat5k5-sw1-p2-2
+	operation-type                 Media
+	port                           1
+	slot                           0
+	virtual-mac                    
+	admin-state                    enabled
+	auto-negotiation               enabled
+	duplex-mode                    FULL
+	speed                          100
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-12-22 20:17:04
+realm-config
+	identifier                     peer-excel
+	description                    
+	addr-prefix                    0.0.0.0
+	network-interfaces             
+	                               cat5k5-sw1-p2-1:0
+	mm-in-realm                    disabled
+	mm-in-network                  enabled
+	mm-same-ip                     enabled
+	mm-in-system                   enabled
+	bw-cac-non-mm                  disabled
+	msm-release                    disabled
+	generate-UDP-checksum          disabled
+	max-bandwidth                  0
+	ext-policy-svr                 
+	max-latency                    0
+	max-jitter                     0
+	max-packet-loss                0
+	observ-window-size             0
+	parent-realm                   
+	dns-realm                      
+	media-policy                   
+	in-translationid               
+	out-translationid              
+	in-manipulationid              
+	out-manipulationid             NAT_IP
+	class-profile                  
+	average-rate-limit             0
+	access-control-trust-level     none
+	invalid-signal-threshold       0
+	maximum-signal-threshold       0
+	untrusted-signal-threshold     0
+	deny-period                    30
+	symmetric-latching             disabled
+	pai-strip                      disabled
+	trunk-context                  
+	early-media-allow              
+	enforcement-profile            
+	additional-prefixes            
+	restricted-latching            none
+	restriction-mask               32
+	accounting-enable              enabled
+	user-cac-mode                  none
+	user-cac-bandwidth             0
+	user-cac-sessions              0
+	monthly-minutes                0
+	net-management-control         disabled
+	delay-media-update             disabled
+	refer-call-transfer            disabled
+	codec-policy                   
+	codec-manip-in-realm           disabled
+	constraint-name                
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-10-02 15:40:28
+realm-config
+	identifier                     core-excel
+	description                    
+	addr-prefix                    0.0.0.0
+	network-interfaces             
+	                               cat5k5-sw1-p2-5:0
+	mm-in-realm                    disabled
+	mm-in-network                  enabled
+	mm-same-ip                     enabled
+	mm-in-system                   enabled
+	bw-cac-non-mm                  disabled
+	msm-release                    disabled
+	generate-UDP-checksum          disabled
+	max-bandwidth                  0
+	ext-policy-svr                 
+	max-latency                    0
+	max-jitter                     0
+	max-packet-loss                0
+	observ-window-size             0
+	parent-realm                   
+	dns-realm                      
+	media-policy                   
+	in-translationid               
+	out-translationid              
+	in-manipulationid              
+	out-manipulationid             NAT_IP
+	class-profile                  
+	average-rate-limit             0
+	access-control-trust-level     none
+	invalid-signal-threshold       0
+	maximum-signal-threshold       0
+	untrusted-signal-threshold     0
+	deny-period                    30
+	symmetric-latching             disabled
+	pai-strip                      disabled
+	trunk-context                  
+	early-media-allow              
+	enforcement-profile            
+	additional-prefixes            
+	restricted-latching            none
+	restriction-mask               32
+	accounting-enable              enabled
+	user-cac-mode                  none
+	user-cac-bandwidth             0
+	user-cac-sessions              0
+	monthly-minutes                0
+	net-management-control         disabled
+	delay-media-update             disabled
+	refer-call-transfer            disabled
+	codec-policy                   
+	codec-manip-in-realm           disabled
+	constraint-name                
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-10-02 15:40:44
+realm-config
+	identifier                     access
+	description                    
+	addr-prefix                    0.0.0.0
+	network-interfaces             
+	                               cat5k5-sw1-p2-1:0
+	mm-in-realm                    disabled
+	mm-in-network                  enabled
+	mm-same-ip                     enabled
+	mm-in-system                   enabled
+	bw-cac-non-mm                  disabled
+	msm-release                    disabled
+	generate-UDP-checksum          disabled
+	max-bandwidth                  0
+	ext-policy-svr                 
+	max-latency                    0
+	max-jitter                     0
+	max-packet-loss                0
+	observ-window-size             0
+	parent-realm                   
+	dns-realm                      
+	media-policy                   
+	in-translationid               
+	out-translationid              
+	in-manipulationid              
+	out-manipulationid             
+	class-profile                  
+	average-rate-limit             0
+	access-control-trust-level     none
+	invalid-signal-threshold       0
+	maximum-signal-threshold       0
+	untrusted-signal-threshold     0
+	deny-period                    30
+	symmetric-latching             disabled
+	pai-strip                      disabled
+	trunk-context                  
+	early-media-allow              
+	enforcement-profile            
+	additional-prefixes            
+	restricted-latching            none
+	restriction-mask               32
+	accounting-enable              enabled
+	user-cac-mode                  none
+	user-cac-bandwidth             0
+	user-cac-sessions              0
+	monthly-minutes                0
+	net-management-control         disabled
+	delay-media-update             disabled
+	refer-call-transfer            disabled
+	codec-policy                   
+	codec-manip-in-realm           disabled
+	constraint-name                
+	last-modified-by               admin@console
+	last-modified-date             2008-10-02 14:54:57
+realm-config
+	identifier                     core
+	description                    
+	addr-prefix                    10.253.0.0/24
+	network-interfaces             
+	                               cat5k5-sw1-p2-5:0
+	mm-in-realm                    disabled
+	mm-in-network                  enabled
+	mm-same-ip                     enabled
+	mm-in-system                   enabled
+	bw-cac-non-mm                  disabled
+	msm-release                    disabled
+	generate-UDP-checksum          disabled
+	max-bandwidth                  0
+	ext-policy-svr                 
+	max-latency                    0
+	max-jitter                     0
+	max-packet-loss                0
+	observ-window-size             0
+	parent-realm                   
+	dns-realm                      
+	media-policy                   
+	in-translationid               
+	out-translationid              
+	in-manipulationid              
+	out-manipulationid             
+	class-profile                  
+	average-rate-limit             0
+	access-control-trust-level     none
+	invalid-signal-threshold       0
+	maximum-signal-threshold       0
+	untrusted-signal-threshold     0
+	deny-period                    30
+	symmetric-latching             disabled
+	pai-strip                      disabled
+	trunk-context                  
+	early-media-allow              
+	enforcement-profile            
+	additional-prefixes            
+	restricted-latching            none
+	restriction-mask               32
+	accounting-enable              enabled
+	user-cac-mode                  none
+	user-cac-bandwidth             0
+	user-cac-sessions              0
+	monthly-minutes                0
+	net-management-control         disabled
+	delay-media-update             disabled
+	refer-call-transfer            disabled
+	codec-policy                   
+	codec-manip-in-realm           disabled
+	constraint-name                
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-10-02 15:36:35
+realm-config
+	identifier                     peer-gx
+	description                    
+	addr-prefix                    0.0.0.0
+	network-interfaces             
+	                               cat5k5-sw1-p2-1:0
+	mm-in-realm                    disabled
+	mm-in-network                  enabled
+	mm-same-ip                     enabled
+	mm-in-system                   enabled
+	bw-cac-non-mm                  disabled
+	msm-release                    disabled
+	generate-UDP-checksum          disabled
+	max-bandwidth                  0
+	ext-policy-svr                 
+	max-latency                    0
+	max-jitter                     0
+	max-packet-loss                0
+	observ-window-size             0
+	parent-realm                   
+	dns-realm                      
+	media-policy                   
+	in-translationid               
+	out-translationid              
+	in-manipulationid              
+	out-manipulationid             
+	class-profile                  
+	average-rate-limit             0
+	access-control-trust-level     none
+	invalid-signal-threshold       0
+	maximum-signal-threshold       0
+	untrusted-signal-threshold     0
+	deny-period                    30
+	symmetric-latching             disabled
+	pai-strip                      disabled
+	trunk-context                  
+	early-media-allow              
+	enforcement-profile            
+	additional-prefixes            
+	restricted-latching            none
+	restriction-mask               32
+	accounting-enable              enabled
+	user-cac-mode                  none
+	user-cac-bandwidth             0
+	user-cac-sessions              0
+	monthly-minutes                0
+	net-management-control         disabled
+	delay-media-update             disabled
+	refer-call-transfer            disabled
+	codec-policy                   
+	codec-manip-in-realm           disabled
+	constraint-name                
+	last-modified-by               admin@console
+	last-modified-date             2008-10-09 19:02:18
+realm-config
+	identifier                     core-gx
+	description                    
+	addr-prefix                    0.0.0.0
+	network-interfaces             
+	                               cat5k5-sw1-p2-5:0
+	mm-in-realm                    disabled
+	mm-in-network                  enabled
+	mm-same-ip                     enabled
+	mm-in-system                   enabled
+	bw-cac-non-mm                  disabled
+	msm-release                    disabled
+	generate-UDP-checksum          disabled
+	max-bandwidth                  0
+	ext-policy-svr                 
+	max-latency                    0
+	max-jitter                     0
+	max-packet-loss                0
+	observ-window-size             0
+	parent-realm                   
+	dns-realm                      
+	media-policy                   
+	in-translationid               
+	out-translationid              
+	in-manipulationid              
+	out-manipulationid             
+	class-profile                  
+	average-rate-limit             0
+	access-control-trust-level     none
+	invalid-signal-threshold       0
+	maximum-signal-threshold       0
+	untrusted-signal-threshold     0
+	deny-period                    30
+	symmetric-latching             disabled
+	pai-strip                      disabled
+	trunk-context                  
+	early-media-allow              
+	enforcement-profile            
+	additional-prefixes            
+	restricted-latching            none
+	restriction-mask               32
+	accounting-enable              enabled
+	user-cac-mode                  none
+	user-cac-bandwidth             0
+	user-cac-sessions              0
+	monthly-minutes                0
+	net-management-control         disabled
+	delay-media-update             disabled
+	refer-call-transfer            disabled
+	codec-policy                   
+	codec-manip-in-realm           disabled
+	constraint-name                
+	last-modified-by               admin@console
+	last-modified-date             2008-10-09 19:02:52
+realm-config
+	identifier                     peer-timmy
+	description                    
+	addr-prefix                    0.0.0.0
+	network-interfaces             
+	                               cat5k5-sw1-p2-1:0
+	mm-in-realm                    disabled
+	mm-in-network                  enabled
+	mm-same-ip                     enabled
+	mm-in-system                   enabled
+	bw-cac-non-mm                  disabled
+	msm-release                    disabled
+	generate-UDP-checksum          disabled
+	max-bandwidth                  0
+	ext-policy-svr                 
+	max-latency                    0
+	max-jitter                     0
+	max-packet-loss                0
+	observ-window-size             0
+	parent-realm                   
+	dns-realm                      
+	media-policy                   
+	in-translationid               
+	out-translationid              
+	in-manipulationid              
+	out-manipulationid             
+	class-profile                  
+	average-rate-limit             0
+	access-control-trust-level     none
+	invalid-signal-threshold       0
+	maximum-signal-threshold       0
+	untrusted-signal-threshold     0
+	deny-period                    30
+	symmetric-latching             disabled
+	pai-strip                      disabled
+	trunk-context                  
+	early-media-allow              
+	enforcement-profile            
+	additional-prefixes            
+	restricted-latching            none
+	restriction-mask               32
+	accounting-enable              enabled
+	user-cac-mode                  none
+	user-cac-bandwidth             0
+	user-cac-sessions              0
+	monthly-minutes                0
+	net-management-control         disabled
+	delay-media-update             disabled
+	refer-call-transfer            disabled
+	codec-policy                   
+	codec-manip-in-realm           disabled
+	constraint-name                
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-10-24 21:50:04
+realm-config
+	identifier                     core-timmy
+	description                    
+	addr-prefix                    0.0.0.0
+	network-interfaces             
+	                               cat5k5-sw1-p2-5:0
+	mm-in-realm                    disabled
+	mm-in-network                  enabled
+	mm-same-ip                     enabled
+	mm-in-system                   enabled
+	bw-cac-non-mm                  disabled
+	msm-release                    disabled
+	generate-UDP-checksum          disabled
+	max-bandwidth                  0
+	ext-policy-svr                 
+	max-latency                    0
+	max-jitter                     0
+	max-packet-loss                0
+	observ-window-size             0
+	parent-realm                   
+	dns-realm                      
+	media-policy                   
+	in-translationid               
+	out-translationid              
+	in-manipulationid              
+	out-manipulationid             
+	class-profile                  
+	average-rate-limit             0
+	access-control-trust-level     none
+	invalid-signal-threshold       0
+	maximum-signal-threshold       0
+	untrusted-signal-threshold     0
+	deny-period                    30
+	symmetric-latching             disabled
+	pai-strip                      disabled
+	trunk-context                  
+	early-media-allow              
+	enforcement-profile            
+	additional-prefixes            
+	restricted-latching            none
+	restriction-mask               32
+	accounting-enable              enabled
+	user-cac-mode                  none
+	user-cac-bandwidth             0
+	user-cac-sessions              0
+	monthly-minutes                0
+	net-management-control         disabled
+	delay-media-update             disabled
+	refer-call-transfer            disabled
+	codec-policy                   
+	codec-manip-in-realm           disabled
+	constraint-name                
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-10-24 21:50:24
+realm-config
+	identifier                     peer-global
+	description                    
+	addr-prefix                    0.0.0.0
+	network-interfaces             
+	                               cat5k5-sw1-p2-1:0
+	mm-in-realm                    disabled
+	mm-in-network                  enabled
+	mm-same-ip                     enabled
+	mm-in-system                   enabled
+	bw-cac-non-mm                  disabled
+	msm-release                    disabled
+	generate-UDP-checksum          disabled
+	max-bandwidth                  0
+	ext-policy-svr                 
+	max-latency                    0
+	max-jitter                     0
+	max-packet-loss                0
+	observ-window-size             0
+	parent-realm                   
+	dns-realm                      
+	media-policy                   
+	in-translationid               
+	out-translationid              
+	in-manipulationid              
+	out-manipulationid             NAT_IP
+	class-profile                  
+	average-rate-limit             0
+	access-control-trust-level     none
+	invalid-signal-threshold       0
+	maximum-signal-threshold       0
+	untrusted-signal-threshold     0
+	deny-period                    30
+	symmetric-latching             disabled
+	pai-strip                      disabled
+	trunk-context                  
+	early-media-allow              
+	enforcement-profile            
+	additional-prefixes            
+	restricted-latching            none
+	restriction-mask               32
+	accounting-enable              enabled
+	user-cac-mode                  none
+	user-cac-bandwidth             0
+	user-cac-sessions              0
+	monthly-minutes                0
+	net-management-control         disabled
+	delay-media-update             disabled
+	refer-call-transfer            disabled
+	codec-policy                   
+	codec-manip-in-realm           disabled
+	constraint-name                
+	last-modified-by               admin@10.254.254.14
+	last-modified-date             2009-04-21 15:09:12
+realm-config
+	identifier                     core-global
+	description                    
+	addr-prefix                    0.0.0.0
+	network-interfaces             
+	                               cat5k5-sw1-p2-5:0
+	mm-in-realm                    disabled
+	mm-in-network                  enabled
+	mm-same-ip                     enabled
+	mm-in-system                   enabled
+	bw-cac-non-mm                  disabled
+	msm-release                    disabled
+	generate-UDP-checksum          disabled
+	max-bandwidth                  0
+	ext-policy-svr                 
+	max-latency                    0
+	max-jitter                     0
+	max-packet-loss                0
+	observ-window-size             0
+	parent-realm                   
+	dns-realm                      
+	media-policy                   
+	in-translationid               
+	out-translationid              
+	in-manipulationid              
+	out-manipulationid             NAT_IP
+	class-profile                  
+	average-rate-limit             0
+	access-control-trust-level     none
+	invalid-signal-threshold       0
+	maximum-signal-threshold       0
+	untrusted-signal-threshold     0
+	deny-period                    30
+	symmetric-latching             disabled
+	pai-strip                      disabled
+	trunk-context                  
+	early-media-allow              
+	enforcement-profile            
+	additional-prefixes            
+	restricted-latching            none
+	restriction-mask               32
+	accounting-enable              enabled
+	user-cac-mode                  none
+	user-cac-bandwidth             0
+	user-cac-sessions              0
+	monthly-minutes                0
+	net-management-control         disabled
+	delay-media-update             disabled
+	refer-call-transfer            disabled
+	codec-policy                   
+	codec-manip-in-realm           disabled
+	constraint-name                
+	last-modified-by               admin@10.254.254.14
+	last-modified-date             2009-04-21 15:09:57
+session-agent
+	hostname                       10.253.0.240
+	ip-address                     
+	port                           5060
+	state                          enabled
+	app-protocol                   SIP
+	app-type                       
+	transport-method               UDP
+	realm-id                       *
+	egress-realm-id                
+	description                    i3proxy
+	carriers                       
+	allow-next-hop-lp              enabled
+	constraints                    disabled
+	max-sessions                   0
+	max-inbound-sessions           0
+	max-outbound-sessions          0
+	max-burst-rate                 0
+	max-inbound-burst-rate         0
+	max-outbound-burst-rate        0
+	max-sustain-rate               0
+	max-inbound-sustain-rate       0
+	max-outbound-sustain-rate      0
+	min-seizures                   5
+	min-asr                        0
+	time-to-resume                 0
+	ttr-no-response                0
+	in-service-period              0
+	burst-rate-window              0
+	sustain-rate-window            0
+	req-uri-carrier-mode           None
+	proxy-mode                     Proxy
+	redirect-action                Proxy
+	loose-routing                  enabled
+	send-media-session             enabled
+	response-map                   
+	ping-method                    
+	ping-interval                  0
+	ping-send-mode                 keep-alive
+	ping-in-service-response-codes 
+	out-service-response-codes     
+	media-profiles                 
+	in-translationid               
+	out-translationid              
+	trust-me                       enabled
+	request-uri-headers            
+	stop-recurse                   
+	local-response-map             
+	ping-to-user-part              
+	ping-from-user-part            
+	li-trust-me                    disabled
+	in-manipulationid              
+	out-manipulationid             
+	p-asserted-id                  
+	trunk-group                    
+	max-register-sustain-rate      0
+	early-media-allow              
+	invalidate-registrations       disabled
+	rfc2833-mode                   none
+	rfc2833-payload                0
+	codec-policy                   
+	enforcement-profile            
+	refer-call-transfer            disabled
+	reuse-connections              NONE
+	tcp-keepalive                  none
+	tcp-reconn-interval            0
+	max-register-burst-rate        0
+	register-burst-window          0
+	last-modified-by               admin@console
+	last-modified-date             2008-10-02 15:06:50
+session-agent
+	hostname                       64.194.210.97
+	ip-address                     
+	port                           5060
+	state                          enabled
+	app-protocol                   SIP
+	app-type                       
+	transport-method               UDP
+	realm-id                       peer-excel
+	egress-realm-id                
+	description                    carrier-excel
+	carriers                       
+	allow-next-hop-lp              enabled
+	constraints                    disabled
+	max-sessions                   0
+	max-inbound-sessions           0
+	max-outbound-sessions          0
+	max-burst-rate                 0
+	max-inbound-burst-rate         0
+	max-outbound-burst-rate        0
+	max-sustain-rate               0
+	max-inbound-sustain-rate       0
+	max-outbound-sustain-rate      0
+	min-seizures                   5
+	min-asr                        0
+	time-to-resume                 0
+	ttr-no-response                0
+	in-service-period              0
+	burst-rate-window              0
+	sustain-rate-window            0
+	req-uri-carrier-mode           None
+	proxy-mode                     Proxy
+	redirect-action                Proxy
+	loose-routing                  enabled
+	send-media-session             enabled
+	response-map                   
+	ping-method                    
+	ping-interval                  0
+	ping-send-mode                 keep-alive
+	ping-in-service-response-codes 
+	out-service-response-codes     
+	media-profiles                 
+	in-translationid               
+	out-translationid              
+	trust-me                       enabled
+	request-uri-headers            
+	stop-recurse                   
+	local-response-map             
+	ping-to-user-part              
+	ping-from-user-part            
+	li-trust-me                    disabled
+	in-manipulationid              
+	out-manipulationid             
+	p-asserted-id                  
+	trunk-group                    
+	max-register-sustain-rate      0
+	early-media-allow              
+	invalidate-registrations       disabled
+	rfc2833-mode                   none
+	rfc2833-payload                0
+	codec-policy                   
+	enforcement-profile            
+	refer-call-transfer            disabled
+	reuse-connections              NONE
+	tcp-keepalive                  none
+	tcp-reconn-interval            0
+	max-register-burst-rate        0
+	register-burst-window          0
+	last-modified-by               admin@console
+	last-modified-date             2008-10-02 15:07:00
+session-agent
+	hostname                       67.16.111.69
+	ip-address                     
+	port                           5060
+	state                          enabled
+	app-protocol                   SIP
+	app-type                       
+	transport-method               UDP
+	realm-id                       peer-gx
+	egress-realm-id                
+	description                    Global-Crossing
+	carriers                       
+	allow-next-hop-lp              enabled
+	constraints                    disabled
+	max-sessions                   0
+	max-inbound-sessions           0
+	max-outbound-sessions          0
+	max-burst-rate                 0
+	max-inbound-burst-rate         0
+	max-outbound-burst-rate        0
+	max-sustain-rate               0
+	max-inbound-sustain-rate       0
+	max-outbound-sustain-rate      0
+	min-seizures                   5
+	min-asr                        0
+	time-to-resume                 0
+	ttr-no-response                0
+	in-service-period              0
+	burst-rate-window              0
+	sustain-rate-window            0
+	req-uri-carrier-mode           None
+	proxy-mode                     Proxy
+	redirect-action                Proxy
+	loose-routing                  enabled
+	send-media-session             enabled
+	response-map                   
+	ping-method                    
+	ping-interval                  0
+	ping-send-mode                 keep-alive
+	ping-in-service-response-codes 
+	out-service-response-codes     
+	media-profiles                 
+	in-translationid               
+	out-translationid              
+	trust-me                       disabled
+	request-uri-headers            
+	stop-recurse                   
+	local-response-map             
+	ping-to-user-part              
+	ping-from-user-part            
+	li-trust-me                    disabled
+	in-manipulationid              
+	out-manipulationid             
+	p-asserted-id                  
+	trunk-group                    
+	max-register-sustain-rate      0
+	early-media-allow              
+	invalidate-registrations       disabled
+	rfc2833-mode                   none
+	rfc2833-payload                0
+	codec-policy                   
+	enforcement-profile            
+	refer-call-transfer            disabled
+	reuse-connections              NONE
+	tcp-keepalive                  none
+	tcp-reconn-interval            0
+	max-register-burst-rate        0
+	register-burst-window          0
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-12-16 12:16:15
+session-agent
+	hostname                       12.178.116.235
+	ip-address                     
+	port                           5060
+	state                          enabled
+	app-protocol                   SIP
+	app-type                       
+	transport-method               UDP
+	realm-id                       peer-timmy
+	egress-realm-id                
+	description                    ptp-freeagent
+	carriers                       
+	allow-next-hop-lp              enabled
+	constraints                    disabled
+	max-sessions                   0
+	max-inbound-sessions           0
+	max-outbound-sessions          0
+	max-burst-rate                 0
+	max-inbound-burst-rate         0
+	max-outbound-burst-rate        0
+	max-sustain-rate               0
+	max-inbound-sustain-rate       0
+	max-outbound-sustain-rate      0
+	min-seizures                   5
+	min-asr                        0
+	time-to-resume                 0
+	ttr-no-response                0
+	in-service-period              0
+	burst-rate-window              0
+	sustain-rate-window            0
+	req-uri-carrier-mode           None
+	proxy-mode                     Proxy
+	redirect-action                Proxy
+	loose-routing                  enabled
+	send-media-session             enabled
+	response-map                   
+	ping-method                    
+	ping-interval                  0
+	ping-send-mode                 keep-alive
+	ping-in-service-response-codes 
+	out-service-response-codes     
+	media-profiles                 
+	in-translationid               
+	out-translationid              
+	trust-me                       disabled
+	request-uri-headers            
+	stop-recurse                   
+	local-response-map             
+	ping-to-user-part              
+	ping-from-user-part            
+	li-trust-me                    disabled
+	in-manipulationid              
+	out-manipulationid             
+	p-asserted-id                  
+	trunk-group                    
+	max-register-sustain-rate      0
+	early-media-allow              
+	invalidate-registrations       disabled
+	rfc2833-mode                   none
+	rfc2833-payload                0
+	codec-policy                   
+	enforcement-profile            
+	refer-call-transfer            disabled
+	reuse-connections              NONE
+	tcp-keepalive                  none
+	tcp-reconn-interval            0
+	max-register-burst-rate        0
+	register-burst-window          0
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-10-24 21:52:26
+session-agent
+	hostname                       67.16.114.61
+	ip-address                     67.16.114.61
+	port                           5060
+	state                          enabled
+	app-protocol                   SIP
+	app-type                       
+	transport-method               UDP
+	realm-id                       peer-global
+	egress-realm-id                
+	description                    Global Crossing Direct
+	carriers                       
+	allow-next-hop-lp              enabled
+	constraints                    disabled
+	max-sessions                   0
+	max-inbound-sessions           0
+	max-outbound-sessions          0
+	max-burst-rate                 0
+	max-inbound-burst-rate         0
+	max-outbound-burst-rate        0
+	max-sustain-rate               0
+	max-inbound-sustain-rate       0
+	max-outbound-sustain-rate      0
+	min-seizures                   5
+	min-asr                        0
+	time-to-resume                 0
+	ttr-no-response                0
+	in-service-period              0
+	burst-rate-window              0
+	sustain-rate-window            0
+	req-uri-carrier-mode           None
+	proxy-mode                     
+	redirect-action                
+	loose-routing                  enabled
+	send-media-session             enabled
+	response-map                   
+	ping-method                    
+	ping-interval                  0
+	ping-send-mode                 keep-alive
+	ping-in-service-response-codes 
+	out-service-response-codes     
+	media-profiles                 
+	in-translationid               
+	out-translationid              
+	trust-me                       disabled
+	request-uri-headers            
+	stop-recurse                   
+	local-response-map             
+	ping-to-user-part              
+	ping-from-user-part            
+	li-trust-me                    disabled
+	in-manipulationid              
+	out-manipulationid             
+	p-asserted-id                  
+	trunk-group                    
+	max-register-sustain-rate      0
+	early-media-allow              
+	invalidate-registrations       disabled
+	rfc2833-mode                   none
+	rfc2833-payload                0
+	codec-policy                   
+	enforcement-profile            
+	refer-call-transfer            disabled
+	reuse-connections              NONE
+	tcp-keepalive                  none
+	tcp-reconn-interval            0
+	max-register-burst-rate        0
+	register-burst-window          0
+	last-modified-by               admin@10.254.254.14
+	last-modified-date             2009-04-21 15:15:42
+sip-config
+	state                          enabled
+	operation-mode                 dialog
+	dialog-transparency            enabled
+	home-realm-id                  access
+	egress-realm-id                
+	nat-mode                       Public
+	registrar-domain               *
+	registrar-host                 *
+	registrar-port                 5060
+	init-timer                     500
+	max-timer                      4000
+	trans-expire                   32
+	invite-expire                  180
+	inactive-dynamic-conn          32
+	enforcement-profile            
+	pac-method                     
+	pac-interval                   10
+	pac-strategy                   PropDist
+	pac-load-weight                1
+	pac-session-weight             1
+	pac-route-weight               1
+	pac-callid-lifetime            600
+	pac-user-lifetime              3600
+	red-sip-port                   1988
+	red-max-trans                  10000
+	red-sync-start-time            5000
+	red-sync-comp-time             1000
+	add-reason-header              disabled
+	sip-message-len                4096
+	enum-sag-match                 disabled
+	extra-method-stats             disabled
+	registration-cache-limit       0
+	options                        max-udp-length=0
+	last-modified-by               admin@console
+	last-modified-date             2008-10-02 15:12:18
+sip-interface
+	state                          enabled
+	realm-id                       peer-excel
+	description                    
+	sip-port
+		address                        209.173.140.2
+		port                           5060
+		transport-protocol             UDP
+		tls-profile                    
+		allow-anonymous                agents-only
+	carriers                       
+	trans-expire                   0
+	invite-expire                  0
+	max-redirect-contacts          0
+	proxy-mode                     
+	redirect-action                
+	contact-mode                   none
+	nat-traversal                  none
+	nat-interval                   30
+	tcp-nat-interval               90
+	registration-caching           disabled
+	min-reg-expire                 300
+	registration-interval          3600
+	route-to-registrar             enabled
+	secured-network                disabled
+	teluri-scheme                  disabled
+	uri-fqdn-domain                
+	trust-mode                     all
+	max-nat-interval               3600
+	nat-int-increment              10
+	nat-test-increment             30
+	sip-dynamic-hnt                disabled
+	stop-recurse                   401,407
+	port-map-start                 0
+	port-map-end                   0
+	in-manipulationid              
+	out-manipulationid             
+	sip-ims-feature                disabled
+	operator-identifier            
+	anonymous-priority             none
+	max-incoming-conns             0
+	per-src-ip-max-incoming-conns  0
+	inactive-conn-timeout          0
+	untrusted-conn-timeout         0
+	network-id                     
+	ext-policy-server              
+	default-location-string        
+	charging-vector-mode           pass
+	charging-function-address-mode pass
+	ccf-address                    
+	ecf-address                    
+	term-tgrp-mode                 none
+	implicit-service-route         disabled
+	rfc2833-payload                101
+	rfc2833-mode                   transparent
+	constraint-name                
+	response-map                   
+	local-response-map             
+	enforcement-profile            
+	refer-call-transfer            disabled
+	route-unauthorized-calls       
+	tcp-keepalive                  none
+	add-sdp-invite                 disabled
+	add-sdp-profiles               
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-10-02 15:34:35
+sip-interface
+	state                          enabled
+	realm-id                       core-excel
+	description                    
+	sip-port
+		address                        10.253.0.2
+		port                           5060
+		transport-protocol             UDP
+		tls-profile                    
+		allow-anonymous                agents-only
+	carriers                       
+	trans-expire                   0
+	invite-expire                  0
+	max-redirect-contacts          0
+	proxy-mode                     
+	redirect-action                
+	contact-mode                   none
+	nat-traversal                  none
+	nat-interval                   30
+	tcp-nat-interval               90
+	registration-caching           disabled
+	min-reg-expire                 300
+	registration-interval          3600
+	route-to-registrar             disabled
+	secured-network                disabled
+	teluri-scheme                  disabled
+	uri-fqdn-domain                
+	trust-mode                     all
+	max-nat-interval               3600
+	nat-int-increment              10
+	nat-test-increment             30
+	sip-dynamic-hnt                disabled
+	stop-recurse                   401,407
+	port-map-start                 0
+	port-map-end                   0
+	in-manipulationid              
+	out-manipulationid             
+	sip-ims-feature                disabled
+	operator-identifier            
+	anonymous-priority             none
+	max-incoming-conns             0
+	per-src-ip-max-incoming-conns  0
+	inactive-conn-timeout          0
+	untrusted-conn-timeout         0
+	network-id                     
+	ext-policy-server              
+	default-location-string        
+	charging-vector-mode           pass
+	charging-function-address-mode pass
+	ccf-address                    
+	ecf-address                    
+	term-tgrp-mode                 none
+	implicit-service-route         disabled
+	rfc2833-payload                101
+	rfc2833-mode                   transparent
+	constraint-name                
+	response-map                   
+	local-response-map             
+	enforcement-profile            
+	refer-call-transfer            disabled
+	route-unauthorized-calls       
+	tcp-keepalive                  none
+	add-sdp-invite                 disabled
+	add-sdp-profiles               
+	last-modified-by               admin@console
+	last-modified-date             2008-10-02 15:00:08
+sip-interface
+	state                          enabled
+	realm-id                       access
+	description                    
+	sip-port
+		address                        209.173.140.3
+		port                           5060
+		transport-protocol             UDP
+		tls-profile                    
+		allow-anonymous                registered
+	carriers                       
+	trans-expire                   0
+	invite-expire                  0
+	max-redirect-contacts          0
+	proxy-mode                     
+	redirect-action                
+	contact-mode                   none
+	nat-traversal                  always
+	nat-interval                   45
+	tcp-nat-interval               90
+	registration-caching           enabled
+	min-reg-expire                 300
+	registration-interval          3600
+	route-to-registrar             enabled
+	secured-network                disabled
+	teluri-scheme                  disabled
+	uri-fqdn-domain                
+	trust-mode                     all
+	max-nat-interval               3600
+	nat-int-increment              10
+	nat-test-increment             30
+	sip-dynamic-hnt                disabled
+	stop-recurse                   401,407
+	port-map-start                 0
+	port-map-end                   0
+	in-manipulationid              
+	out-manipulationid             
+	sip-ims-feature                disabled
+	operator-identifier            
+	anonymous-priority             none
+	max-incoming-conns             0
+	per-src-ip-max-incoming-conns  0
+	inactive-conn-timeout          0
+	untrusted-conn-timeout         0
+	network-id                     
+	ext-policy-server              
+	default-location-string        
+	charging-vector-mode           pass
+	charging-function-address-mode pass
+	ccf-address                    
+	ecf-address                    
+	term-tgrp-mode                 none
+	implicit-service-route         disabled
+	rfc2833-payload                101
+	rfc2833-mode                   transparent
+	constraint-name                
+	response-map                   
+	local-response-map             
+	enforcement-profile            
+	refer-call-transfer            disabled
+	route-unauthorized-calls       
+	tcp-keepalive                  none
+	add-sdp-invite                 disabled
+	add-sdp-profiles               
+	last-modified-by               admin@console
+	last-modified-date             2008-10-02 15:01:43
+sip-interface
+	state                          enabled
+	realm-id                       core
+	description                    
+	sip-port
+		address                        10.253.0.3
+		port                           5060
+		transport-protocol             UDP
+		tls-profile                    
+		allow-anonymous                agents-only
+	carriers                       
+	trans-expire                   0
+	invite-expire                  0
+	max-redirect-contacts          0
+	proxy-mode                     
+	redirect-action                
+	contact-mode                   none
+	nat-traversal                  none
+	nat-interval                   30
+	tcp-nat-interval               90
+	registration-caching           disabled
+	min-reg-expire                 300
+	registration-interval          3600
+	route-to-registrar             disabled
+	secured-network                disabled
+	teluri-scheme                  disabled
+	uri-fqdn-domain                
+	trust-mode                     all
+	max-nat-interval               3600
+	nat-int-increment              10
+	nat-test-increment             30
+	sip-dynamic-hnt                disabled
+	stop-recurse                   401,407
+	port-map-start                 0
+	port-map-end                   0
+	in-manipulationid              
+	out-manipulationid             
+	sip-ims-feature                disabled
+	operator-identifier            
+	anonymous-priority             none
+	max-incoming-conns             0
+	per-src-ip-max-incoming-conns  0
+	inactive-conn-timeout          0
+	untrusted-conn-timeout         0
+	network-id                     
+	ext-policy-server              
+	default-location-string        
+	charging-vector-mode           pass
+	charging-function-address-mode pass
+	ccf-address                    
+	ecf-address                    
+	term-tgrp-mode                 none
+	implicit-service-route         disabled
+	rfc2833-payload                101
+	rfc2833-mode                   transparent
+	constraint-name                
+	response-map                   
+	local-response-map             
+	enforcement-profile            
+	refer-call-transfer            disabled
+	route-unauthorized-calls       
+	tcp-keepalive                  none
+	add-sdp-invite                 disabled
+	add-sdp-profiles               
+	last-modified-by               admin@console
+	last-modified-date             2008-10-02 15:02:41
+sip-interface
+	state                          enabled
+	realm-id                       peer-gx
+	description                    
+	sip-port
+		address                        209.173.140.21
+		port                           5060
+		transport-protocol             UDP
+		tls-profile                    
+		allow-anonymous                agents-only
+	carriers                       
+	trans-expire                   0
+	invite-expire                  0
+	max-redirect-contacts          0
+	proxy-mode                     
+	redirect-action                
+	contact-mode                   none
+	nat-traversal                  none
+	nat-interval                   30
+	tcp-nat-interval               90
+	registration-caching           disabled
+	min-reg-expire                 300
+	registration-interval          3600
+	route-to-registrar             disabled
+	secured-network                disabled
+	teluri-scheme                  disabled
+	uri-fqdn-domain                
+	trust-mode                     all
+	max-nat-interval               3600
+	nat-int-increment              10
+	nat-test-increment             30
+	sip-dynamic-hnt                disabled
+	stop-recurse                   401,407
+	port-map-start                 0
+	port-map-end                   0
+	in-manipulationid              
+	out-manipulationid             
+	sip-ims-feature                disabled
+	operator-identifier            
+	anonymous-priority             none
+	max-incoming-conns             0
+	per-src-ip-max-incoming-conns  0
+	inactive-conn-timeout          0
+	untrusted-conn-timeout         0
+	network-id                     
+	ext-policy-server              
+	default-location-string        
+	charging-vector-mode           pass
+	charging-function-address-mode pass
+	ccf-address                    
+	ecf-address                    
+	term-tgrp-mode                 none
+	implicit-service-route         disabled
+	rfc2833-payload                101
+	rfc2833-mode                   transparent
+	constraint-name                
+	response-map                   
+	local-response-map             
+	enforcement-profile            
+	refer-call-transfer            disabled
+	route-unauthorized-calls       
+	tcp-keepalive                  none
+	add-sdp-invite                 disabled
+	add-sdp-profiles               
+	last-modified-by               admin@console
+	last-modified-date             2008-10-09 19:13:26
+sip-interface
+	state                          enabled
+	realm-id                       core-gx
+	description                    
+	sip-port
+		address                        10.253.0.21
+		port                           5061
+		transport-protocol             UDP
+		tls-profile                    
+		allow-anonymous                agents-only
+	carriers                       
+	trans-expire                   0
+	invite-expire                  0
+	max-redirect-contacts          0
+	proxy-mode                     
+	redirect-action                
+	contact-mode                   none
+	nat-traversal                  none
+	nat-interval                   30
+	tcp-nat-interval               90
+	registration-caching           disabled
+	min-reg-expire                 300
+	registration-interval          3600
+	route-to-registrar             disabled
+	secured-network                disabled
+	teluri-scheme                  disabled
+	uri-fqdn-domain                
+	trust-mode                     all
+	max-nat-interval               3600
+	nat-int-increment              10
+	nat-test-increment             30
+	sip-dynamic-hnt                disabled
+	stop-recurse                   401,407
+	port-map-start                 0
+	port-map-end                   0
+	in-manipulationid              
+	out-manipulationid             
+	sip-ims-feature                disabled
+	operator-identifier            
+	anonymous-priority             none
+	max-incoming-conns             0
+	per-src-ip-max-incoming-conns  0
+	inactive-conn-timeout          0
+	untrusted-conn-timeout         0
+	network-id                     
+	ext-policy-server              
+	default-location-string        
+	charging-vector-mode           pass
+	charging-function-address-mode pass
+	ccf-address                    
+	ecf-address                    
+	term-tgrp-mode                 none
+	implicit-service-route         disabled
+	rfc2833-payload                101
+	rfc2833-mode                   transparent
+	constraint-name                
+	response-map                   
+	local-response-map             
+	enforcement-profile            
+	refer-call-transfer            disabled
+	route-unauthorized-calls       
+	tcp-keepalive                  none
+	add-sdp-invite                 disabled
+	add-sdp-profiles               
+	last-modified-by               admin@console
+	last-modified-date             2008-10-09 20:05:31
+sip-interface
+	state                          enabled
+	realm-id                       peer-timmy
+	description                    
+	sip-port
+		address                        209.173.140.19
+		port                           5060
+		transport-protocol             UDP
+		tls-profile                    
+		allow-anonymous                agents-only
+	carriers                       
+	trans-expire                   0
+	invite-expire                  0
+	max-redirect-contacts          0
+	proxy-mode                     
+	redirect-action                
+	contact-mode                   none
+	nat-traversal                  none
+	nat-interval                   30
+	tcp-nat-interval               90
+	registration-caching           disabled
+	min-reg-expire                 300
+	registration-interval          3600
+	route-to-registrar             enabled
+	secured-network                disabled
+	teluri-scheme                  disabled
+	uri-fqdn-domain                
+	trust-mode                     all
+	max-nat-interval               3600
+	nat-int-increment              10
+	nat-test-increment             30
+	sip-dynamic-hnt                disabled
+	stop-recurse                   401,407
+	port-map-start                 0
+	port-map-end                   0
+	in-manipulationid              
+	out-manipulationid             
+	sip-ims-feature                disabled
+	operator-identifier            
+	anonymous-priority             none
+	max-incoming-conns             0
+	per-src-ip-max-incoming-conns  0
+	inactive-conn-timeout          0
+	untrusted-conn-timeout         0
+	network-id                     
+	ext-policy-server              
+	default-location-string        
+	charging-vector-mode           pass
+	charging-function-address-mode pass
+	ccf-address                    
+	ecf-address                    
+	term-tgrp-mode                 none
+	implicit-service-route         disabled
+	rfc2833-payload                101
+	rfc2833-mode                   transparent
+	constraint-name                
+	response-map                   
+	local-response-map             
+	enforcement-profile            
+	refer-call-transfer            disabled
+	route-unauthorized-calls       
+	tcp-keepalive                  none
+	add-sdp-invite                 disabled
+	add-sdp-profiles               
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-10-24 21:53:08
+sip-interface
+	state                          enabled
+	realm-id                       core-timmy
+	description                    
+	sip-port
+		address                        10.253.0.19
+		port                           5060
+		transport-protocol             UDP
+		tls-profile                    
+		allow-anonymous                agents-only
+	carriers                       
+	trans-expire                   0
+	invite-expire                  0
+	max-redirect-contacts          0
+	proxy-mode                     
+	redirect-action                
+	contact-mode                   none
+	nat-traversal                  none
+	nat-interval                   30
+	tcp-nat-interval               90
+	registration-caching           disabled
+	min-reg-expire                 300
+	registration-interval          3600
+	route-to-registrar             disabled
+	secured-network                disabled
+	teluri-scheme                  disabled
+	uri-fqdn-domain                
+	trust-mode                     all
+	max-nat-interval               3600
+	nat-int-increment              10
+	nat-test-increment             30
+	sip-dynamic-hnt                disabled
+	stop-recurse                   401,407
+	port-map-start                 0
+	port-map-end                   0
+	in-manipulationid              
+	out-manipulationid             
+	sip-ims-feature                disabled
+	operator-identifier            
+	anonymous-priority             none
+	max-incoming-conns             0
+	per-src-ip-max-incoming-conns  0
+	inactive-conn-timeout          0
+	untrusted-conn-timeout         0
+	network-id                     
+	ext-policy-server              
+	default-location-string        
+	charging-vector-mode           pass
+	charging-function-address-mode pass
+	ccf-address                    
+	ecf-address                    
+	term-tgrp-mode                 none
+	implicit-service-route         disabled
+	rfc2833-payload                101
+	rfc2833-mode                   transparent
+	constraint-name                
+	response-map                   
+	local-response-map             
+	enforcement-profile            
+	refer-call-transfer            disabled
+	route-unauthorized-calls       
+	tcp-keepalive                  none
+	add-sdp-invite                 disabled
+	add-sdp-profiles               
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-10-24 21:53:52
+sip-interface
+	state                          enabled
+	realm-id                       peer-global
+	description                    
+	sip-port
+		address                        209.173.140.35
+		port                           5060
+		transport-protocol             UDP
+		tls-profile                    
+		allow-anonymous                all
+	carriers                       
+	trans-expire                   0
+	invite-expire                  0
+	max-redirect-contacts          0
+	proxy-mode                     
+	redirect-action                
+	contact-mode                   none
+	nat-traversal                  none
+	nat-interval                   30
+	tcp-nat-interval               90
+	registration-caching           disabled
+	min-reg-expire                 300
+	registration-interval          3600
+	route-to-registrar             disabled
+	secured-network                disabled
+	teluri-scheme                  disabled
+	uri-fqdn-domain                
+	trust-mode                     all
+	max-nat-interval               3600
+	nat-int-increment              10
+	nat-test-increment             30
+	sip-dynamic-hnt                disabled
+	stop-recurse                   401,407
+	port-map-start                 0
+	port-map-end                   0
+	in-manipulationid              
+	out-manipulationid             
+	sip-ims-feature                disabled
+	operator-identifier            
+	anonymous-priority             none
+	max-incoming-conns             0
+	per-src-ip-max-incoming-conns  0
+	inactive-conn-timeout          0
+	untrusted-conn-timeout         0
+	network-id                     
+	ext-policy-server              
+	default-location-string        
+	charging-vector-mode           pass
+	charging-function-address-mode pass
+	ccf-address                    
+	ecf-address                    
+	term-tgrp-mode                 none
+	implicit-service-route         disabled
+	rfc2833-payload                101
+	rfc2833-mode                   transparent
+	constraint-name                
+	response-map                   
+	local-response-map             
+	enforcement-profile            
+	refer-call-transfer            disabled
+	route-unauthorized-calls       
+	tcp-keepalive                  none
+	add-sdp-invite                 disabled
+	add-sdp-profiles               
+	last-modified-by               admin@10.254.254.14
+	last-modified-date             2009-04-21 15:57:47
+sip-interface
+	state                          enabled
+	realm-id                       core-global
+	description                    
+	sip-port
+		address                        10.253.0.122
+		port                           5061
+		transport-protocol             UDP
+		tls-profile                    
+		allow-anonymous                all
+	carriers                       
+	trans-expire                   0
+	invite-expire                  0
+	max-redirect-contacts          0
+	proxy-mode                     
+	redirect-action                
+	contact-mode                   none
+	nat-traversal                  none
+	nat-interval                   30
+	tcp-nat-interval               90
+	registration-caching           disabled
+	min-reg-expire                 300
+	registration-interval          3600
+	route-to-registrar             disabled
+	secured-network                disabled
+	teluri-scheme                  disabled
+	uri-fqdn-domain                
+	trust-mode                     all
+	max-nat-interval               3600
+	nat-int-increment              10
+	nat-test-increment             30
+	sip-dynamic-hnt                disabled
+	stop-recurse                   401,407
+	port-map-start                 0
+	port-map-end                   0
+	in-manipulationid              
+	out-manipulationid             
+	sip-ims-feature                disabled
+	operator-identifier            
+	anonymous-priority             none
+	max-incoming-conns             0
+	per-src-ip-max-incoming-conns  0
+	inactive-conn-timeout          0
+	untrusted-conn-timeout         0
+	network-id                     
+	ext-policy-server              
+	default-location-string        
+	charging-vector-mode           pass
+	charging-function-address-mode pass
+	ccf-address                    
+	ecf-address                    
+	term-tgrp-mode                 none
+	implicit-service-route         disabled
+	rfc2833-payload                101
+	rfc2833-mode                   transparent
+	constraint-name                
+	response-map                   
+	local-response-map             
+	enforcement-profile            
+	refer-call-transfer            disabled
+	route-unauthorized-calls       
+	tcp-keepalive                  none
+	add-sdp-invite                 disabled
+	add-sdp-profiles               
+	last-modified-by               admin@10.254.254.14
+	last-modified-date             2009-04-21 15:58:17
+sip-manipulation
+	name                           NAT_IP
+	description                    
+	header-rule
+		name                           From
+		header-name                    From
+		action                         manipulate
+		comparison-type                case-sensitive
+		match-value                    
+		msg-type                       request
+		new-value                      
+		methods                        
+		element-rule
+			name                           From
+			parameter-name                 
+			type                           uri-host
+			action                         replace
+			match-val-type                 any
+			comparison-type                case-sensitive
+			match-value                    
+			new-value                      $LOCAL_IP
+	header-rule
+		name                           To
+		header-name                    To
+		action                         manipulate
+		comparison-type                case-sensitive
+		match-value                    
+		msg-type                       request
+		new-value                      
+		methods                        
+		element-rule
+			name                           To
+			parameter-name                 
+			type                           uri-host
+			action                         replace
+			match-val-type                 any
+			comparison-type                case-sensitive
+			match-value                    
+			new-value                      $REMOTE_IP
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-10-02 15:33:13
+sip-nat
+	realm-id                       core
+	domain-suffix                  pbflex.com
+	ext-proxy-address              10.253.0.240
+	ext-proxy-port                 8060
+	ext-address                    10.253.0.3
+	home-address                   209.173.140.4
+	home-proxy-address             
+	home-proxy-port                0
+	route-home-proxy               disabled
+	address-prefix                 *
+	tunnel-redirect                disabled
+	use-url-parameter              none
+	parameter-name                 
+	user-nat-tag                   -pbflexcom-
+	host-nat-tag                   PBFLEXCOM-
+        headers                        Call-ID Contact f From i Join m r
+                                       Record-Route Refer-To Replaces Reply-To
+                                       Route t To v Via
+	last-modified-by               admin@console
+	last-modified-date             2008-10-02 15:54:38
+snmp-community
+	community-name                 pro
+	access-mode                    READ-ONLY
+	ip-addresses                   
+	                               10.36.160.5
+	last-modified-by               admin@10.254.254.14
+	last-modified-date             2009-03-30 18:29:30
+steering-pool
+	ip-address                     209.173.140.2
+	start-port                     49152
+	end-port                       52000
+	realm-id                       peer-excel
+	network-interface              
+	last-modified-by               admin@console
+	last-modified-date             2008-10-02 15:04:32
+steering-pool
+	ip-address                     10.253.0.2
+	start-port                     49152
+	end-port                       52000
+	realm-id                       core-excel
+	network-interface              
+	last-modified-by               admin@console
+	last-modified-date             2008-10-02 15:04:51
+steering-pool
+	ip-address                     209.173.140.3
+	start-port                     49152
+	end-port                       52000
+	realm-id                       access
+	network-interface              
+	last-modified-by               admin@console
+	last-modified-date             2008-10-02 15:05:17
+steering-pool
+	ip-address                     10.253.0.3
+	start-port                     49152
+	end-port                       52000
+	realm-id                       core
+	network-interface              
+	last-modified-by               admin@console
+	last-modified-date             2008-10-02 15:05:33
+steering-pool
+	ip-address                     209.173.140.21
+	start-port                     49152
+	end-port                       52000
+	realm-id                       peer-gx
+	network-interface              
+	last-modified-by               admin@console
+	last-modified-date             2008-10-09 19:14:25
+steering-pool
+	ip-address                     10.253.0.21
+	start-port                     49152
+	end-port                       52000
+	realm-id                       core-gx
+	network-interface              
+	last-modified-by               admin@console
+	last-modified-date             2008-10-09 19:15:33
+steering-pool
+	ip-address                     209.173.140.19
+	start-port                     49152
+	end-port                       52000
+	realm-id                       peer-timmy
+	network-interface              
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-10-24 21:54:17
+steering-pool
+	ip-address                     10.253.0.19
+	start-port                     49152
+	end-port                       52000
+	realm-id                       core-timmy
+	network-interface              
+	last-modified-by               admin@10.254.254.252
+	last-modified-date             2008-10-24 21:54:38
+steering-pool
+	ip-address                     209.173.140.35
+	start-port                     49152
+	end-port                       50000
+	realm-id                       peer-global
+	network-interface              
+	last-modified-by               admin@10.254.254.14
+	last-modified-date             2009-04-21 15:48:13
+steering-pool
+	ip-address                     10.253.0.122
+	start-port                     49152
+	end-port                       50000
+	realm-id                       core-global
+	network-interface              
+	last-modified-by               admin@10.254.254.14
+	last-modified-date             2009-04-21 15:48:47
+system-config
+	hostname                       sbc01
+	description                    Primary SBC
+	location                       Cage 204 - Rack 2
+	mib-system-contact             Ryan McAdams (ryan@prooncall.com)
+	mib-system-name                sbc01.cincy.pbflex.com
+	mib-system-location            Cage 204 - Rack 2
+	snmp-enabled                   enabled
+	enable-snmp-auth-traps         disabled
+	enable-snmp-syslog-notify      disabled
+	enable-snmp-monitor-traps      disabled
+	enable-env-monitor-traps       disabled
+	snmp-syslog-his-table-length   1
+	snmp-syslog-level              WARNING
+	system-log-level               WARNING
+	process-log-level              NOTICE
+	process-log-ip-address         0.0.0.0
+	process-log-port               0
+	collect
+		sample-interval                5
+		push-interval                  15
+		boot-state                     disabled
+		start-time                     now
+		end-time                       never
+		red-collect-state              disabled
+		red-max-trans                  1000
+		red-sync-start-time            5000
+		red-sync-comp-time             1000
+		push-success-trap-state        disabled
+	call-trace                     disabled
+	internal-trace                 disabled
+	log-filter                     all
+	default-gateway                209.173.140.1
+	restart                        enabled
+	exceptions                     
+	telnet-timeout                 1200
+	console-timeout                1200
+	remote-control                 enabled
+	cli-audit-trail                enabled
+	link-redundancy-state          disabled
+	source-routing                 disabled
+	cli-more                       disabled
+	terminal-height                24
+	debug-timeout                  0
+	last-modified-by               admin@10.254.254.14
+	last-modified-date             2009-03-20 19:45:07
+task done

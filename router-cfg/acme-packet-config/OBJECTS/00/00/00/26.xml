@@ -1,0 +1,47 @@
+<?xml version='1.0' standalone='yes'?>
+<sipManipulation
+	name='NAT_IP'
+	description=''
+	lastModifiedBy='admin@10.254.254.252'
+	lastModifiedDate='2008-10-02 15:33:13'>
+	<headerRule
+		name='From'
+		headerName='From'
+		action='manipulate'
+		msgType='request'
+		cmpType='case-sensitive'
+		matchValue=''
+		newValue=''
+		methods=''>
+		<elementRule
+			name='From'
+			paramName=''
+			type='uri-host'
+			action='replace'
+			cmpType='case-sensitive'
+			matchValue=''
+			newValue='$LOCAL_IP'
+			matchValueType='any'>
+		</elementRule>
+	</headerRule>
+	<headerRule
+		name='To'
+		headerName='To'
+		action='manipulate'
+		msgType='request'
+		cmpType='case-sensitive'
+		matchValue=''
+		newValue=''
+		methods=''>
+		<elementRule
+			name='To'
+			paramName=''
+			type='uri-host'
+			action='replace'
+			cmpType='case-sensitive'
+			matchValue=''
+			newValue='$REMOTE_IP'
+			matchValueType='any'>
+		</elementRule>
+	</headerRule>
+</sipManipulation>

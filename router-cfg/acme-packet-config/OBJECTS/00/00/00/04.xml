@@ -1,0 +1,14 @@
+<?xml version='1.0' standalone='yes'?>
+<phyInterfaceConfig
+	name='cat5k5-sw1-p2-5'
+	port='0'
+	slot='1'
+	admin='enabled'
+	ae_en='enabled'
+	duplex='FULL'
+	speed='100'
+	operationType='Media'
+	virtualMac=''
+	wancomHealthyScore='50'
+	lastModifiedBy='admin@console'
+	lastModifiedDate='2008-10-02 14:49:14'/>

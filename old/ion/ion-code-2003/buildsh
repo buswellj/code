@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/ion/build-stage-2.sh > /ion/release/logs/bld/ion-bld-$USER.log 2>&1
+

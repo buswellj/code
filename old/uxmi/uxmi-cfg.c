@@ -1,0 +1,542 @@
+/*
+ * UxMI Configuration File Code
+ *
+ * uxmi-cfg.c
+ * 
+ * All Rights Reserved.
+ * Copyright (c) 2002-2005 Spliced Networks LLC
+ *
+ */
+
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <fcntl.h>
+#include <errno.h>
+#include "uxmi.h"
+
+
+void uxmi_cfg(void);
+int uxmi_do_cfg(void);
+void uxmi_cfg_disp(char *conlog);
+void uxmi_cfg_testrc(int rc);
+int uxmi_cfg_open(char *cfg_fn);
+int uxmi_cfg_read(void);
+int uxmi_etc_write(void);
+void uxmi_cfg_parse_header(char *cmd);
+void uxmi_cfg_parse_key(char *cmd, u8 sub_cmd);
+void uxmi_cfg_debug(void);
+
+uxmi_cfg_t uxmi_current_config;
+u16 cidx_system;
+u16 cidx_interface;
+u16 cidx_route;
+u16 cidx_auth;
+u16 cidx_ip;
+u16 cidx_acl;
+
+void
+uxmi_cfg()
+{
+	printf("\nConfig\n");
+}
+
+void
+uxmi_cfg_debug()
+{
+	u8 x = 0;
+	uxmi_cfg_entry_t *eptr;
+
+        printf("\nsystem config dump:\n\n");
+	for (x = 0; x <= cidx_system; x++) {
+	    eptr = &uxmi_current_config.cfg_system[x];
+
+	    printf("Entry [%d]: %s %s %s %s\n",x,eptr->p_keyword,
+			eptr->s_keyword,eptr->cmd,eptr->value);
+	    
+	}
+
+	for (x = 0; x <= cidx_interface; x++) {
+	    eptr = &uxmi_current_config.cfg_interface[x];
+
+	    printf("Entry [%d]: %s %s %s %s\n",x,eptr->p_keyword,
+			eptr->s_keyword,eptr->cmd,eptr->value);
+	    
+	}
+}
+
+int
+uxmi_do_cfg()
+{
+	int rc = 1;
+
+	rc = uxmi_cfg_open(UXMI_CONFIG);
+	
+	uxmi_cfg_disp("\t\t Config format is ");
+        uxmi_color_fg(UXMI_WHITE);
+	switch (uxmi_current_config.cfg_header.style) {
+
+		case UXMI_CFG_STYLE_KEY:
+		 printf("keyword\n");
+		 break;
+
+		case UXMI_CFG_STYLE_PATH:
+		 printf("path\n");
+		 break;
+
+		case UXMI_CFG_STYLE_OPTION:
+		 printf("option\n");
+		 break;
+
+		default:
+		 printf("unknown\n");
+		 break;
+	}
+
+	uxmi_cfg_disp("\t\t Config hardware is ");
+        uxmi_color_fg(UXMI_WHITE);
+	printf("%s\n",uxmi_current_config.cfg_header.id);
+
+	uxmi_cfg_disp("\t\t Config version is ");
+        uxmi_color_fg(UXMI_WHITE);
+	printf("%d.%d.%d\n\n",uxmi_current_config.cfg_header.ver_rel,
+			    uxmi_current_config.cfg_header.ver_maint,
+			    uxmi_current_config.cfg_header.ver_patch);
+
+	rc = uxmi_cfg_read();
+	rc = uxmi_etc_write();
+
+	uxmi_cfg_debug();
+
+	return(rc);
+}
+
+int uxmi_cfg_open(char *cfg_fn)
+{
+	u8 hdr_done = 0;
+	u8 has_val = 0;
+	u8 sub_cmd = 0;
+	FILE *stream;
+	char cmd[UXMI_CFG_MAXLEN];
+	char *cmdptr = cmd;
+
+	/* init uxmi_current_config */
+	memset(&uxmi_current_config,0,sizeof(uxmi_current_config));
+	cidx_system = 0;
+	cidx_interface = 0;
+	cidx_route = 0;
+	cidx_auth = 0;
+	cidx_ip = 0;
+	cidx_acl = 0;
+
+	stream = fopen(UXMI_CONFIG,"r");
+	if (stream == (FILE *) 0) {
+	    printf("\n\nCONFIG MISSING\n\n");
+	    exit(-1);
+	}
+
+	printf("\n\n");
+	while (!feof(stream)) {
+	    fgets(cmdptr,UXMI_CFG_MAXLEN-1,stream);
+	    if (!strncmp(cmdptr,"uxmi",4) && (!hdr_done)) {
+		/* we have a valid header, parse it */
+		uxmi_cfg_parse_header(cmd);
+		hdr_done = 1;
+	    }
+	    if (cmd[0] == uxmi_current_config.cfg_header.cchar) {
+		/* skip comments */
+		continue;
+	    }
+	    /* skip empty lines */
+	    if (cmd[0] == ' ') {
+		char *c = cmd;
+		if (cmd[1] == '\n') {
+		    continue;
+		}
+	    	while (*c && *c != '\0') {
+		    if ((*c != ' ') || (*c != '\t') || (*c != '\n')) 
+			has_val = 1;
+		    c++;
+		}
+	        if (!has_val) {
+		    continue;
+	    	}
+	    } else if (cmd[0] == '\n') {
+		continue;
+	    }
+	    if (!strncmp(cmdptr,"end",3)) {
+		break;
+	    }
+	    has_val = 0;
+/*	    printf("%s",cmd); */
+	    /* now we parse the config */
+	    if ((cmd[0] == ' ') || (cmd[0] == '\t')) {
+		sub_cmd = 1;
+	    } else {
+		sub_cmd = 0;
+	    }
+	    switch (uxmi_current_config.cfg_header.style) {
+
+		case UXMI_CFG_STYLE_KEY:
+		    uxmi_cfg_parse_key(cmd,sub_cmd);
+		    break;
+
+		case UXMI_CFG_STYLE_PATH:
+		    break;
+
+		case UXMI_CFG_STYLE_OPTION:
+		    break;
+
+		default:
+		    /* unknown format, bail */
+		    break;
+
+	    }
+	}
+	fclose(stream);
+	return(1);
+}
+
+void
+uxmi_cfg_parse_key(char *cmd, u8 sub_cmd)
+{
+
+	uxmi_cfg_entry_t *eptr;
+
+	/* If sub_cmd, then this is a subcmd, we need to
+	 * use the last_index value to determine which
+	 * tree we were in, and then use the appropriate
+	 * global variable to track it.
+	 */
+
+	/* note add global variable to track index value for
+	 * each of the config trees.
+         */
+
+	if (sub_cmd) {
+	    switch (uxmi_current_config.last_index) {
+		case (UXMI_CFG_TREE_SYSTEM):
+		    eptr = &uxmi_current_config.cfg_system[cidx_system];
+
+		    /* parse the config line */
+		    if (strlen(eptr->p_keyword)) {
+			/* already have p_keyword, this is a sub-sub cmd */
+			char *sc = cmd;
+			int s = 0;
+			int have_sskey = 0, have_scmd = 0;
+
+			while (*sc && *sc != '\0') {
+			    if ((*sc == ' ') || (*sc == '\t')) {
+				if (s != 0 && !have_sskey) {
+				    have_sskey = 1;
+				    s = 0;
+				} else if (s && have_sskey && !have_scmd) {
+				    eptr->value[s] = '\0';
+				    strncpy(eptr->cmd,eptr->value,sizeof(eptr->cmd));
+/*				    eptr->value[0] = '\0'; */
+				    memset(eptr->value,0,sizeof(eptr->value));
+				    have_scmd = 1;
+				    s = 0;
+				} else if (s && have_scmd) {
+				    while (*sc && *sc != '\0') {
+				     eptr->value[s] = *sc;
+				     s++;
+				     sc++;
+				    }
+				    break;
+				}
+				sc++;
+				continue;
+			    }
+			    if (!have_sskey) {
+			        eptr->s_keyword[s] = *sc;
+			    } else {
+				eptr->value[s] = *sc;
+			    }
+			    s++;
+			    sc++;
+			}
+		    } else {
+			char *c = cmd;
+			int p = 0;
+			int have_pkey = 0, have_skey = 0, have_cmd = 0;
+
+			while (*c && *c != '\0') {
+			    if ((*c == ' ') || (*c == '\t')) {
+				if (p != 0 && !have_pkey) {
+				    have_pkey = 1;
+				    p = 0;
+				} else if (p && have_pkey && !have_skey) {
+				    eptr->value[p] = '\0';
+				    strncpy(eptr->s_keyword,eptr->value,sizeof(eptr->s_keyword));
+/*				    eptr->value[0] = '\0'; */
+				    memset(eptr->value,0,sizeof(eptr->value));
+				    have_skey = 1;
+				    p = 0;
+				} else if (p && have_skey && !have_cmd) {
+				    eptr->value[p] = '\0';
+				    strncpy(eptr->cmd,eptr->value,sizeof(eptr->cmd));
+/*				    eptr->value[0] = '\0'; */
+				    memset(eptr->value,0,sizeof(eptr->value));
+				    have_cmd = 1;
+				    p = 0;
+				} else if (p && have_cmd) {
+				    while (*c && *c != '\0') {
+				     eptr->value[p] = *c;
+				     p++;
+				     c++;
+				    }
+				    break;
+				}
+				c++;
+				continue;
+			    }
+			    if (!have_pkey) {
+			        eptr->p_keyword[p] = *c;
+			    } else {
+				eptr->value[p] = *c;
+			    }
+			    p++;
+			    c++;
+			}
+		    }
+/* everything ok except passwd
+		    printf("\n entry %lu, pk = %s\n sk = %s cmd = %s\nval = %s\n",
+			cidx_system,eptr->p_keyword,eptr->s_keyword,
+			eptr->cmd,eptr->value);
+*/
+
+		    if (!strlen(eptr->s_keyword) && 
+			!strlen(eptr->cmd) && !strlen(eptr->value)) {
+			break;
+		    } else {
+		        cidx_system++;
+		    }
+
+		    break;
+
+		case (UXMI_CFG_TREE_INTERFACE):
+		    eptr = &uxmi_current_config.cfg_interface[cidx_interface];
+
+		    /* parse the config line */
+		    if (strlen(eptr->p_keyword)) {
+			/* already have p_keyword, this is a sub-sub cmd */
+			char *sc = cmd;
+			int s = 0;
+			int have_sskey = 0, have_scmd = 0;
+
+			while (*sc && *sc != '\0') {
+			    if ((*sc == ' ') || (*sc == '\t')) {
+				if (s != 0 && !have_sskey) {
+				    have_sskey = 1;
+				    s = 0;
+				} else if (s && have_sskey && !have_scmd) {
+				    eptr->value[s] = '\0';
+				    strncpy(eptr->cmd,eptr->value,sizeof(eptr->cmd));
+/*				    eptr->value[0] = '\0'; */
+				    memset(eptr->value,0,sizeof(eptr->value));
+				    have_scmd = 1;
+				    s = 0;
+				} else if (s && have_scmd) {
+				    while (*sc && *sc != '\0') {
+				     eptr->value[s] = *sc;
+				     s++;
+				     sc++;
+				    }
+				    break;
+				}
+				sc++;
+				continue;
+			    }
+			    if (!have_sskey) {
+			        eptr->s_keyword[s] = *sc;
+			    } else {
+				eptr->value[s] = *sc;
+			    }
+			    s++;
+			    sc++;
+			}
+		    } else {
+			char *c = cmd;
+			int p = 0;
+			int have_pkey = 0, have_skey = 0, have_cmd = 0;
+
+			while (*c && *c != '\0') {
+			    if ((*c == ' ') || (*c == '\t')) {
+				if (p != 0 && !have_pkey) {
+				    have_pkey = 1;
+				    p = 0;
+				} else if (p && have_pkey && !have_skey) {
+				    eptr->value[p] = '\0';
+				    strncpy(eptr->s_keyword,eptr->value,sizeof(eptr->s_keyword));
+/*				    eptr->value[0] = '\0'; */
+				    memset(eptr->value,0,sizeof(eptr->value));
+				    have_skey = 1;
+				    p = 0;
+				} else if (p && have_skey && !have_cmd) {
+				    eptr->value[p] = '\0';
+				    strncpy(eptr->cmd,eptr->value,sizeof(eptr->cmd));
+/*				    eptr->value[0] = '\0'; */
+				    memset(eptr->value,0,sizeof(eptr->value));
+				    have_cmd = 1;
+				    p = 0;
+				} else if (p && have_cmd) {
+				    while (*c && *c != '\0') {
+				     eptr->value[p] = *c;
+				     p++;
+				     c++;
+				    }
+				    break;
+				}
+				c++;
+				continue;
+			    }
+			    if (!have_pkey) {
+			        eptr->p_keyword[p] = *c;
+			    } else {
+				eptr->value[p] = *c;
+			    }
+			    p++;
+			    c++;
+			}
+		    }
+/* everything ok except passwd
+		    printf("\n entry %lu, pk = %s\n sk = %s cmd = %s\nval = %s\n",
+			cidx_interface,eptr->p_keyword,eptr->s_keyword,
+			eptr->cmd,eptr->value);
+*/
+
+		    if (!strlen(eptr->s_keyword) && 
+			!strlen(eptr->cmd) && !strlen(eptr->value)) {
+			break;
+		    } else {
+		        cidx_interface++;
+		    }
+
+		    break;
+
+		case (UXMI_CFG_TREE_ROUTE):
+		    break;
+
+		case (UXMI_CFG_TREE_AUTH):
+		    break;
+
+		case (UXMI_CFG_TREE_IP):
+		    break;
+
+		case (UXMI_CFG_TREE_ACL):
+		    break;
+
+		default:
+		    break;
+
+	    }
+	} else {
+	    /* top level command, which is it, need to add support here
+             * for commands like system hostname test
+	     */
+	    if (!strncmp(cmd,UXMI_CFG_KEY_SYSTEM,strlen(UXMI_CFG_KEY_SYSTEM))) {
+		printf("\n system \n");
+		uxmi_current_config.last_index = UXMI_CFG_TREE_SYSTEM;
+	    } else if (!strncmp(cmd,UXMI_CFG_KEY_INTERFACE,strlen(UXMI_CFG_KEY_INTERFACE))) {
+		printf("\n interface \n");
+		uxmi_current_config.last_index = UXMI_CFG_TREE_INTERFACE;
+	    }
+	}
+}
+
+void
+uxmi_cfg_parse_header(char *cmd)
+{
+
+	char *c = cmd;
+	char *id = uxmi_current_config.cfg_header.id; 
+	u8 j = 0, k = 0;
+
+	if ((*c == 'u') && (j == 0)) {
+	    c+=5;
+	}
+	if (*c == '"') c++;
+	while (*c != '"') {
+	    id[k] = *c;
+	    k++;
+	    c++;
+	}
+	id[k] = '\0';
+	c++;
+	if (*c == ' ') c++;
+	uxmi_current_config.cfg_header.cchar = *c;
+	c++;
+	if (*c == ' ') c++;
+	if ((*c == 'k') || (*c == 'K')) {
+	    uxmi_current_config.cfg_header.style = UXMI_CFG_STYLE_KEY;
+	} else if ((*c == 'p') || (*c == 'P')) {
+	    uxmi_current_config.cfg_header.style = UXMI_CFG_STYLE_PATH;
+	} else if ((*c == 'o') || (*c == 'O')) {
+	    uxmi_current_config.cfg_header.style = UXMI_CFG_STYLE_OPTION;
+	} else {
+	    /* handle bad format here */
+	}
+	c++;
+	if (*c == ' ') c++;
+	/* This is just for testing, just do c+=2 above */
+	uxmi_current_config.cfg_header.type = 0;
+	c++;
+	if (*c == ' ') c++;
+
+	/* TODO: This is broken for double digit numbers, fix it!! */
+	if (isdigit(*c)) {
+	    uxmi_current_config.cfg_header.ver_rel = (u8) strtol(c, (char **) NULL, 10);
+	} else {
+	    uxmi_current_config.cfg_header.ver_rel = 0;
+	}
+	c+=2;
+	if (isdigit(*c)) {
+	    uxmi_current_config.cfg_header.ver_maint = (u8) strtol(c, (char **) NULL, 10);
+	} else {
+	    uxmi_current_config.cfg_header.ver_maint = 0;
+	}
+	c+=2;
+	if (isdigit(*c)) {
+	    uxmi_current_config.cfg_header.ver_patch = (u8) strtol(c, (char **) NULL, 10);
+	} else {
+	    uxmi_current_config.cfg_header.ver_patch = 0;
+	}
+	return;
+}
+
+int uxmi_cfg_read()
+{
+	return(1);
+}
+
+int uxmi_etc_write()
+{
+	return(1);
+}
+
+
+void
+uxmi_cfg_disp(char *conlog)
+{
+        uxmi_color_fg(UXMI_LGREEN);
+        printf("%s",conlog);
+        return;
+}
+
+void
+uxmi_cfg_testrc(int rc)
+{
+        if (rc) {
+            uxmi_color_fg(UXMI_LRED);
+            printf("\t\t\t FAILED \n");
+            /* handle this */
+        } else {
+            uxmi_color_fg(UXMI_LGREEN);
+            printf("\t\t\t OK \n");
+        }
+        return;
+}
+

@@ -1,0 +1,37 @@
+<?xml version='1.0' standalone='yes'?>
+<sipNatConfig
+	RealmID='core'
+	DomainSuffix='pbflex.com'
+	ProxyAddress='10.253.0.240'
+	ProxyPort='8060'
+	HomeProxyAddress=''
+	HomeProxyPort='0'
+	RouteHomeProxy='disabled'
+	HomeAddress='209.173.140.4'
+	ExternalAddress='10.253.0.3'
+	prefix='*'
+	TunnelRedirect='disabled'
+	ParamMode='none'
+	ParamName=''
+	UserNATTag='-pbflexcom-'
+	HostNATTag='PBFLEXCOM-'
+	lastModifiedBy='admin@console'
+	lastModifiedDate='2008-10-02 15:54:38'>
+	<headers name='Call-ID'/>
+	<headers name='Contact'/>
+	<headers name='f'/>
+	<headers name='From'/>
+	<headers name='i'/>
+	<headers name='Join'/>
+	<headers name='m'/>
+	<headers name='r'/>
+	<headers name='Record-Route'/>
+	<headers name='Refer-To'/>
+	<headers name='Replaces'/>
+	<headers name='Reply-To'/>
+	<headers name='Route'/>
+	<headers name='t'/>
+	<headers name='To'/>
+	<headers name='v'/>
+	<headers name='Via'/>
+</sipNatConfig>

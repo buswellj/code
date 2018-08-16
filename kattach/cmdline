@@ -1,0 +1,1 @@
+ro root=/dev/mapper/vg_k12-lv_root kaos=1:sda1:001e6c233343:0 nomodeset rhgb quiet

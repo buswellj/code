@@ -1,0 +1,536 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+
+ o3 magazine is a trademark of Spliced Networks LLC.
+ Spliced Networks (tm), Spliced Wireless (tm), AppOS (tm) and
+ Opaque Networks (tm) are trademarks of Spliced Networks LLC.
+
+ Linux is a registered trademark of Linus Torvalds.
+
+ Copyright (c) 2002-2006 Spliced Networks LLC
+ All rights reserved.
+
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+ <head>
+  <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+  <title>o3: The Open Source Enterprise Data Networking Magazine</title>
+  <style type="text/css">
+   @import "/o3.css";
+  </style>
+  <!--[if lt IE 7]>
+   <script defer type="text/javascript" src="/js/pngfix.js"></script>
+  <![endif]-->
+ </head>
+<body>
+
+ <div id="o3outer">
+  <p />
+ </div>
+
+ <div id="o3tmenu">
+  <div id="o3tml">
+   &nbsp;
+  </div>
+  <form action="http://www.google.com/search" method="get" style="padding-top: 17px">
+   <div id="o3tmr">
+    <a href="/subscribe/">Subscribe</a>&nbsp; | <!-- &nbsp;<a href="http://login.o3magazine.com">Login</a>&nbsp; |--> &nbsp;<a href="#"><img src="/i/usflag.jpg" width="17" height="10" alt="" />&nbsp; United States</a><br />
+    &nbsp;&nbsp;&nbsp;&nbsp;<a href="http://www.o3magazine.co.uk"><img src="/i/ukflag.jpg" width="20" height="10" alt="" />&nbsp;&nbsp;United Kingdom / Europe </a><p />
+    <input type="hidden" name="domains" value="o3magazine.com" />
+    <input type="text" id="sBox" class="sbox" size="20" maxlength="255" name="q" value="search" />
+    <input type="hidden" name="sitesearch" value="o3magazine.com" />
+   </div>
+  </form>
+  &nbsp;<br />
+ </div>
+
+ <div id="o3top">
+  <img src="/i/o3logo.jpg" width="68" height="60" alt="" />
+  <img src="/i/o3banner.jpg" width="350" height="60" alt="" />
+ </div>
+
+ <div id="o3page">
+
+  <div id="o3menu">
+   <div id="tabspac"><img src="/i/blank.png" width="40" height="24" alt="" /></div>   
+   <div id="o3tabF"><a href="/"><img src="/i/blank.png" width="110" height="24" alt="" /></a></div>
+   <div id="o3tabA"><a href="/current/"><img src="/i/blank.png" width="110" height="24" alt="" /></a></div>
+   <div id="o3tabB"><a href="/pastissues/"><img src="/i/blank.png" width="110" height="24" alt="" /></a></div>
+   <div id="tabarticles"><a href="/articles/"><img src="/i/blank.png" width="110" height="24" alt="" /></a></div>
+   <div id="o3tabD"><a href="/advertise/"><img src="/i/blank.png" width="110" height="24" alt="" /></a></div>
+   <div id="o3tabE"><a href="/about/"><img src="/i/blank.png" width="110" height="24" alt="" /></a></div>
+  </div>
+  <div id="o3main">
+   <p />
+   &nbsp;<br />
+   <a href="http://www.canadaonrails.com"><img src="/i/bannertest.gif" width="350" height="50" alt="" style="padding-left: 175px" /></a>
+   <p />
+   <hr />
+   <p />
+  </div>
+  <div id="o3article">
+   <p />
+    <h1 class="headline2">Linux Multi-Layer Switching (Part II)</h1><br />
+     <a href="/pastissues/issue1/">&nbsp;&nbsp; Published March 2006</a><br />
+     <a href="http://lisa.ines.ro">&nbsp;&nbsp;&nbsp;By Radu Rendec</a>
+    <p>
+    LiSA stands for Linux Switch Appliance. It's an entirely open source project that aims at delivering a cheap and efficient solution to small sized networks. LiSA implements both Layer 2 and Layer 3 packet switching. At the same time, it has advanced configuration and monitoring features. Based on the Linux Operating System, packet switching is entirely accomplished in software. As opposed to a hardware implementation, LiSA aims at providing advanced features rather than high bandwidth and low latency. Being based on the Linux Kernel, LiSA can run on any architecture supported by this kernel; no specialized hardware is required. As an open source project, it is also a great learning platform for those who wish to study Layer 2 and Layer 3 protocols and algorithms. This paper contains a brief presentation of LiSA's currently implemented features, a comparison between LiSA and existing Linux Kernel modules that aim at similar functionality, a detailed description of LiSA's architecture and kernel integration, a few words about the Linux Kernel RX stack, and results of our own performance tests.
+    </p>
+    <p>
+    <b>LiSA Features Overview</b><br />
+    LiSA currently implements Layer 2 and Layer 3 packet switching. The central point for control and management is a user space command line interface (CLI). It was designed to resemble as close as possible Cisco's IOS CLI.
+    Full 802.1q support is implemented, including a VLAN database, port trunks and a list of allowed VLANs. Because it was meant as an IOS clone, the IOS approach to VLAN assignment is used:</p>
+    <ul>
+     <li>VLANs are assigned to ports, using a port centric configuration;</li>
+     <li>ports have two VLAN-operating modes: access (untagged) and trunk (802.1q tagged);</li>
+     <li>each trunk port has a list of allowed VLANs.</li>
+    </ul>
+    <p /><p>
+    VLAN management was adapted from newer versions of IOS: it's handled through the config/vlan prompt rather than an entirely separate configuration area called "VLAN Database".
+    At Layer 2, no support for STP, CDP and IGMP snooping is currently available (although we plan to implement these during the next months).
+    At Layer 3, only simple packet routing (i.e. using the existing kernel routing code) is supported, with no routing management available through the command line interface. Access lists, policy maps and routing protocols are not implemented (although further development, which should include such features, is expected). Similar to the IOS, VLAN specific virtual interfaces can be dynamically created. Layer 3 addresses can be assigned to these virtual interfaces, and thus inter VLAN routing occurs naturally.
+    </p>
+    <p>
+    <b>LiSA vs. Bridge + 8021q</b><br />
+    Judging by its currently implemented features, one might say that LiSA is useless, since similar functionality can be achieved with two existing kernel modules, if they are cleverly used together. The two modules are bridge and 8021q.
+    The bridge module combines several network devices into a classic switch. It also provides a virtual interface, which can be assigned an ip address. In terms of the bridge, the virtual interface is just another port to it. In terms of the host, the virtual interface behaves like a physical interface connected to one of the switch's ports.
+    The 8021q module turns a network device into a VLAN aware interface. One virtual interface is created for each VLAN. Each virtual interface sends and receives untagged packets. When these packets are sent or received through the network device, 8021q tags are appropriately processed, so that packets appear to be untagged on the virtual interfaces.
+    </p>
+    <p>
+    <b>Port Trunk with Bridge + 8021q Example</b><br />
+    As stated earlier, similar functionality can be achieved with two existing kernel modules, if they are cleverly used together. Here's a short, eloquent example:
+    Suppose we had a machine with 4 network interfaces, and wanted to configure these interfaces as follows: </p>
+    <ul>
+     <li>eth0 in trunk mode, allowing access to VLANs 1 and 2;</li>
+     <li>eth1 in trunk mode, allowing access to VLANs 1 and 3;</li>
+     <li>eth2 in access mode, in VLAN 2;</li>
+     <li>eth3 in access mode, in VLAN 3.</li>
+    </ul>
+    <p />
+    <p>
+    Additionally, routing must be accomplished between VLANs 2 and 3, using address 192.168.2.254/24 on VLAN 2 and address 192.168.3.254/24 on VLAN 3.
+    </p><p>
+    The command sequence that builds up this configuration is:
+    </p>
+<!-- begin code segment import -->
+<p class="code-western">modprobe bridge</p>
+<p class="code-western">modprobe 8021q</p>
+<p class="code-western">&nbsp;</p><br />
+
+<p class="code-western"><span style="background: transparent">vconfig
+set_name_type DEV_PLUS_VID_NO_PAD</span></p>
+<p class="code-western">vconfig add eth0 1</p>
+<p class="code-western">vconfig add eth0 2</p>
+<p class="code-western">vconfig add eth1 1</p>
+<p class="code-western">vconfig add eth1 3</p>
+<p class="code-western"><br />
+</p>
+<p class="code-western">brctl addbr br1</p>
+<p class="code-western">brctl addif br1 eth0.1</p>
+<p class="code-western">brctl addif br1 eth1.1</p>
+
+<p class="code-western"><br />
+</p>
+<p class="code-western">brctl addbr br2</p>
+<p class="code-western">brctl addif br2 eth0.2</p>
+<p class="code-western">brctl addif br2 eth2</p>
+<p class="code-western"><br />
+</p>
+<p class="code-western">brctl addbr br3</p>
+<p class="code-western">brctl addif br3 eth1.3</p>
+<p class="code-western">brctl addif br3 eth3</p>
+<p class="code-western"><br />
+
+</p>
+<p class="code-western">ifconfig br2 192.168.2.254 netmask
+255.255.255.0</p>
+<p class="code-western">ifconfig br3 192.168.3.254 netmask
+255.255.255.0</p>
+<p class="code-western"><br />
+</p>
+<p class="code-western">ifconfig eth0 up</p>
+<p class="code-western">ifconfig eth1 up</p>
+<p class="code-western">ifconfig eth2 up</p>
+<p class="code-western">ifconfig eth3 up</p>
+<!-- end code segment import -->
+    <p>
+    This approach has two major drawbacks: </p>
+    <ul>
+      <li>One virtual interface is necessary for each VLAN of each trunk mode port. If all 4094 VLANs must be switched between two trunk ports, a total of 8188 virtual interfaces are needed for VLAN support only.</li>
+      <li>When a packet is flooded / multicast and both trunk mode and access mode ports are involved, the same tagging / untagging operations take place several times. This also implies additional overhead with socket buffer operations.</li>
+    </ul>
+    <p /><p>
+    LiSA uses its own kernel module to accomplish these tasks. Since it was meant for an intelligent Layer 2 switch right from the beginning, several optimizations have been made to mitigate these drawbacks:</p>
+    <ul>
+     <li>LiSA needs no virtual interfaces at all to handle per VLAN packet switching.</li>
+     <li>When a packet is flooded / multicast, ports are "re ordered" so that a minimum number of socket buffer operations are performed.</li>
+    </ul>
+    <p /><p>
+    Virtual interfaces are still used to provide compatibility with existing Layer 3 code and thus allow for easy inter VLAN routing. However, these interfaces were designed in such a manner that they have minimum overhead (basically they just add a few more stack levels).
+    </p>
+    <p>
+    <b>User Space Architecture</b><br />
+    Right from the beginning, LiSA was designed bearing dedicated systems in mind. Ideally, embedded systems should be used, but this does not mean it cannot run on standard PC architectures. Because of the dedicated systems idea, several flavors of CLI were designed:
+    </p>
+    <img src="/i/lisa-paper_html_m32191b8f.gif" width="332" height="221" alt="" style="padding-left: 25%" />
+    <p>
+    The swcon binary is meant to be indirectly spawn by init (by the means of an agetty or similar program). Ideally, it would be spawn on a serial port to resemble a dedicated switch's serial console.
+    </p><p>
+    The swclid daemon is a very light version of the famous inetd daemon. It only listens on a single TCP port (usually telnet) and indirectly (by the means of in.telnetd) spawns the swlogin binary.
+    </p><p>
+    The swcli binary directly opens a highest privilege level CLI. It's mostly meant for testing purposes or shared (i.e. not dedicated) hosts.
+    Once authentication is completed, all binaries must provide the same functionality. Therefore, all CLI functionality is actually implemented in a common library (object) rather than the binaries themselves.
+    Because several management sessions (CLI instances) can run simultaneously, configuration must be shared between them. All switching control and configuration data is stored in kernel space, and thus it's shared by default. However, some data (such as the user and enable passwords) are not fitted to be stored in kernel space. Instead, IPC mechanisms are used to serve this purpose. A shared memory segment is used to store shared information in userspace. Consistent access to the shared memory segment is accomplished by means of a semaphore.
+    </p>
+    <p>
+    <b>Kernel Space Architecture</b><br />
+    When we first thought of implementing a software switch, we wanted to write our own dedicated kernel. Soon we realized this was a very bad idea and quickly moved on to using the linux kernel. This approach proved to be much better because:</p>
+    <ul>
+     <li>we no longer needed to write a scheduler, a memory manager and a synchronization framework;</li>
+     <li>device drivers existed for a variety of network chipsets and many system architectures were already supported by the core kernel components  much better portability, for short;</li>
+     <li>the linux kernel NAPI and socket buffers are a very clever solution to efficiently dealing with network packets;</li>
+     <li>the IP stack and routing were already implemented;</li>
+     <li>the LiSA system no longer needed to be dedicated; any PC would just do, and it could also be used for other tasks at the same time.</li>
+    </ul>
+    <p />
+    <p>
+    We tried to use as much as possible from the linux kernel, without affecting switching performance. As we have already shown, existing modules have severe performance issues when it comes to trunk ports.
+    </p>
+    <img src="/i/lisa-paper_html_376129ac.gif" width="415" height="219" alt="" style="padding-left: 25%" />
+    <p>
+    The LiSA kernel module is made up of five parts:</p>
+    <ul>
+      <li><b>Switching Engine:</b> the very heart of the whole thing, which actually deals with packets;</li>
+      <li><b>Forwarding Database:</b> information on where packets should be forwarded based on their MAC address;</li>
+      <li><b>VLAN Database:</b> list of all configured VLANs;</li>
+      <li><b>Virtual Interfaces:</b> a clever trick to reuse the existing linux kernel code when packets must be "switched" at Layer 3;</li>
+      <li><b>Userspace Interface:</b> implements all the IOCTL calls.</li>
+    </ul>
+    <p>
+    Just like the bridge module, LiSA hooks into the NAPI packet reception code. The hook was added between generic packet handler processing1 and protocol specific packet handler (upper layer) processing.
+    </p><p>
+    When a packet is received by the network driver and passed to the kernel for processing, it is first handed to all registered generic handlers. Then it is passed to the Switching Engine. If the incoming interface is a switch member, the packet will be "absorbed" by the Switching Engine, and it will never reach the rest of the linux packet reception code. On the other hand, if the incoming interface is not a switch member, the packet will be handed off to the rest of the kernel reception routine.
+    </p>
+    <p>
+    The Switching Engine examines the Forwarding Database and the VLAN Database and decides the fate of the packet. It can either be:</p>
+    <ul>
+      <li>discarded, if it's not legitimate according to the current configuration;</li>
+      <li>forwarded to one or more ports; or</li>
+      <li>forwarded to a Virtual Interface.</li>
+    </ul><p />
+    <p>
+    When a packet is forwarded to a port, the socket buffer is placed directly into the interface's outgoing queue. This is right, because the Switching Engine always places an exclusive copy of the original socket buffer2 into the queue, and the driver will eventually free the socket buffer after successful transmission.
+    </p><p>
+    When a packet is forwarded to a Virtual Interface, the NAPI packet reception routine is explicitly called and the packet is handed off to it as if it were received on a physical interface. The packet will eventually end up in upper layer processing. Because of this approach, Virtual Interfaces have no RX queue, no interrupt handlers and no poll method. A detailed discussion on why this is possible and efficient and it does not break the kernel can be found in the full LiSA paper.
+    </p><p>
+    The packet transmission method of Virtual Interfaces does nothing but inject the packet (the socket buffer) in the Switching Engine. This is perfectly safe because the switching decision adds very little overhead and the socket buffer quickly ends up in a physical interface outgoing queue.
+    </p>
+    <p>
+     <b>Minimum Data Copy Optimization</b><br />
+     At the best, no generic packet handler is registered and the Switching Engine needs to send the packet to only one physical interface. In this case the socket buffer could be sent right away, or freely modified if the tagging on the incoming interface differs from the tagging on the outgoing interface3.
+    </p><p>
+     Although this is what happens most frequently, it's not the only possible case. For instance, a socket buffer may have already been passed to one or more generic packet handlers when it reaches the Switching Engine. And it also must be sent to several ports, of which some are tagged and some untagged. This is quite a difficult task to accomplish in an efficient manner.
+    </p><p>
+     Socket buffers are fragile and delicate things. For the sake of efficiency, the kernel makes no sanity checks when you modify them. It's the programmer's task to wisely modify socket buffers without breaking anything. Basically, whenever a socket buffer needs to be touched, the programmer must make sure it's an exclusive copy. If it's not, then it is the programmer who must explicitly create an exclusive copy.
+    </p><p>
+    When a packet is sent to several ports, each port must be sent a different socket buffer. No one can guarantee that all network chips will have finished sending the packet before the first driver frees the socket buffer. Moreover, drivers may need to change some fields in the sk_buff structure, so they need an exclusive copy. Fortunately, the packet data can be shared and only the sk_buff structure itself needs to be copied.
+    </p><p>
+    We've worked hard to design an efficient algorithm. There are several rules that led us to the current implementation:</p>
+    <ul>
+      <li>First send the packet to all the ports that have the same tagging as the incoming port and then change the packet and send it to the other ports. This way the packet is tagged/untagged only once.</li>
+      <li>If a packet needs to be tagged/untagged, copy it only if the socket buffer is used by someone else (it's not an exclusive copy).</li>
+      <li>If a socket buffer is copied for tagging/untagging purposes, it doesnt need to be cloned again before sending it to the next outgoing port (unless there are more ports to send it to).</li>
+    </ul><p /><p>
+    Using these rules, we designed an algorithm that makes the minimum number of operations: tagging/untagging, cloning (copying only the sk_buff structure) and copying (both the sk_buff structure and the packet data).
+    </p>
+    <p>
+    <b>Packet "Post Processing"</b><br />
+    The rules above inevitably led us to a "post processing" approach. Basically this means that, when you traverse a list of outgoing ports, you must postpone packet transmission to the current port (list element) until you process the next list element. This is so because you can't know what you have to do with the socket buffer until you analyze the next list element.
+    </p><p>
+    To better illustrate this concept, let's take a simple example. Suppose the Switching Engine gets an exclusive copy of a socket buffer (which must eventually be freed) and the packet needs to be sent to three ports. Because the copy is exclusive, the sk_buff structure must be copied only twice. If the packet must be sent to N ports, then exactly N - 1 copies need to be made. Before you send the packet to a port you must clone the socket buffer first, but only if there are more ports to send it to. You cannot however clone it after you've sent it because it will lead to a race condition.
+    </p><p>
+    The sane approach to this problem is the following:
+    </p>
+    <p class="code-western">while(more ports in list) {</p>
+<p class="code-western">    if(there is a &quot;previous port&quot;)
+{</p>
+<p class="code-western">        clone the socket buffer;</p>
+
+<p class="code-western">        send the socket buffer to &quot;previous
+port&quot;;</p>
+<p class="code-western">    }</p>
+<p class="code-western">    the current port becomes &quot;previous
+port&quot;;</p>
+<p class="code-western">}</p>
+<p class="code-western">if(there is a &quot;previous port&quot;) {</p>
+
+<p class="code-western">    send the socket buffer to &quot;previous
+port&quot;;</p>
+<p class="code-western">} else {</p>
+<p class="code-western">    discard the socket buffer;</p>
+<p class="code-western">}</p>
+    <p>
+    We call this post processing because we always send to the "previous port". The key to this approach is that the last port is processed outside the loop, where no clone operation occurs. Thus the number of clones is one less than the number of ports, which is exactly what we needed.
+    </p><p>
+    After the loop, we could just send the packet to the "previous port" but the extra check for an existing "previous port" prevents the algorithm from messing things up when there's no port to send to (the port list is empty).
+    </p>
+    <p>
+    <b>A Few Words about the Linux Kernel RX Stack</b><br />
+    The RX Stack is the set of functions that handles packet reception from the physical network interface and delivery to higher level protocol processing routines. The RX Stack can be logically divided into two parts: low level hardware routines and kernel RX framework. Although no strict specifications exists for the low level parts (except for the driver API that is used by the RX framework), drivers tend to follow existing guidelines and recommendations. The kernel RX framework is responsible for separating the low level routines and the packet processing logic. Device driver developers need not worry about when packets are scheduled to be processed and how they are processed. This is all taken care of by the RX framework. Protocol developers need not worry about how packets are received from the hardware, because this is also taken care of by the RX framework (and the underlying drivers).
+    </p><p>
+    Two driver frameworks coexist in current (2.6) kernel versions: SoftNET and NAPI. The former was widely used in early 2.4 kernels and nowadays it's nothing but a workaround that provides compatibility with older drivers. The latter was added in the latest 2.4 kernels and is the preferred (and standard) framework for 2.6 kernels, because of its great features. The two frameworks are different only in the RX (and not the TX) part.
+    </p><p>
+    NAPI is extensively discussed in many papers. Two important examples would be "Beyond Softnet" by Jamal Hali Salim and others, and the "NAPI Howto" by Alexey Kuznetsov and others. The latter is included in the very kernel source, under Documentation/networking/NAPI_HOWTO.txt. Therefore we will not insist on the full NAPI mechanism and will focus on layer 2 packet processing.
+    </p><p>
+    After a packet is completely received by the driver, it is handed off to the NAPI packet processing routine, which is netif_receive_skb. It is located in net/core/dev.c. This routine's main task is to deliver the packet to all registered packet handlers. As we'll explain in the next section, there are two types of packet handlers: generic and protocol specific. LiSA's Switching Engine is hooked between processing of the two types of packet handlers.
+    </p>
+    <p>
+    <b>Generic and Protocol Specific Handlers</b><br />
+    Generic packet handlers are registered in a (linked) list called ptype_all. Each handler is a struct packet_type, which (among others) has a dev member. If the dev member is null, then the handler is invoked regardless of the incoming interface of the packet. If the dev member is not null, then the handler is bound to a specific interface, and it is called only if the packet was received on that particular interface.
+    </p><p>
+    Processing the generic handlers basically means iterating through the ptype_all_list, using list_for_each_entry_rcu. For each entry, deliver_skb is called to actually invoke the handler. This is a very small inline function. All it does is increase the socket buffer's usage count and make the actual handler call. The usage count must be increased for handlers to "know" that the socket buffer they receive is not an exclusive copy and special care must be taken if they plan to touch the socket buffer.
+    </p><p>
+    Protocol specific handlers are struct packet_type too. In addition to generic handlers, they have the type member set and they are indexed (by the lowest 4 bits of the protocol type) in a vector of lists, called ptype_base. The value of the member type is the same as the Layer 3 protocol in the Ethernet frame4. Processing these handlers is done almost the same way as with generic handlers. In addition, the protocol type is matched before calling the handler (before calling deliver_skb).
+    </p>
+    <p>
+    <b>Packet "Post-Processing"</b><br />
+    When I described the deliver_skb function, I stated that it increases the socket buffer's usage counter. But just like when the socket buffer is sent to many ports and exclusive copies must be ensured (see Packet "Post-Processing" for the Switching Engine), the usage counter must be increased only N - 1 times if the socket buffer is passed to N handlers. This is because if there's only one handler, the original socket buffer is an exclusive copy and it no longer needs to be copied before it is modified.
+    </p><p>
+    Just like we did with the Switching Engine, socket buffers are post processed. This is what the pt_prev variable in netif_receive_skb is all about. The pt_prev variable is actually a pointer to the previous list element (the previous protocol). If you go back to the post processing general algorithm that was described earlier, you'll notice the explicit processing of the last element at the end of the netif_receive_skb function. Like we discussed, the pt_prev variable is first checked to see if there is a "previous element" or not:
+    </p>
+    <p class="code-western">if (pt_prev) {</p>
+<p class="code-western">    ret = pt_prev-&gt;func(skb, skb-&gt;dev,
+pt_prev, orig_dev);</p>
+<p class="code-western">} else {</p>
+
+<p class="code-western">    kfree_skb(skb);</p>
+<p class="code-western">    ret = NET_RX_DROP;</p>
+<p class="code-western">}</p>
+    <p>
+    However, the last element is only processed once, at the end of the function. No last element processing occurs after the first list is traversed (generic handlers). This is normal, because (from the post processing point of view) the two lists should be regarded as a single bigger list. Last element processing occurs only once, at the end. But this is why both the bridge and the Switch Engine hooks (which are both called between walking the two lists) explicitly process the "last element". If any of the two hooks hijacks the socket buffer, the netif_receive_skb function will exit immediately upon returning from the hook, and it will never get the chance to process the last element. Thus the last element (of the generic handlers list) is locally processed in both hooks.
+    </p><p>
+    The funny part is that only after we had designed the Switching Engine and had inevitably got to the post processing approach did we fully understand the netif_receive_skb code and realize that it uses exactly the same approach.
+    </p>
+    <p>
+    <b>Performance</b><br />
+    Because all packet switching is done in software, most performance issues arise with a large number of small sized packets. In this case, the CPU spends most of its time with packet processing and actual data throughput is very low.
+    </p><p>
+    Under normal conditions, the overall performance is better, because packets carry more usable data and thus less packets are switched at the same data throughput.
+    </p><p>
+    Our first performance test was run using 64 bytes (headers included) packets. We'll only show the test network diagram and the test results. Detailed test data, analysis and math theory can be found in the full LiSA paper.
+    </p>
+    <img src="/i/lisa-paper_html_m3604e8fd.gif" width="325" height="220" alt="" style="padding-left: 25%" />
+    <p>
+    Test1, Test2 and Test3 are all Dual Xeon / 2.8 GHz, with Intel 6300 ESB chipset and two BCM5721 (Broadcom Tigon 3) network adapters. LiSA is a Commel Systems LE 564 embedded system (please refer to <a href="http://www.commell-sys.com/Product/SBC/LE-564.htm">http://www.commell-sys.com/Product/SBC/LE-564.htm</a> for further details).
+    </p><p>
+    On Test1 we ran the Linux kernel embedded packet generator, pktgen (please refer to Documentation/networking/pktgen.txt in the 2.6 Linux kernel source). On Test2 and Test3 we ran tcpdump in logging mode.
+    </p><p>
+    We ran several tests with 64 bytes packets, but only two of them are really important: unicast and broadcast, with packet tagging. Both tests were run with 1,000,000 packets samples and packet rates up to 140,000 pps.
+    </p><p>
+    For the unicast test, the source port was configured in access mode and the destination port was configured in trunk mode. For the broadcast test, the source port was configured in access mode and the destination ports were configured in both access and trunk mode.
+    </p>
+    <img src="/i/lisa-paper_html_m1b1a5319.gif" width="314" height="287" alt="" style="padding-left: 25%" />
+    <p>
+    The output rate scales with the input rate up to a certain point, called cut point. With higher input rates, the output rate remains constant. This behaviour can be fully explained through the NAPI design theory. Because of the interrupt mitigation technique, the system will process as many packets as it can, no matter what the input packet rate is. As the input packet rate increases, the system will use more and more of its resources. Eventually (when the cut point is reached), it will use all its resources and the output packet rate will remain constant even if the input packet rate increases more.
+    </p><p>
+    Obviously, the cut point is reached faster with broadcast packets, because broadcast packets involve more switching overhead than unicast packets.
+    </p><p>
+    NAPI interrupt mitigation works by disabling hardware interrupts and polling the network chip when the input packet rate is high enough. This way the system is freed from handling hardware interrupts and performs much better. Hardware polling and packet processing is done in software interrupt context. The following charts show the CPU time distribution during the tests:
+    </p>
+    <img src="/i/lisa-paper_html_54b31198.gif" width="325" height="270" alt="" style="padding-left: 25%" />
+    <br />
+    <img src="/i/lisa-paper_html_3856e4a8.gif" width="325" height="273" alt="" style="padding-left: 25%;" />
+    <p>
+    These tests were run with lab generated traffic. However, this is the worst case (because the switching overhead is the highest) but it is unlikely to happen in real networks (except for packet flood traffic, which is not usual traffic anyway). Therefore, we ran additional tests and we generated traffic that closer resembles real world networks.
+    </p><p>
+    For the bandwidth test, we slightly changed the network topology:
+    </p>
+    <img src="/i/lisa-paper_html_m6ea185ca.gif" width="338" height="299" alt="" style="padding-left: 25%;" /><br />
+    <p>
+    We used the nc tool on all machines. It was indirected from /dev/zero on server machines and redirected to /dev/null on client machines. The effective bandwidth was measured with the iptraf tool. Because the eth0 interface on the LiSA system is gigabit, we made asymmetric transfers: all transfers had the Test1 system at one end.
+    </p><p>
+    Two separate tests were run. For the first one we used bidirectional transfers, and the second we used unidirectional transfers, with Test1 as source. The following table summarizes all test results:<br /></p>
+    <p />
+     <table width="586" border="1" cellpadding="4" cellspacing="0" style="page-break-inside: avoid">
+
+		<col width="141" />
+		<col width="101" />
+		<col width="101" />
+		<col width="101" />
+		<col width="100" />
+		<thead>
+			<tr valign="top">
+				<th width="141">
+					<p><br />
+
+					</p>
+				</th>
+				<th width="101">
+					<p>Test1</p>
+				</th>
+				<th width="101">
+					<p>Test2</p>
+				</th>
+
+				<th width="101">
+					<p>Test3</p>
+				</th>
+				<th width="100">
+					<p>Laptop</p>
+				</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<td width="141" valign="top" bgcolor="#ffffcc">
+					<p>Unidir In (Mb/s)</p>
+				</td>
+				<td width="101" valign="bottom" bgcolor="#ffffcc">
+					<p>199.59</p>
+				</td>
+
+				<td width="101" valign="bottom" bgcolor="#ffffcc">
+					<p>0.15</p>
+				</td>
+				<td width="101" valign="bottom" bgcolor="#ffffcc">
+					<p>1.51</p>
+				</td>
+				<td width="100" valign="bottom" bgcolor="#ffffcc">
+					<p>1.41</p>
+
+				</td>
+			</tr>
+			<tr>
+				<td width="141" valign="top" bgcolor="#ffffcc">
+					<p>Unidir Out (Mb/s)</p>
+				</td>
+				<td width="101" valign="bottom" bgcolor="#ffffcc">
+					<p>4.43</p>
+
+				</td>
+				<td width="101" valign="bottom" bgcolor="#ffffcc">
+					<p>68.39</p>
+				</td>
+				<td width="101" valign="bottom" bgcolor="#ffffcc">
+					<p>68.44</p>
+				</td>
+				<td width="100" valign="bottom" bgcolor="#ffffcc">
+
+					<p>63.24</p>
+				</td>
+			</tr>
+			<tr>
+				<td width="141" valign="top" bgcolor="#ffffcc">
+					<p><b>Unidir Total (Mb/s) </b>
+					</p>
+				</td>
+
+				<td width="101" valign="bottom" bgcolor="#ffffcc">
+					<p><b>204.02</b></p>
+				</td>
+				<td width="101" valign="bottom" bgcolor="#ffffcc">
+					<p><b>68.54</b></p>
+				</td>
+				<td width="101" valign="bottom" bgcolor="#ffffcc">
+					<p><b>69.95</b></p>
+
+				</td>
+				<td width="100" valign="bottom" bgcolor="#ffffcc">
+					<p><b>64.65</b></p>
+				</td>
+			</tr>
+			<tr>
+				<td width="141" valign="top" bgcolor="#ccffff">
+					<p>Bidir In (Mb/s)</p>
+
+				</td>
+				<td width="101" valign="bottom" bgcolor="#ccffff">
+					<p>148.29</p>
+				</td>
+				<td width="101" valign="bottom" bgcolor="#ccffff">
+					<p>20.37</p>
+				</td>
+				<td width="101" valign="bottom" bgcolor="#ccffff">
+
+					<p>18.58</p>
+				</td>
+				<td width="100" valign="bottom" bgcolor="#ccffff">
+					<p>23.1</p>
+				</td>
+			</tr>
+			<tr>
+				<td width="141" valign="top" bgcolor="#ccffff">
+
+					<p>Bidir Out (Mb/s)</p>
+				</td>
+				<td width="101" valign="bottom" bgcolor="#ccffff">
+					<p>69.8</p>
+				</td>
+				<td width="101" valign="bottom" bgcolor="#ccffff">
+					<p>50.66</p>
+
+				</td>
+				<td width="101" valign="bottom" bgcolor="#ccffff">
+					<p>50.73</p>
+				</td>
+				<td width="100" valign="bottom" bgcolor="#ccffff">
+					<p>49.29</p>
+				</td>
+			</tr>
+
+			<tr>
+				<td width="141" valign="top" bgcolor="#ccffff">
+					<p><b>Bidir Total (Mb/s)</b></p>
+				</td>
+				<td width="101" valign="bottom" bgcolor="#ccffff">
+					<p><b>218.09</b></p>
+				</td>
+				<td width="101" valign="bottom" bgcolor="#ccffff">
+
+					<p><b>71.03</b></p>
+				</td>
+				<td width="101" valign="bottom" bgcolor="#ccffff">
+					<p><b>69.31</b></p>
+				</td>
+				<td width="100" valign="bottom" bgcolor="#ccffff">
+					<p><b>72.39</b></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+    <p>
+     As you can see, the total transfer speed in both cases is almost the same. This can be explained because the transfer speed is actually limited by the LiSA system's PCI bus bandwidth. Each packet crosses the PCI bus twice (once from the input interface to the central memory and once again from the central memory to the output interface). Thus, the PCI bus speed is double the transfer bandwith, approximately 400 ... 450 MBit/s.
+    </p><p>
+    If the PCI bus runs at 33 MHz and transfers 32 bits in each cycle, its total bandwidth is 1056 MBit/s. As one can easily see, this is not what actually happens. There are several reasons why the actual transfer bandwidth is only half the expected (theoretical) bandwidth. All transfers are performed through DMA, and performance penalties are related to the DMA transfers rather than the PCI bus itself:</p>
+    <ul>
+      <li>The PCI bus has no separate address and command lines, so additional bus cycles are required to transfer the address and the command (DMA transfer, for instance).</li>
+      <li>DMA transfers are performed in bus master mode  the network chip must become bus master before the DMA transfer can start. Additional wait cycles are required before a specific device can become bus master.</li>
+      <li>The main memory is shared between the CPU and DMA transfers. Additional wait cycles are required when the main memory is not available for DMA.</li>
+      <li>When transmitting packets, each packet (or a small group of packets) must be acknowledged by the CPU before another packet can be sent. Thus packets are not transmitted right away: additional CPU work is required and so there may be bus idle times.</li>
+    </ul>
+    <p />
+    <p>
+    Radu Rendec is part of the LiSA development team. For further information
+    on LiSA or to contact Radu, please visit <a href="http://lisa.ines.ro">http://lisa.ines.ro</a>.
+    </p>
+    <p>
+    To return to the article listing please click <a href="/articles/">here</a>.
+    </p>
+  </div>
+ &nbsp;<br />
+ </div>							<!-- end: o3page -->
+ <div id="o3footer">
+  <div id="o3footl">
+   &nbsp;copyright &copy; 2002-2006 <a href="http://www.splicednetworks.com">Spliced Networks LLC</a> &nbsp;
+  </div>
+  <div id="o3footr">
+   <a href="/footer/feedback/">feedback</a>&nbsp; | &nbsp;<a href="/footer/policy/">privacy policy</a>&nbsp; | &nbsp;<a href="/footer/contact/">contact</a>
+  </div>
+  &nbsp;
+ </div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+History:
+
+ 03-May-2005: [Release 1.1.7]
+ 29-Sep-2005: [Release 1.1.8]
+ 04-Nov-2005: [Release 1.1.9]
+ 01-Mar-2006: [Release 2.0.0]
+ 05-Sep-2006: [Release 3.0.0]
+ 
+Changed name from Linux Image Management Boot System (LIMBS) to ABMS for 4.0
+ 
+ 23-Mar-2008: [Release 4.0.0rc1]
+ 27-Apr-2008: [Release 4.0.0rc2]
+ 01-Jun-2008: [Release 4.0.0rc3]
+ 11-Jun-2008: [Release 4.0.0rc4]
+ 22-Jun-2008: [Release 4.0.0rc5]
+ 24-Jun-2008: [Release 4.0.0rc6]
+ 09-Jul-2008: [Release 4.0.0rc7]
+ 20-Jul-2008: [Release 4.0.0fc1]
+ 22-Jul-2008: [Release 4.0.0fcs]
+
+------------------------------------------------------------------------------------------------------
+
+[Release 4.0.0fcs]
+ July 22nd 2008
+	*	Added support for configurable per stack tmpfs
+	*	Fixed configuration parsing bug
+
+[Release 4.0.0fc1]
+ July 20th 2008
+	*	Added flash configuration support
+	*	Added support for emfs (expanded management file system)
+	*	Added loopback device management table and helper code
+	*	Added appstack management table and helper code
+	*	Added storage management table and helper code
+	*	Merged App Adaptive Firewall (AAF) feature from 4.1
+
+[Release 4.0.0rc7]
+ July 9th 2008
+
+	*	Added Changelog
+	*	Optimized command calls and added new abms-cmdapi.c
+	*	Reordered initial boot sequence to process /proc/cmdline earlier in the boot process
+	*	Added support for /flash
+

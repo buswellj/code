@@ -1,0 +1,12 @@
+<?xml version='1.0' standalone='yes'?>
+<steeringPool
+	ipAddress='10.253.0.2'
+	startPort='49152'
+	endPort='52000'
+	realmID='core-excel'
+	lastModifiedBy='admin@console'
+	lastModifiedDate='2008-10-02 15:04:51'>
+	<networkInterfaceId
+		name=''
+		subPortId='0'/>
+</steeringPool>

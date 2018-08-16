@@ -1,0 +1,19 @@
+<?xml version='1.0' standalone='yes'?>
+<localPolicy
+	activateTime=''
+	deactivateTime=''
+	state='enabled'
+	anonymousPriority='none'
+	description=''
+	lastModifiedBy='admin@console'
+	lastModifiedDate='2008-10-02 15:10:40'>
+	<to addr='*' type='Hostname'/>
+	<from addr='*' type='Hostname'/>
+	<sourceRealm name='access'/>
+	<policyAttribute
+		nextHop='10.253.0.240'
+		action='none'
+		destRealm='core'
+		appProtocol=''>
+	</policyAttribute>
+</localPolicy>

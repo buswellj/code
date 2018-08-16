@@ -1,0 +1,8 @@
+<?xml version='1.0' standalone='yes'?>
+<snmpCommunity
+	communityName='pro'
+	accessMode='READ-ONLY'
+	lastModifiedBy='admin@10.254.254.14'
+	lastModifiedDate='2009-03-30 18:29:30'>
+	<ipAddresses addr='10.36.160.5'/>
+</snmpCommunity>

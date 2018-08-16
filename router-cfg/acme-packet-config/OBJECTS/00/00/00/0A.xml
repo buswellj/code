@@ -1,0 +1,31 @@
+<?xml version='1.0' standalone='yes'?>
+<networkInterface
+	name='cat5k5-sw1-p2-1'
+	description='Public SIP Interface'
+	hostname='sbc0.pbflex.com'
+	subPortId='0'
+	ipAddress='209.173.140.2'
+	utilityAddress=''
+	secondUtilityAddress=''
+	netmask='255.255.255.0'
+	gateway='209.173.140.1'
+	gatewaySec=''
+	domNameServer='209.173.139.45'
+	domNameServerB1=''
+	domNameServerB2=''
+	defDomainName='pbflex.com'
+	dnsTimeout='11'
+	ftpAddress=''
+	snmpAddress=''
+	telnetAddress=''
+	lastModifiedBy='admin@10.254.254.252'
+	lastModifiedDate='2008-10-02 15:35:40'>
+	<hip-ip-list ip='209.173.140.2'/>
+	<icmp-ip-list ip='209.173.140.2'/>
+	<GWHeartbeat
+		state='disabled'
+		timeout='0'
+		retryCount='0'
+		retryTimeout='1'
+		healthDec='0'/>
+</networkInterface>

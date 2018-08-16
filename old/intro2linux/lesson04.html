@@ -1,0 +1,836 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="StarOffice/5.1 (Linux)">
+	<META NAME="CREATED" CONTENT="19990917;17530000">
+	<META NAME="CHANGEDBY" CONTENT="Clare Buswell">
+	<META NAME="CHANGED" CONTENT="19990917;17580000">
+	<STYLE>
+	<!--
+		@page { size: 8.5in 11in; margin-right: 1.25in; margin-top: 1in; margin-bottom: 1in }
+	-->
+	</STYLE>
+</HEAD>
+<BODY>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Lesson
+4: Basic Linux Environment</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>Now
+you should have an installed and hopefully working Red Hat 6.0 Linux
+system. When you reboot you should be presented with the <B>LILO:
+</B>prompt, simply press <B>ENTER</B>. Linux should now boot.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>The
+aim of this lesson is provide you with a basic understanding of the
+LINUX environment, as this is possibly your first experience of a
+UNIX type environment. The next lesson will continue with a walk
+through on securing your system.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>After
+this lesson you should be able to:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>	<B>Login</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	Understand
+the Linux directory structure</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	Navigate
+the system and use basic system commands</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	Create
+addition Accounts</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	Understand
+File and Directory permissions</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Logging
+In</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>The
+first thing you will need to do is log in. This is quite simple,
+simply enter your username (root), press enter, enter the password at
+the password prompt and press enter. Congratulations, you just logged
+into your system as root. If this failed, make sure the username is
+in <B>LOWER </B>case and the password has been entered correctly.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Basic
+Commands</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>There
+are several key Linux commands that you will need to know, below we
+havelisted each, explained the function and listed a similar MS-DOS
+command. Remember in Linux enter everything in lower case unless you
+have created files with upper case letters.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-left: 4.5in; text-indent: -4.5in; margin-bottom: 0in; border-top: none; border-bottom: 1.00pt solid #000000; border-left: none; border-right: none; padding: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Linux
+Command                               Description	MS-DOS Command</B></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4.5in; text-indent: -4.5in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-left: 4.5in; text-indent: -4.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>ls
+                                                       Lists
+Directory		DIR</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4.5in; text-indent: -4.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>cd
+                                                      Change
+Directory		CD</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4.5in; text-indent: -4.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>mkdir
+                                                 Make
+Directory		MD/MKDIR</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4.5in; text-indent: -4.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>rmdir
+                                                  Remove
+Directory		RD/RMDIR</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4.5in; text-indent: -4.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="Courier-WP"><FONT SIZE=3><FONT SIZE=2><FONT FACE="helvetica, sans-serif">rm
+                                                      Remove         
+                      		DELETE</FONT></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4.5in; text-indent: -4.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		ERASE/DEL</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4.5in; text-indent: -4.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="Courier-WP"><FONT SIZE=3><FONT SIZE=2><FONT FACE="helvetica, sans-serif">		DELTREE</FONT></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4in; text-indent: -4in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>df
+                                                       Lists mounted
+disks			NONE</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4in; text-indent: -4in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="Courier-WP"><FONT SIZE=3><FONT SIZE=2><FONT FACE="helvetica, sans-serif">free
+                                                    Lists system load
+and time up	     	NONE</FONT></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4in; text-indent: -4in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>w
+                                                       Lists all
+users logged in			NONE</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4.5in; text-indent: -4.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>pico
+                                                   Text Editor		EDIT</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4.5in; text-indent: -4.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="Courier-WP"><FONT SIZE=3><FONT SIZE=2><FONT FACE="helvetica, sans-serif">vi
+                                                       Advanced Text
+Editor		EDLIN</FONT></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4in; text-indent: -4in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>less
+                                                    Lists file
+contents			MORE</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4in; text-indent: -4in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>more
+                                                  Lists file
+contents			MORE</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4in; text-indent: -4in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>cat
+                                                     Lists file
+contents			TYPE</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4in; text-indent: -4in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>ln
+                                                       Links (points)
+file/dir to another file/dir	NONE</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4in; text-indent: -4in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>cp
+                                                      Copy files from
+one point to another	COPY</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4in; text-indent: -4in; margin-bottom: 0in; border-top: none; border-bottom: 1px solid #000000; border-left: none; border-right: none; padding: 0.03in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>mv
+                                                     Move files from
+one point to another	MOVE/REN</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 4in; text-indent: -4in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-left: 4in; text-indent: -4in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-left: 4in; text-indent: -4in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>You
+should experiment with each command, type the command and if extra
+parameters are required then simply type &#150;<B>-help </B>after the
+command. </FONT></FONT></FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>Example:			<B>ls
+-&#150;help</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Learning
+about commands</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>Linux
+is extremely well documented, you should not expect to become a Linux
+expert straight away, while it maybe frustrating you will benefit
+from spending the time to read the manual pages. Linux has a command
+called <B>man</B>. Think of man as an on-line quick reference guide
+for almost every application, utility and command on your system. The
+man pages work just liked the unix command less. To quit out of man
+pages press q, and use the arrow keys for navigation. Man is short
+for manual. You should use the man command to learn about commands
+you are not sure about.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Red
+Hat Directory Structure</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Linux
+distributions and other UNIX type operating systems such as Solaris
+have a particular directory structure. You may notice commands that
+work the same in Linux as they do in other UNIX operating systems,
+with minor differences. The one key difference between one Linux
+distribution and the next is where files are located. The Red Hat
+Linux directory structure is used in many distributions, including
+Caldera OpenLinux. The directory structure and commands are also
+similar with other operating systems under the BSD tree, including
+NetBSD and FreeBSD.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Basic
+Directory Map</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		/</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		|</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		+----
+dev/</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		+----
+boot/</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		+----
+var/</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		+----
+usr/</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		+----
+mnt/</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		+----
+home/</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		+----
+lib/</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		+----
+bin/</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		+----
+sbin/</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		+----
+etc/</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		+----
+proc/</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		+----
+lost+found/</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		+----
+root/</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>		+----
+tmp/</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Above
+is the basic directory map, we will now explain the function of each
+directory.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>/</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Root
+(or slash) is the top level directory, there are no other directories
+above this. This is called the root directory.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>dev/</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>/dev
+(sort for device) contains special device files. There are two types
+of device files (character and block). Block devices are generally
+hard disk type devices, while character devices are generally mice,
+video capture cards etc. Each device is given a major and minor
+number, this is how the Linux kernel knows how to address a
+particular device. You can create your own devices with the <B>mknod</B>
+command.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Boot/</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>This
+is the boot directory, this is where you store your linux kernel
+(<B>vmlinuz)</B> and system map files. This directory is discussed in
+detail in Appendix A.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>var/</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>The
+var directory contains logs, mail spools, news spools, print spools
+etc.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>usr/</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>The
+usr/ (USER) directory contains user run applications, utilities and
+configuration options for those applications. This directory has its
+own</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>directory
+structure:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>usr/local/	<B>Third
+Party Applications are installed here</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>usr/lib/		<B>User
+Libraries</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>usr/sbin/	<B>User
+System Binaries (utilities)</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>usr/bin/	<B>User
+Binaries (applications)</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>usr/etc/	<B>User
+Configuration Files</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>usr/X11R6/	<B>X-Windows</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>usr/man/	<B>User
+manual pages</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>usr/include/		<B>User
+include (.h C header files)</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>usr/src/	<B>User
+source code</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>The
+usr/local directory once again mimics the usr level directory with
+bin/sbin/ etc/ lib/ man/ include/ and some other sub directories. You
+can navigate between these directories with the cd command </FONT></FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>Example:		</B>cd
+/usr/local</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>					cd
+/usr/bin</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>If
+you download a new third party application, such as the <B>AbiWord
+</B>free word processor, you would install this package in the
+/usr/local/ tree, although you could install it anywhere you like,
+the standard is to install such third party applications in
+/usr/local/. The idea being, that it makes it easier to locate third
+party applications, as well as to backup, remove or restore such
+applications.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>mnt/</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>mnt
+(mount) is a special directory. This is where you can add file
+systems into your linux system. Say for example you have an IDE carom
+drive on (/dev/hdd). Since the cd-rom cannot be partitioned into
+separate partitions, the device does not have any partition numbers,
+it is simply referred to as /dev/hdd. If you place a cd into the
+drive, you can mount that drive in /mnt/cdrom. To access the
+directories and files on that cd you simply cd to /mnt/cdrom and use
+ls, cd and other system level commands to browse the cd. You can
+mount caroms, zip drives, hard disks and network shares (NFS and
+Samba) with the <B>mount </B>command.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>Example:		</B>mount
+/dev/hdd /mnt/cdrom -t iso9660</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>	In
+the above example, the mount command is issued on our carom drive in</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>	/dev/hdd,
+the /mnt/cdrom is an empty directory that exists, it is called</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>	the
+mount-point. This can be any empty directory anywhere on the system,</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>	generally
+you mount drives in /mnt unless you have multiple drives and</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>	wish
+to use extra drives as system directories such as /usr/local. The</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>	-t
+flag specifies the type of partition. Since this is a cd-rom it</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>	will
+be in the <B>ISO 9660 </B>standard, so we tell mount it is such.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>home/</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>This
+is the home directory. This is where user's directories are created.
+Each user you create (username + password) is given a home directory.
+This is where they can store files. On some systems you may wish to
+put a quota in place to prevent users store large amounts of data in
+their home directories and exceeding your limited disk space.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>lib/</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>This
+is the system library directory. In here you will find system level
+libraries. You really shouldn't need to enter this directory unless
+you are upgrading system libraries. This is where libraries such as
+libc6 are stored.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>bin/</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>This
+is the top level program directory. This is where non-root files are
+stored. Generally ls, cat and other user accessed system level
+programs are stored.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>sbin/</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>This
+is where <B>system</B> programs are stored. These are programs such
+as mount and ifconfig are stored. These are programs which generally
+require root or root privileges to execute correctly. Generally these
+are programs that require some kind of device access, such as
+exclusive access to your hard disk, keyboard, monitor etc. </FONT></FONT></FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>etc/</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>etc
+(pronounced like etc) is where the system level configuration files
+are stored. There are some key files in here which you should pay
+attention to:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>password		</B>Where
+the system usernames and home directories are stored</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>shadow		</B>Where
+the encrypted passwords are stored</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>group		</B>Where
+system groups are listed</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>resolv.conf		</B>Lists
+the systems DNS servers</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>HOSTNAME		</B>The
+name of the system</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>smb.conf		</B>The
+samba (windows file/print sharing) configuration</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>inetd.conf		</B>Basic
+tcp services configuration (telnet etc)</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>hosts.allow		</B>Which
+remote hosts/ips are allowed access to which services</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>hosts.deny		</B>Which
+remote hosts/ips are denied access to which services</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>hosts		</B>List
+of hostnames and the IPs<B> </B>that match</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>issue		</B>Message
+displayed before login prompt</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>issue.net		</B>same
+as issue</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>motd		</B>Message
+of the Day (displayed to users when they login)</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>stab		</B>Lists
+which partitions to mount on boot and where</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>services		</B>Lists
+which services run on which tcp/udp ports</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>rc.d		</B>Startup
+scripts</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>proc/</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>This
+is the directory where the system stores information about itself.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>For
+example if you cat /proc/cpuinfo you will get information of your
+processor. Try using cat to read information stored in files in
+/proc. </FONT></FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>The
+/proc/interrupts file can be used to check for IRQ conflicts.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>tmp/</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>This
+is the system <I>temp</I> directory. This is where all temporary
+files are written to. Generally all users can write to /tmp.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>root/</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>This
+is the root (super user/administrator) account's home directory.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>lost+found/</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>This
+directory is found inside all ext2 (Linux native) partitions.
+Whenever a problem occurs with the file system, this is where
+recovered information is stored. Files stored in here are generally
+listed by node. See the <B>e2fsch</B>command for further information
+on inodes.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Linux
+Shell</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>When
+you logged into your Linux system as root, the prompt you were given
+is called a <B>BASH</B> prompt. <B>BASH</B> is the name of your
+shell. A shell is a program that provides the user with a means to
+execute commands, and view the file system. There are many different
+shells available, bash is the default for Red Hat Linux. The other
+popular shell is <B>tcsh</B>. This is an extended version of the C
+shell, named so as it is based upon the C programming language. The
+<B>tcsh </B>shell is somewhat easier to use than bash.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>Another
+feature of these shells is what is known as tab completion. This
+allows you to press the <B>tab </B>key to allow the shell to complete
+the name of afile or program. For example, if you wanted to edit a
+file called mybusinessplan.txt, you could simply type pico -w mybus
+<B>TAB</B> and the shell would complete the rest of the name for you.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Workbook:</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>You
+should take some time exploring the directory structure. Use the <B>man
+</B>command on some of the programs listed in <B>/bin /sbin /usr/bin
+/usr/sbin</B>.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Users
+and Groups</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Now
+that you are familiar with the file system, we will discuss file
+permissions. The username is provided as a human readable form, Linux
+itself uses UID and GID to determine who the owner of a file is. </FONT></FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>UID</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>User
+ID, this is a unique number assigned to a particular user. Files that
+this user creates are stored with that ID number. Root always has a
+UID of 0. </FONT></FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>GID</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Group
+ID, like User Ids are unique numbers assigned to groups of users.
+Groups allow administrators to allow a group of users access to a
+particular system resource. Users can belong to multiple groups, but
+always have a default group.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Passwd
+File</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>The
+password file stored in /etc/passwd contains the mapping of UIDs to
+usernames. </FONT></FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>	joe:x:540:500:Joe
+User:/home/joe</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>The
+first field in the password file is the human readable username. The
+second field is a legacy field, this used to be where the encrypted
+password was stored, the x denotes that the encrypted password is
+stored in the shadow file. The third field is the UID, this is unique
+and duplicates cannot exist. The forth field is the default group ID,
+generally on Red Hat systems, group 500 is the default users group.
+The fifth field contains an ID string for that particular user,
+generally this is the users name. The final field contains the path
+of that users home directory. The home directory must be owned by UID
+540.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Groups</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Aside
+from the default user group, which doesn't have a list of users that
+belong to it in the /etc/group file. If there is a need to provide
+one or more users access to a resource, such as access to a documents
+directory for the sales department, you would create a sales group.
+Add the users who should have access to that group and then set the
+group permissions on the directory to the sales group.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>In
+the /etc/group file you would add:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>sales:x:600:joe,jim,bob,tim,emily,sarah</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>This
+adds the users joe, jim, bob, tim, emily and sarah to the sales
+group.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>The
+/usr/local/doc/sales is the directory you want to give them access
+to.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>drwxr-x---	24
+root	root	sales</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>To
+obtain this output you need to use <B>ls -la </B>in the
+/usr/local/doc directory. The first section of letters, indicates the
+permissions set on the file. </FONT></FONT></FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>The
+first character, in this case d indicates that this is a directory,
+regular files have a - in this field. The next three characters, rwx
+provide read, write and execute permissions for the owner of the
+directory. The second triplet indicates that the group has read and
+execute access, but cannot write. The final triplet has no letters,
+this triplet indicates the permissions for the rest of the system,
+here the rest of the system has no permissions to this directory.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>Since
+the owner is root and the group is root, the sales group doesn't have
+access. You can change the group ownership by using the <B>chgrp</B>
+command. </FONT></FONT></FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>	<B>chgrp
+-R sales /usr/local/doc/sales</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>The
+above command, with the recursive <B>-R</B> option, changes the group
+ownership in the sales directory and below from root to the group
+sales. Once this command has been completed, the users in the sales
+group have read and execute permissions.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>File
+Permissions</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>File
+permissions are displayed with the <B>-la </B>option in <B>ls</B>.
+The permissions are grouped into three triplets.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-left: 5in; text-indent: -5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>1222333444
+ X    owner     group      size     date       filename</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 5in; text-indent: -5in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>The
+above is a key for the output you would expect to get from ls.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>1
+= File Identifier (- = regular file, d = directory, l = link, b/c =
+device)</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>2
+= Owner permissions</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>3
+= Group permissions</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>4
+= Other permissions</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>owner
+= the username or UID of the owner</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>group
+= the groupname or GID of the group</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>size
+= space used by the file or directory in bytes</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>date
+= Last modified date/time</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>filename
+= the name of the file or directory</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>The
+owner, group and other permissions each have three entries, first for
+read permissions, second for write permissions and the third for
+execute permissions. </FONT></FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>You
+can change these permissions with the <B>chmod </B>command.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>	<B>chmod
+oug+rwx file</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	chmod
+oug-rwx file</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>The
+first example gives (other, user and group) read, write and execute
+permissions to file. The second example removes (other, user and
+group) read, write and execute permissions. You can also use what is
+known as a UMASK option, this is an advanced method of changing file
+permissions. Your instructor may choose to provide UMASK examples,
+see <B>man chmod</B> for information on UMASKs.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Creating
+User Accounts</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>The
+root account is the only user account on the system after the
+installation. However, you cannot log in remotely as root. This is
+mainly a security feature of Linux. In order to be able to log in to
+the system remotely, as well as to administer the system, we suggest
+you create your own account. This can be anything you want, as long
+as it is less than 8 characters long.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>To
+create the account simply use the <B>adduser</B> script or you can
+use the <B>useradd </B>command. Example:</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>	<B>adduser
+</B>username</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Simply,
+replace username above with your desired username.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Once
+created, you will also need to add your password. To do this simply
+use the password command. Example:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>	<B>passwd
+</B>username</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>This
+will prompt you for a password, and then confirmation of the
+password. Remember the password advice we gave in the last lesson!</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>Once
+the password has been set you can test the account. Do you remember
+the virtual consoles during the Red Hat installation? The same
+virtual consoles exist in Linux itself, you have six virtual
+consoles. You can access each by pressing <B>ALT+F? </B>where ? is
+replaced with a number from 1 to 6. You are currently on the first
+virtual console (<B>ALT+F1</B>). There is a seventh virtual console
+on <B>ALT+F7</B> however this virtual console is for <B>X-Windows</B>.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>Press
+<B>ALT+F2</B> and log in with your created account.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>You
+can now press <B>ALT+F1 </B>to return to your root access account.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Switching
+to root</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>If
+you are already logged into a Linux system, and you know the root
+password, you can switch to the root user without having to log in.
+To do this you need to use the command <B>su</B>. Example:</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>	bash~&gt;
+su -</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>	Password:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>	bash#&gt;</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>In
+the above example we have sued to root. You can see the prompt change
+from ~ to # indicates you have root access. The command <B>whoami</B>
+will also report that you are now root. If you enter a username after
+su - you can become that user if you know their password, or if you
+are root.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Tasks:</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Familiarize
+yourself with the Red Hat directory structure</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Experiment
+with UNIX commands using the man command for help</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Practice
+Tab completion</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Create
+several test accounts</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Practice
+Virtual Terminals</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.17in">
+<BR>
+</P>
+</BODY>
+</HTML>

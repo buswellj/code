@@ -1,0 +1,779 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="StarOffice/5.1 (Linux)">
+	<META NAME="CREATED" CONTENT="19990917;17350000">
+	<META NAME="CHANGEDBY" CONTENT="Clare Buswell">
+	<META NAME="CHANGED" CONTENT="19990917;17440000">
+	<STYLE>
+	<!--
+		@page { size: 8.5in 11in; margin-right: 1.25in; margin-top: 1in; margin-bottom: 1in }
+	-->
+	</STYLE>
+</HEAD>
+<BODY>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Lesson
+7: Linux Kernel Compilation</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>This
+final lesson is designed to expose you to the world of the Linux
+kernel.This section will show you how to:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>-
+download Linux kernel source</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>-
+manage multiple Linux kernel source trees</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>-
+patch linux kernel sources</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>-
+compiling the kernel</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>-
+configuring Lilo</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>This
+section is NOT a walk through, it will assist you in getting started.
+We recommend that the instructor saves some time to complete this
+final lesson and permit candidates to compile and test their own
+kernel.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Downloading
+Linux Kernel Sources</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>Obtaining
+Linux kernel sources is quite easy, you can obtain any Linux kernel
+source code from <B>ftp.kernel.org </B>or from a mirror site (<B>see
+www.kernel.org</B>).The Linux 2.2 and Linux 2.3 kernel source trees
+range from 10Mb to 14Mb compressed. We recommend that you download
+the latest kernel source (once), and simply download the smaller
+(~500k) kernel patches as they become available.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Kernel
+sources are number linux-x.y.z.tar.bz2 and linux-x.y.z.tar.bz2.sign.
+The sign is the PGP signed signature for the corresponding linux
+source archive. If you are hyper-security conscious you would check
+the .sign file with PGP against the archive before unpacking it, but
+most people trust kernel.org!</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>The
+x value in the version indicates the major version number, we are
+currently on Linux 2. The y value is the major release number, if its
+even it means that it is a stable Linux kernel, if its an odd number
+that simply means its an experimental kernel. The final number is the
+minor release number, and indicates what version it is. Linux 2.2 is
+currently at 2.2.12 while 2.3 is at 2.3.16.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>Once
+Linux 2.2.13 comes out, instead of downloading another large archive,
+you can simply download patch-2.3.13.tar.bz2, and use the <B>patch</B>
+command. This is discussed later in the lesson.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Its
+good practice to download your linux source to /tmp, you can use the
+built in ftp command or ncftp command in Linux to download from
+ftp.kernel.org.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Managing
+multiple Linux kernel source trees</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Linux
+kernel source is stored in /usr/src. Generally it's a good idea to
+have your last good kernel build, the latest kernel build and an
+experimental kernel build (to see what changes are upcoming) all on
+the same system. </FONT></FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>Say
+for example we are currently using Linux 2.2.9 on our system, there
+should be a linux-2.2.9 directory in /usr/src with a symlink called
+linux linking to it. Simply delete the symlink linux (<B>use rm
+linux</B>). Then bunzip2 /tmp/linux-2.2.12.tar.bz2, then when that is
+completed tar xvf linux-2.2.12.tar. This will create a linux
+directory. Use mv to move it from linux to linux-2.2.12. Then use <B>ln
+-s </B>linux-2.2.12 linux to create the symlink. </FONT></FONT></FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>If
+you have other Linux kernel sources, simply keep them in the
+appropriate /usr/src/linux-x.y.z directory, and when you need to use
+it simply change the symlink.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Patching
+the Linux kernel</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Sometimes
+there are patches released for public testing, unofficial feature or
+driver patches or a critical security patch. These patches are
+generally announced on kernelnotes.org or freshmeat.net. Alan Cox,
+one of the primary kernel developers, like Linus Torvalds, is
+responsible for certain patches, and he makes his patches available
+to the world before they are integrated into the next minor release
+of the kernel. These are known as -ac patches, as Alan releases them
+as linux-x.y.z-acX. These patches or simply, the next release of the
+kernel can be patched into the kernel.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>If
+you have linux-2.2.8 and you want to patch to linux-2.2.12, you need
+to obtain all the patches between 2.2.8 and 2.2.12, not just the
+2.2.12 patch. Once you have these patches, you need to uncompress and
+place them in /usr/src.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Now
+if you wish to keep the old kernel source intact, simply delete the
+symlink linux, and copy the old kernel source. If we were upgrading
+from 2.2.8 to 2.2.12, then you would do something like :</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>	<B>cd
+/usr/src</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	rm
+linux</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	cp
+-a linux-2.2.8 linux-2.2.12</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	ln
+-s linux-2.2.12 linux</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Now
+in your /usr/src directory you should have:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>	<B>patch-2.2.9</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	patch-2.2.10</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	patch-2.2.11</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	patch-2.2.12</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>Simply
+use the patch command to add these to the linux source tree. You can
+do this by issuing these commands (from /usr/src) :</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>	<B>cd
+/usr/src</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	patch
+-p0 &lt; patch-2.2.9</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	patch
+-p0 &lt; patch-2.2.10</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	patch
+-p0 &lt; patch-2.2.11</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	patch
+-p0 &lt; patch-2.2.12</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>If
+you are using a patch from Alan Cox, you will need to create two
+other symlinks to the /usr/src/linux directory.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>	<B>cd
+/usr/src</B></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	ln
+-s linux linux.ac</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>	ln
+-s linux linux.vanilla</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>This
+should make most of Alan's patches work fine. If patch gives you an
+error, you either ran it from somewhere outside of /usr/src, or there
+are missing symlinks or there is a problem with the patch files path.
+You can edit the patch file with pico or vi to see if there are any
+path problems.	</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Compiling
+the kernel</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Now
+that we have the latest and greatest linux source in our
+/usr/src/linux directory, it is now time to build the kernel. You
+have a few options. First of all, you should have installed the c
+libraries and c development libraries. If you did not do this during
+the Red Hat installation, use rpm to install them onto your system
+now. Change directory into /usr/src/linux.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>You
+will be using the <B>make</B> command to build your new kernel. Use
+rpm to see if make is installed, and install it if necessary. There
+are three methods to building the linux kernel, (a) command line, (b)
+text based menus or(c) X-Windows, We recommend you use option b.
+Option A doesn't provide a means to go back on options you may have
+selected earlier, unless you know what you are doing its generally
+quicker to use method b. Method c requires you have X-Windows
+installed and the correct display variable. If you think you have
+X-Windows installed correctly feel free to use this method.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-left: 3in; text-indent: -3in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>Type:
+<B>make menuconfig </B>	For Text based Menus</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 3in; text-indent: -3in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="Courier-WP"><FONT SIZE=3><FONT SIZE=2><FONT FACE="helvetica, sans-serif"><B>
+         make config	</B>For command line compilation</FONT></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>
+         make xconfig		</B>For X-Windows interface</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Once
+you type make menuconfig you will see some source code being
+compiled, hopefully you have ncurses installed, and you should see a
+menu. If you get an error check with your instructor!!</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><IMG SRC="sv10110181.jpg" NAME="G1: kernel1" ALIGN=BOTTOM WIDTH=576 HEIGHT=399 BORDER=0></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Figure
+3.0: Linux Kernel Configuration</B></FONT></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>If
+you have the correct libraries installed you will be presented with a
+screen similar to that in Figure 3.0. Since this is probably the
+first time you have tried to compile a Linux kernel, you should go
+through each option, reading the help carefully and familiarize
+yourself with the kernel source. Most kernel options will advise you
+on whether or not additional options are required, you should
+probably only enable one or two advanced options the first time
+around. You will need to know what type of hardware you have in your
+system. Make sure you add support for your process, ethernet card and
+IDE or SCSI interfaces.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>If
+you want some of the advanced network options you should choose in
+the Code Maturity level options to enable experimental or new code.
+You should also enabled loadable module support.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><IMG SRC="sv10110182.jpg" NAME="G2: kernel2" ALIGN=BOTTOM WIDTH=576 HEIGHT=399 BORDER=0></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Figure
+3.1: Further kernel options</B></FONT></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>To
+briefly example each section:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; border-top: none; border-bottom: 1.00pt solid #000000; border-left: none; border-right: none; padding: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Section		Description</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Code
+Maturity Level options	Experimental Code enable/disable</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Processor
+type	Select chip family and enable features</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Loadable
+Module Support	Drivers can be loaded as modules (not in kernel)</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>General
+Setup	IDE and standard system configuration</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Plug
+and Play	Enable Plug and Play</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Block
+Devices	Hard Drives and other storage devices</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Networking
+options		Firewalling, Aliasing and other features</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>SCSI
+Support	Enable SCSI device support</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Network
+Device Support	Network drivers and network device support</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Amateur
+Radio Support	Radio Modem and HAM radio device support</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>IrDA
+subsystem	Infra Red Device Support</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>ISDN
+subsystem	ISDN Terminal adapter support</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Old
+CD-ROM drivers	Old NON-IDE/SCSI CD-Rom support </FONT></FONT></FONT>
+</P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Character
+Devices	Device Support for non-block devices</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Filesystem	Partition
+and Network File system support</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Console
+Drivers	Support for video and text consoles</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Sound	Sound
+support and Open Sound System</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Kernel
+Hacking	Enable advanced debugging options</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; border-top: none; border-bottom: 1.00pt solid #000000; border-left: none; border-right: none; padding: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>You
+should explore each option and use the help to learn what each option
+does. You can use space to add the feature to the kernel [*] or [M]
+as a module.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><IMG SRC="sv10110183.jpg" NAME="G3: kernel3" ALIGN=BOTTOM WIDTH=576 HEIGHT=399 BORDER=0></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Figure
+3.2: Network Device Support</B></FONT></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>In
+figure 3.2 you can see an example of the how enabling one kernel
+option provides you access to other additional sub-options. In this
+case we enabled Ethernet (10/100), then 3Com cards, which gave us
+access to a list of supported 3Com cards. We selected to compile
+support for our 3c509 directly into the kernel (hence the *).</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><IMG SRC="sv10110184.jpg" NAME="G4: kernel4" ALIGN=BOTTOM WIDTH=576 HEIGHT=365 BORDER=0></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Figure
+3.3: Help Example</B></FONT></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>If
+you highlight an option and select <B>HELP</B> you will see another
+box similar to the one in Figure 3.3. This is the help option for IP
+Firewalling. As you can see the help options are well documented.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><IMG SRC="sv10110185.jpg" NAME="G5: kernel5" ALIGN=BOTTOM WIDTH=576 HEIGHT=365 BORDER=0></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Figure
+3.4: IP Aliasing</B></FONT></FONT></FONT></P>
+<P ALIGN=CENTER STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>This
+is the help screen for IP aliasing, like IP firewalling, this feature
+is something you should add to the kernel. IP aliasing allows you to
+specify more than one IP address per network card. This allows for
+devices such as eth0:0 or eth0:1 to enable support for multiple ips.
+You can use <B>ifconfig</B> to add interfaces with this compiled in.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Once
+you have completed your selections, you should choose EXIT and then
+YES to saving your kernel options. Once saved you need to issue some
+more make commands:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>make
+dep ; make bzImage ; make bzlilo</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>The
+first command (dep) compiles all the dependencies, the second command
+builds a bzip compressed Linux kernel image, and bzlilo adds the
+kernel to lilo.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Once
+this is completed, successfully, you will also need to make modules,
+if you used them. To do this use:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>make
+modules ; make modules_install</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>This
+makes the modules and installs them into /lib/modules/linux-x.y.z</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Configuring
+Lilo</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>One
+problem with Red Hat is that it installs the kernels in /boot, but
+make bzlilo puts the files in the root directory. To get around this
+we will need to fix some links in /boot.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Similar
+to the methods we used to manage the /usr/src directory, you will
+need to do something similar with /boot. First of all, delete the
+System.map and vmlinuz in /boot. This are just symlinks. Next you
+will need to move the System.map and vmlinuz out of /.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>
+mv /vmlinuz /boot/vmlinuz.2.2.12</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>
+mv /System.map /boot/System.map.2.2.12</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Now
+link your /boot/vmlinuz and /boot/System.map to the 2.2.12 files.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Next
+use pico or vi to edit /etc/lilo.conf</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Your
+file will look something like:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>boot=/dev/hda</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>map=/boot/map</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>install=/boot/boot.b</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>prompt</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>timeout=50</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>image=/boot/vmlinuz-2.2.5-15</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>
+       label=linux</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>
+       root=/dev/hda3</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>
+       read-only</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>other=/dev/hda1</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>
+       label=win</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>
+       table=/dev/hda</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>In
+the file on the previous page, you can see that lilo's primary boot
+device is the first IDE drive. It will prompt for which image to
+load, and will autoboot after 50 seconds. The first linux image is
+called linux, boots from /dev/hda3 (third partition on the first ide
+drive).</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>To
+add support for our new kernel, we will add a new entry. There are
+two main reasons for this, first of all, if the kernel doesn't work,
+you still can boot into Linux with the old kernel. Secondly, if you
+forgot to add support for an essential feature you can quickly reboot
+into the old image again.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>The
+section we will add should sit between the read-only line and the
+other (windows partition) entry. We will add the following:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>image=/boot/vmlinux.2.2.12</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>	label=newlinux</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>	root=/dev/hda3</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>	read-only</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Once
+this is added to the file, save it and run lilo. You should get
+something like:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Added
+* linux</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Added
+newlinux</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Added
+win</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>This
+means that linux is the default. Now, reboot and at the LILO prompt
+type new linux. If you want to put a message before the LILO prompt
+you can added the line message=/etc/lilo.msg to the top of the
+lilo.conf file. Create you lilo.msg as a text file with your message,
+and the run lilo. Use dmesg after booting to see if your new kernel
+worked correctly or if any problems exist.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Loading
+Modules</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>If
+you opted to use modules for some advanced features you wanted to
+experiment with, you will need to learn to use three commands:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>lsmod			</B>Lists
+active loaded modules</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>insmod			</B>Loads
+a module</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>rmmod			</B>Removes
+a module</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>To
+install ip_masq_ftp.o which is a module to enable FTP file transfers
+using IP masquerading, you would use:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>insmod
+/lib/modules/linux.x.y.z/ipv4/ip_masq_ftp.o</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>And
+then use lsmod to see if the module was loaded correctly.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Appendix
+A: Further Help and Information</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>You
+should now have a good grasp of some of the key features in Linux.
+You should practice and experiment with the lessons in this manual on
+your own system in your own time. If you installed the <B>EXTRA
+Documention </B>during your Linux installation, you will have a
+valuable resource in /usr/doc/HOWTO. Here there is plenty of
+information on how to setup a multitude of services in Linux. You
+should thoroughly read this information before seeking additional
+help.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>The
+internet is your key tool to obtaining assistance on Linux related
+problems. There are some key web sites that will keep you up-to-date
+in the Linux world.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-left: 3in; text-indent: -3in; margin-bottom: 0in; border-top: none; border-bottom: 1.00pt solid #000000; border-left: none; border-right: none; padding: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Site						Content</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><U><FONT COLOR="#000080">www.freshmeat.net</FONT></U>				Updates
+and new linux applications</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><U><FONT COLOR="#000080">www.slashdot.org</FONT></U>				News
+in the Linux world</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 3in; text-indent: -3in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>www.linux.com	Tuning,
+news and additional help</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><U><FONT COLOR="#000080">www.rootshell.com</FONT></U>				Security
+Information</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><U><FONT COLOR="#000080">www.securityfocus.org</FONT></U>				Security
+Alerts</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><U><FONT COLOR="#000080">www.kernelnotes.org</FONT></U>				Kernel
+Information</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 3in; text-indent: -3in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>www.kernel.org	Official
+Kernel Announcements</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 3in; text-indent: -3in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>www.deja.com	Search
+UseNet/Newsgroups</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 3in; text-indent: -3in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>www.gnome.org	Linux
+Desktop Environment</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><U><FONT COLOR="#000080">www.kde.org</FONT></U>					Alternative
+Desktop Environment</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 3in; text-indent: -3in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>www.themes.org	Linux
+X Themes</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><U><FONT COLOR="#000080">www.windowmaker.org</FONT></U>				Popular
+WindowManager for X windows</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><U><FONT COLOR="#000080">www.xfree.org</FONT></U>					Free
+X Server site</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-left: 3in; text-indent: -3in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>www.apache.org	Free
+Web Server site</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 3in; text-indent: -3in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>www.squid-cache.org	Free
+proxy server</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>www.linux-router.org		Linux
+router project</FONT></FONT></FONT></P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; border-top: none; border-bottom: 1.00pt solid #000000; border-left: none; border-right: none; padding: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-left: 2.5in; text-indent: -2.5in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>If
+you are looking for a human response you can try irc.openprojects.net
+that has several Linux support channels.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>								</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+</BODY>
+</HTML>

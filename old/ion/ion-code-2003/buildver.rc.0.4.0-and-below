@@ -1,0 +1,278 @@
+#!/bin/bash
+#
+# Ion Linux Source Version Build Script 
+# version 1.0
+#
+# Copyright (C) 2002-2003 Spliced Networks
+#
+# Authors:	John Buswell	(johnb@splicednetworks.com)
+#
+# Created:	2003-06-22	Initial Ion source version script
+# Updated:	2003-08-19	Added display for non-GNU packages
+#
+#				Added openssl, openssh, dhcpcd,
+#				fcron, gdbm, inetutils, jwhois,
+#				netkit-rsh, rsync, screen, iptables,
+#				iproute2, mod_init_tools, yafc, nano
+#				LFT, man, tcpwrappers and hping2.
+#
+#				Added readline, libpcap, tcpdump. 
+#				Fixed tabs in output.
+#
+# 		2003-08-20	Added lynx
+#		2003-08-28	Linux 2.6.0-test4
+#				Added db4
+#
+#		2003-08-30	Added strace
+#				Upgraded kernel to 2.4.22
+#                               Downgraded iproute2 to 010824 (was 020116)
+#                               Upgraded e2fsprogs to 1.34
+#                               Added postfix (mta)
+#
+#		2003-08-31	Added samhain
+#                               Added gnupg
+#                               Added jfsutils
+#
+#		2003-09-06	Added init-scripts
+#
+#               2003-09-09      Linux 2.6.0-test5
+#
+#		2003-10-02	Linux 2.6.0-test6
+#				OpenSSL 0.9.7c (security fix)
+#				OpenSSH 3.7.1p2
+#
+#		2003-10-16	Linux 2.6.0-test7
+#				GCC 3.3.1
+#				Automake 1.7.8
+#				Gawk 3.1.3
+#
+#               2003-10-25      Linux 2.6.0-test9
+#                               pciutils 2.1.11
+#
+#               2003-10-26      init-misc-0.1.9
+#
+#               2003-10-28      init-misc-0.1.10
+#                               fixed jfs version
+#
+#		2003-10-29      moduile-init-tools 0.9.14
+#
+#		2003-11-03	init-misc-0.1.11
+#
+#		2003-11-20	added xinetd-2.3.12
+#				added attr-2.4.8
+#				added acl-2.2.15
+#
+#		2003-11-26	added vlan tools
+#				added linux 2.6.0-test11
+#
+# Description:	This file contains a list of the current version
+#		numbers for the build environment.
+
+ION_VER_LASTUPDATE="2003-11-26"
+ION_VER_SVBVER="1.0.13"
+
+echo ""
+echo "Ion Linux Source Version Script ($ION_VER_SVBVER)"
+echo "Copyright (C) 2002-2003 Spliced Networks"
+echo ""
+
+# set versions
+
+# GNU stuff
+export ION_AUTOCONF_VER=2.57
+export ION_AUTOMAKE_VER=1.7.8
+export ION_BASH_VER=2.05b
+export ION_BINUTILS_VER=2.13.2
+export ION_BISON_VER=1.875
+export ION_DIFFUTILS_VER=2.8.1
+export ION_ED_VER=0.2
+export ION_FILEUTILS_VER=4.1
+export ION_FINDUTILS_VER=4.1
+export ION_GAWK_VER=3.1.3
+export ION_GCC_VER=3.3.1
+export ION_GETTEXT_VER=0.12.1
+export ION_GLIBC_VER=2.3.2
+export ION_GREP_VER=2.5.1
+export ION_GROFF_VER=1.19
+export ION_GZIP_VER=1.2.4a
+export ION_LESS_VER=381
+export ION_LIBTOOL_VER=1.5
+export ION_M4_VER=1.4
+export ION_MAKE_VER=3.80
+export ION_NCURSES_VER=5.3
+export ION_PATCH_VER=2.5
+export ION_SED_VER=4.0.7
+export ION_SH_UTILS_VER=2.0
+export ION_TAR_VER=1.13
+export ION_TEXINFO_VER=4.6
+export ION_TEXTUTILS_VER=2.1
+export ION_DEJAGNU_VER=1.4.3
+export ION_GCCOPT_VER=2.95.3
+export ION_JWHOIS_VER=3.2.2
+export ION_GDBM_VER=1.8.3
+#export ION_INETUTILS_VER=1.4.2
+export ION_SCREEN_VER=3.9.15
+export ION_NANO_VER=1.2.1
+export ION_READLINE_VER=4.3
+export ION_GNUPG_VER=1.2.3
+
+echo ""
+echo "GNU Software versions"
+echo ""
+echo " autoconf                  $ION_AUTOCONF_VER"
+echo " automake                  $ION_AUTOMAKE_VER"
+echo " bash                      $ION_BASH_VER"
+echo " binutils                  $ION_BINUTILS_VER"
+echo " bison                     $ION_BISON_VER"
+echo " diffutils                 $ION_DIFFUTILS_VER"
+echo " ed                        $ION_ED_VER"
+echo " fileutils                 $ION_FILEUTILS_VER"
+echo " findutils                 $ION_FINDUTILS_VER"
+echo " gawk                      $ION_GAWK_VER"
+echo " gcc                       $ION_GCC_VER"
+echo " gettext                   $ION_GETTEXT_VER"
+echo " glibc                     $ION_GLIBC_VER"
+echo " grep                      $ION_GREP_VER"
+echo " groff                     $ION_GROFF_VER"
+echo " gzip                      $ION_GZIP_VER"
+echo " less                      $ION_LESS_VER"
+echo " libtool                   $ION_LIBTOOL_VER"
+echo " m4                        $ION_M4_VER"
+echo " make                      $ION_MAKE_VER"
+echo " ncurses                   $ION_NCURSES_VER"
+echo " patch                     $ION_PATCH_VER"
+echo " sed                       $ION_SED_VER"
+echo " sh-utils                  $ION_SH_UTILS_VER"
+echo " tar                       $ION_TAR_VER"
+echo " texinfo                   $ION_TEXINFO_VER"
+echo " textutils                 $ION_TEXTUTILS_VER"
+echo " dejagnu                   $ION_DEJAGNU_VER"
+echo " gcc-opt                   $ION_GCCOPT_VER"
+echo " jwhois                    $ION_JWHOIS_VER"
+echo " gdbm                      $ION_GDBM_VER"
+#echo " inetutils                 $ION_INETUTILS_VER"
+echo " screen                    $ION_SCREEN_VER"
+echo " nano                      $ION_NANO_VER"
+echo " readline                  $ION_READLINE_VER"
+echo " gnupg                     $ION_GNUPG_VER"
+
+# non-GNU open source stuff
+export ION_ACL_VER=2.2.15
+export ION_ATTR_VER=2.4.8
+export ION_BIN86_VER=0.16.0
+export ION_BZIP2_VER=1.0.2
+export ION_E2FSPROGS_VER=1.34
+export ION_FILE_VER=4.03
+export ION_FLEX_VER=2.5.31
+export ION_LILO_VER=22.5.5
+export ION_MAN_VER=1.56
+export ION_NETKIT_VER=0.17
+export ION_NETTOOLS_VER=1.60
+export ION_PERL_VER=5.8.0
+export ION_PROCINFO_VER=18
+export ION_PROCPS_VER=3.1.9
+export ION_PSMISC_VER=21.3
+export ION_SHADOW_VER=4.0.3
+export ION_SYSKLOGD_VER=1.4.1
+export ION_SYSVINIT_VER=2.85
+export ION_ZLIB_VER=1.1.4
+export ION_KBD_VER=1.08
+export ION_LINUX_VER=2.6.0-test11
+export ION_LINUXHEADERS_VER=2.4.22
+export ION_MODUTILS_VER=2.4.25
+export ION_UTIL_LINUX_VER=2.11z
+export ION_TCL_VER=8.4.3
+export ION_NASM_VER=0.98.36
+export ION_MANX_VER=1.5m1
+export ION_OPENSSL_VER=0.9.7c
+export ION_OPENSSH_VER=3.7.1p2
+export ION_DHCPCD_VER=1.3.22-pl4
+export ION_FCRON_VER=2.9.3
+export ION_NETKIT_RSH_VER=0.17
+export ION_RSYNC_VER=2.5.6
+export ION_IPTABLES_VER=1.2.8
+export ION_IPROUTE2_VER=2.4.7-now-ss010824
+export ION_MOD_INIT_TOOLS_VER=0.9.14
+export ION_YAFC_VER=1.0
+export ION_LFT_VER=2.2
+export ION_HPING2_VER=2.0
+export ION_TCP_WRAPPERS_VER=7.6
+export ION_LIBPCAP_VER=0.7.2
+export ION_TCPDUMP_VER=3.7.2
+export ION_LYNX_VER=2.8.4
+export ION_DB_VER=4.1.25.NC
+export ION_STRACE_VER=4.4.98
+export ION_POSTFIX_VER=2.0.14
+export ION_SAMHAIN_VER=1.7.10
+export ION_JFSUTILS_VER=1.1.2
+export ION_INIT_SCRIPTS_VER=0.1.14
+export ION_PCIUTILS_VER=2.1.11
+export ION_XINETD_VER=2.3.12
+export ION_VLAN_VER=20031126
+
+echo ""
+echo "Non-GNU Software"
+echo ""
+echo " acl                       $ION_ACL_VER"
+echo " attr                      $ION_ATTR_VER"
+echo " bin86                     $ION_BIN86_VER"
+echo " bzip2                     $ION_BZIP2_VER"
+echo " e2fsprogs                 $ION_E2FSPROGS_VER"
+echo " file                      $ION_FILE_VER"
+echo " flex                      $ION_FLEX_VER"
+echo " lilo                      $ION_LILO_VER"
+echo " man                       $ION_MAN_VER"
+echo " netkit                    $ION_NETKIT_VER"
+echo " nettools                  $ION_NETTOOLS_VER"
+echo " perl                      $ION_PERL_VER"
+echo " procinfo                  $ION_PROCINFO_VER"
+echo " procps                    $ION_PROCPS_VER"
+echo " psmisc                    $ION_PSMISC_VER"
+echo " shadow-utils              $ION_SHADOW_VER"
+echo " sysklogd                  $ION_SYSKLOGD_VER"
+echo " sysvinit                  $ION_SYSVINIT_VER"
+echo " zlib                      $ION_ZLIB_VER"
+echo " kbd                       $ION_KBD_VER"
+echo " linux                     $ION_LINUX_VER"
+echo " mod-init-tools            $ION_MOD_INIT_TOOLS_VER"
+echo " util-linux                $ION_UTIL_LINUX_VER"
+echo " tcl                       $ION_TCL_VER"
+echo " nasm                      $ION_NASM_VER"
+echo " openssl                   $ION_OPENSSL_VER"
+echo " openssh                   $ION_OPENSSH_VER"
+echo " dhcpcd                    $ION_DHCPCD_VER"
+echo " fcron                     $ION_FCRON_VER"
+echo " netkit-rsh                $ION_NETKIT_RSH_VER"
+echo " rsync                     $ION_RSYNC_VER"
+echo " iptables                  $ION_IPTABLES_VER"
+echo " iproute2                  $ION_IPROUTE2_VER"
+echo " yafc (ftp client)         $ION_YAFC_VER"
+echo " lft (traceroute)          $ION_LFT_VER"
+echo " hping2                    $ION_HPING2_VER"
+echo " tcp_wrappers              $ION_TCP_WRAPPERS_VER"
+echo " libpcap                   $ION_LIBPCAP_VER"
+echo " tcpdump                   $ION_TCPDUMP_VER"
+echo " lynx                      $ION_LYNX_VER"
+echo " db                        $ION_DB_VER"
+echo " strace                    $ION_STRACE_VER"
+echo " postfix (mta)             $ION_POSTFIX_VER"
+echo " samhain                   $ION_SAMHAIN_VER"
+echo " jfsutils                  $ION_JFSUTILS_VER"
+echo " init-scripts              $ION_INIT_SCRIPTS_VER"
+echo " pciutils                  $ION_PCIUTILS_VER"
+echo " xinetd                    $ION_XINETD_VER"
+echo " vlan                      $ION_VLAN_VER"
+
+echo ""
+echo "Ion Linux - Its LINUX not GNU/LINUX!!!"
+echo ""
+
+# The following are things that have yet to be implemented
+# into the build but should probably be added
+
+# /pub/linux/utils/kernel/hotplug
+# pam
+
+# export ION_KSYMOOPS_VER=2.4.9
+
+

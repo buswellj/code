@@ -1,0 +1,40 @@
+create virtual storage:
+
+ Virtual Storage Name: teststore
+ Storage System (? to list): sda2				<-- don't ask for more if system is glusterFS
+ Storage System (? to list, Enter to continue): 		<-- complain if secondary system is glusterFS (glusterFS is solo)
+
+ Enable Deduplication ? no					<-- ask if storage system is *not* glusterFS
+
+ Creating Virtual Storage Container.... done			(pvcreate, vgcreate) (or if glusterFS mount)
+ Initializing Volume... done					(lvcreate, mkfs)
+ Generating ID... done						(generate UUID for this virtual storage container)
+ Adding Container... done					(mount /mnt/vs/<uuid>/)
+ Creating Deduplication Filesystem... done			(if yes, then run lessfs /mnt/vs/<uuid>/<name>.ddfs)
+ Container Ready!
+
+todo:
+
+ - edit appqueue_cli_loop()
+ - add code to menus
+ - add structure to kattach_types.h
+ - add shared mem to kattach_shm.h and shm_globals.h
+ - add code in kattach to access shm and update memory structures
+ - add code in kattach to process configuration
+ - add code in kattach to process changes
+ - add code in kattach to handle read/write from SQLite3 database
+ - modify code in kattach to launch vms with parameters based on name (vdi, vm, vsrv, etc)
+ - add supporting applications to kattach
+   - libfuse
+   - glusterfs
+   - lvm2
+   - dm
+   - mdadm
+   - iscsid initiator
+   - isns <-- maybe?
+
+leave: import and cloud
+
+
+
+ we need a cloud API <<-- http restful URLS

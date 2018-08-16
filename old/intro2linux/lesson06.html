@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="StarOffice/5.1 (Linux)">
+	<META NAME="CREATED" CONTENT="19990917;17440000">
+	<META NAME="CHANGEDBY" CONTENT="Clare Buswell">
+	<META NAME="CHANGED" CONTENT="19990917;17460000">
+	<STYLE>
+	<!--
+		@page { size: 8.5in 11in; margin-right: 1.25in; margin-top: 1in; margin-bottom: 1in }
+	-->
+	</STYLE>
+</HEAD>
+<BODY>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Lesson
+6: Using Linux as a Network Integration Solution</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Before
+we move on to the final lesson on compiling the Linux kernel, we will
+discuss briefly and provide starting points for candidates to read up
+about the uses of Linux in Network and System Integration solutions.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Linux
+- Firewall, Proxy and Gateway</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>Linux
+is an extremely robust network operating system, with many advanced
+network features built into the Linux kernel. One of the most
+important features of Linux is IP Masquerading. This particular
+feature uses the firewall utility <B>ipchains</B> and the IP_Masq
+support in the kernel to allow systems (any TCP/IP based system) to
+share a single or multiple Internet connections. Whether this is
+simply a modem, ISDN router or a dedicated connection, the IP
+Masquerading feature basically keeps track of incoming and outgoing
+IP packets and changes (or masquerades) the IP addresses with the IP
+of an internal system. This allows network administrators to have a
+single Linux server with firewall rules and IP masquerading to
+protect an entire network of Windows, Solaris or other systems. For
+more information on IP Masq or IP Chains see /usr/doc/HOWTO on your
+installed Red Hat Linux system.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Linux
+has one of the best proxy servers available. It is called squid, you
+can download the latest version from www.squid-cache.org. Squid can
+be used in a farm of caches that interchange information or simply a
+single proxy server. Linux also supports transparent proxying. This
+basically intercepts all http traffic and forces it through the proxy
+using a technique called proxy_arp. A patch can then be applied to
+squid to accept these proxy_arp requests and handle them correctly.
+This allows a network administrator to have full control over what
+sites employees or users of the network can visit, as squid provides
+inbound and outbound access control. Using transparent proxying
+prevents smart employees from attempting to by-pass your proxy. IP
+Masq, also provides one unique advantage over traditional solutions
+like Netscape or Microsoft Proxy. Linux can allow users on the
+network to use other TCP protocols such as POP3 (for checking of
+remote mail), SMTP (for sending mail), telnet, ftp and even udp
+protocols like Real Video and ICQ. Of course what can be used and
+what cannot be used is in the hands of the network administrator.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>With
+your Linux firewall in place you can use IP port forwarding to allow
+internet access to Microsoft Exchange, IIS or other servers on the
+network while still protecting them with your Linux firewall. No more
+worries regarding external problems with NT security!</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Linux
+- Internetworking on an NT network</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Linux
+can provide an alternative to an NT server, or can interact with
+Windows systems on your network. File and printer sharing is achieved
+through a program called Samba. Samba even has plug-in modules to
+allow authentication with an NT server of usernames and passwords
+before granting access to shared network resources.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>Linux
+also has an extremely powerful web server called apache. Apache has
+features far beyond those of commercial grade servers. Apache is the
+worlds most widely used web server, and is one of the most secure.
+Apache has powerful third party module support, which allows for the
+use of HTML pre-processors such as PHP (<U><FONT COLOR="#000080">www.php.net).</FONT></U></FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>Linux
+can even be used as a fax or voice system. While there is limited
+support for this function under Linux, the <U><FONT COLOR="#000080">www.linuxtelephony.com</FONT></U>
+site is a good place to start.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Linux
+- Desktop Workstation</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2>While
+we haven't touched X-Windows much on this course, it is a powerful
+resource for the desktop environment. While the commercial grade X
+server known as Accelerated X is by far faster than the free Xfree86,
+Xfree86 will suit the needs of most desktop environments. Desktop
+environments such as gnome and kde, provide a powerful yet easy user
+interface. Programs such as k-office, AbiWord, g-numeric, StarOffice,
+ApplixWare and Word Perfect 8 for Linux provide Linux with a powerful
+set of office applications for interaction with Microsoft Office
+files. Applixware renders the <B>won't switch to linux because of no
+office applications</B> a non-issue!!</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Sun
+Microsystems have made StarOffice freely available for download, or
+if you prefer to have this powerful Office System available on CD, a
+low-cost CD option is also available. This makes Linux a powerful
+desktop alternative to Windows.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Linux
+- Connecting to the Internet</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>There
+are several different ways to connect Linux to the Internet, the
+mostpopular is either to use a modem or ISDN and PPP to connect to an
+ISP. Linux has support for a range of ISDN adapters, although Netopia
+ISDN routers are the best choice. Configuring PPP can be quite
+complex, and full instructions are listed in the PPP-HOWTO in
+/usr/doc/HOWTO on your Linux system.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>An
+alternative method is to use a dedicated technology such as DSL,
+Frame or PTP leased lines. Linux supports a range of WAN high speed
+serial cards that remove the requirement of needing an expensive
+serial router. Although if you choose to build a Linux WAN router,
+you should check www.linux-router.org and search freshmeat.net for
+gated and zebra which add BGP and route reflection support to Linux.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Workbook
+Projects:</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>These
+projects outlined below can be setup by the instructor (time
+permitting). Otherwise you should practice these projects on your own
+time.</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Project
+1:</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>	</B>Working
+with the candidate adjacent to you, configure SAMBA on your Linux
+system to share /home and /tmp for the user BOB on your colleagues
+system, and vice versa.</FONT></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Project
+2:</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=3><FONT SIZE=2><B>	</B>Choose
+a component from /usr/doc/HOWTO or /usr/doc/HOWTO/mini and follow the
+HOWTO documentation to configure your Linux system for a specific
+task. (Eg. PPP). </FONT></FONT></FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.17in"><BR>
+</P>
+</BODY>
+</HTML>

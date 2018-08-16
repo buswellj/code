@@ -1,0 +1,912 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="StarOffice/5.1 (Linux)">
+	<META NAME="CREATED" CONTENT="19990917;17460000">
+	<META NAME="CHANGEDBY" CONTENT="Clare Buswell">
+	<META NAME="CHANGED" CONTENT="19990917;17530000">
+	<STYLE>
+	<!--
+		@page { size: 8.5in 11in; margin-right: 1.25in; margin-top: 1in; margin-bottom: 1in }
+	-->
+	</STYLE>
+</HEAD>
+<BODY>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2><B>Lesson
+5: Basic Linux Administration</B></FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>Now
+that you are familiar with users, groups, file permissions and the
+Linux environment, we will configure and administer our Linux
+installation.</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><FONT SIZE=2>This
+lesson includes:</FONT></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Checking
+the boot process</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Fine
+tuning /etc</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Startup
+scripts /etc/rc.d and init</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Symbolic
+Links</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Package
+Management (RPM)</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Tar,
+Gzip and Bzip2</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>User
+processes</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Checking
+the boot process</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">Do
+you remember the Linux boot process? Did you catch anything that was
+displayed during the process? You may or may not have, but you can
+obtain that vital information using the </SPAN><B>dmesg</B><SPAN STYLE="font-weight: medium">
+command.</SPAN></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">Dmesg will
+output the kernel boot information, here you can see what was
+installed and what had problems. Here you can see what devices used
+which IRQs and if any problems exist. This is where you may need to
+recompile your Linux kernel to add support or features that you
+require. If you plan on using Linux has a firewall then you will need
+to recompile your kernel.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Fine
+Tuning: /etc</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">You
+should use the </SPAN><B>less </B><SPAN STYLE="font-weight: medium">command
+to examine the files contained in /etc. Continuing with our lesson
+example of a Linux gateway/firewall, you will want to secure the
+system. The first file you will need to edit is inetd.conf. This</SPAN></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">file
+contains a list of TCP and UDP services controlled by the inet
+service. To activate a service simply remove the # from in front of
+it, to deactivate a service place a # as the first character on the
+line.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">Example:
+Disable ftp as it is not require, in inetd.conf we would # (called
+hashing out) the line for ftp:</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-left: 3.5in; text-indent: -3.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">Before:
+</SPAN><B>ftp stream tcp nowait root /usr/sbin/tcpd in.ftpd -l -a</B></FONT></FONT></P>
+<P STYLE="margin-left: 3.5in; text-indent: -3.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">After:
+</SPAN><B>#</B><SPAN STYLE="font-weight: medium">ftp stream tcp 
+nowait root /usr/sbin/tcpd in.ftpd -l -a</SPAN></FONT></FONT></P>
+<P STYLE="margin-left: 3.5in; text-indent: -3.5in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">Now simply
+run:</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">/etc/rc.d/init.d/inetd
+restart</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">You can add
+and remove services that are controlled by inetd by simply hashing or
+removing the hash from the necessary lines. Then just restart inetd
+for it to take effect.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>resolv.conf</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">Remember
+when you added the DNS servers during the final stages of the Red Hat
+Linux 6.0 installation? Well that information is stored in this file.
+It probably looks a little like this:</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">search
+esatclear.ie</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">nameserver
+10.0.1.1</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">nameserver
+194.145.128.1</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">To add
+additional name servers simply add the line with nameserver and the
+IP.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>services</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">This
+particular file lists all the known tcp/udp services, like web, mail,
+ftp and telnet and indicates the port/protocol they should be found
+on. You shouldn't really change this file unless you have a specific
+reason for doing so. Everything listed in this file compiles with RFC
+1700.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>httpd
+</B></FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">The httpd
+directory contains all the apache configuration files, for the RPM
+version of apache. If you plan on using your Linux server as web
+system, we recommend you download the apache source and compile it
+into something like /usr/local/web or /usr/local/httpd instead for
+security reasons. </FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>crontab</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">Anyone
+familiar with Windows NT should be familiar with the AT service that
+automates tasks. Linux does have an AT style service, but the more
+common system is crontab. The crontab file in /etc is for </SPAN><B>system
+</B><SPAN STYLE="font-weight: medium">tasks only. Individual users
+have their own crontabs that they can edit with the </SPAN><B>crontab
+-e </B><SPAN STYLE="font-weight: medium">command. </SPAN></FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">The fields
+are denoted by:</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"> 	  field   
+      allowed values</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">            
+ -----          --------------</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">            
+ minute         	0-59</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">            
+ hour           	0-23</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">            
+ day of month   	0-31</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">            
+ month          	0-12 (or names, see man crontab)</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">            
+ day of week    	0-7 (0 or 7 is Sun, or use names)</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">Any field
+can have * instead of a value which means first-last. For example:</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">01 4 * * 0
+root /etc/rc.d/init.d/httpd restart</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">This crontab
+entry would run at 04:01 on Sunday mornings only.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>lilo.conf</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">This file
+contains all the information to boot Linux with LILO. This file is
+discussed in the final lesson regarding kernel compilation.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>profile/bashrc</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">Each shell,
+whether it is bash, zsh or tcsh has default startup files contained
+in /etc. This defines system variables, such as username, paths etc.
+You may wish to add /usr/local/bin to all users paths, to do this for
+the bash shell you would add the path to the PATH string in
+/etc/profile. </FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>ppp/</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">If you plan
+on using a modem with your Linux system, you more than likely will
+want to connect to the Internet. The best way to do this is to use
+the point to point protocol (PPP). The default ppp options are stored
+in /etc/ppp/options, these can include which ttyS (or com port) that
+the modem is on, the ISPs telephone number and other PPP related
+parameters. The chap and pap secret files contain password and
+username information for your ISP if they use CHAP or PAP methods of
+authentication. This directory may also include some dialup scripts.
+For more information on PPP read the PPP-HOWTO in /usr/doc/HOWTO.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>X11/</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">The X11
+directory contains the startup files for X-Windows. The
+systemXF86Config file which contains information regarding your
+graphics card, mouse, keyboard and monitor as well as your keyboard
+layout. This file can be easily automatically created using the
+XF86Setup program.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>ld.so.conf</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">This
+file contains a list of paths where libraries are stored. It's a good
+idea to add /usr/local/lib and run the </SPAN><B>ldconfig</B><SPAN STYLE="font-weight: medium">
+command. You need to run </SPAN><B>ldconfig</B><SPAN STYLE="font-weight: medium">
+every time you modify this file.</SPAN></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>mail/</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">This
+directory contains the configuration files for sendmail, the standard
+UNIX mail server.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Sysconfig/</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">sysconfig is
+another critical directory within /etc. This directory contains your
+network configuration. The file network contains the following
+settings:</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">NETWORKING=yes</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">FORWARD_IPV4=no</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">HOSTNAME=amdbox</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">GATEWAYDEV=eth0</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">GATEWAY=10.0.1.1</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">If you are
+configuring your system as a router/gateway or firewall you will want
+to change no to yes for FORWARD_IPV4, this enables IP forwarding.
+Hostname indicates the name of your system, and provides the gateway
+IP address, and the device (ethernet 0, the first ethernet adapter in
+the system) to which the gateway is attached.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">The
+network-scripts directory contains your network startup and shutdown
+scripts. With redhat each network device is configured through
+ifcfg-ethX where X is the id of the ethernet card, if you only have
+one card, it will be zero.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">That file
+contains further network settings:</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">DEVICE=eth0</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">USERCTL=no</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">ONBOOT=yes</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">BOOTPROTO=none</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">BROADCAST=10.255.255.255</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">NETWORK=10.0.0.0</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">NETMASK=255.255.255.0</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">IPADDR=10.0.1.63</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">These
+settings contain the IP address, network, broadcast and netmask
+addresses, as well as specifying if the device is to start on boot.
+If you are using a diskless workstation or DHCP, you would modify the
+BOOTPROTO.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>/etc/rc.d/
+and Run Levels</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">As you are
+aware, Linux is a multi-user operating system. In order to providea
+means to allow administrators to do maintenance to the system without
+interference from network users, there are several Run levels or
+modes that you can run Linux in. These would be similar to Safe Mode
+and Command Prompt only modes in Windows.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">Run
+Level			Purpose</FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">----------			--------</FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">0			Halt/System
+shutdown</FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">1			Single
+User Mode</FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">2			Multiuser
+without NFS (Network File System)</FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">3			Full
+multiuser mode</FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">4			Unused</FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">5			X11</FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">6			Reboot</FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">There is a
+file in /etc called inittab, this file contains the initdefault, or
+default mode. This is generally ID:3 (full multiuser), but if you are
+configuring a personal workstation you could change this to ID:5 so
+that it automatically booted into X-Windows.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">If you less
+/etc/inittab you can see how the Linux system starts, and what</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">files it
+calls. As you can see the rc.d directory is mentioned, along with
+CTRL+ALT+DELETE trapping.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">In /etc/rc.d
+you will see some files, init.d, rc, rc.local, rc.sysinit and rc0.d
+through rc6.d. The files in rc0.d through rc6.d contain symbolic
+links (pointers) to the scripts contained in init.d. </FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">If
+you look in rc3.d, the standard multiuser mode for Linux, there will
+be some files starting with a K, and others with an S. These are
+followed by a number and a service name. For example S10network
+starts the networking service. Only services with a capital S will be
+started on this Run Level, so K20nfs won't start the NFS service. If
+you wanted to start the nfs service, simply rename K20nfs to S20nfs,
+be careful though, the Red Hat installation process sometimes uses
+duplicate numbers, so you may have to change the number to one or two
+more (ie. S22nfs). To rename files simply use the mv command, </SPAN><B>mv
+K20nfs S22nfs</B><SPAN STYLE="font-weight: medium">.</SPAN></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">If you go
+back a directory (cd ../init.d) you will see there are a lot of
+scripts in here. These control the various different services on your
+linux system. If you add a new service, you should create a
+startup/shutdown script for it in init.d and link to it from rc3.d,
+if that run level should use it. Remember to add it to the shutdown
+run level as well!</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">The
+rc.sysinit file initializes various system components such as the
+serial ports. The rc.local file provides a means for you to run your
+own scripts and applications during the boot process. Here you might
+add code to start extra daemons such as EsounD.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">Finally
+to boot into a Run Level other than the regular multiuser ID:3, you
+can boot in Single user mode. To do this simply enter </SPAN><B>Linux
+single</B><SPAN STYLE="font-weight: medium"> on yourlilo prompt and
+your Linux box will give you a single user root shell, without
+requiring the password. You can also use the command </SPAN><B>telinit</B><SPAN STYLE="font-weight: medium">
+to switch between run levels. For example if you are in single user
+modem (init 1) you can switch to multi-user modem by issuing the
+command </SPAN><B>telinit 3</B><SPAN STYLE="font-weight: medium">.</SPAN></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Symbolic
+Links</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">A symbolic
+link or symlink is similar to the Windows 95/98 shortcut feature,
+only a little more advanced. There are two different types of
+symlink, a hard link and a soft link. </FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">Hard links
+appear as normal directories, they simply mirror the files contained
+in the parent. For example if you linked /home/jim/documents to
+/usr/local/jimdocs, any changes Jim makes to the files in documents
+will be made to the files in jimdocs.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">Soft links
+work differently. These types of links simply point to the directory,
+These are handy if you want, for example, a binary file in
+/usr/local/wordperfect/wpbin/xwp to be in /usr/local/bin. You would
+simply create a link in /usr/local/bin pointing to
+/usr/local/wordperfect/wpbin/xwp.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">The
+command to create links is called </SPAN><B>ln.</B><SPAN STYLE="font-weight: medium">
+To create a soft link simply use </SPAN><B>ln-s</B><SPAN STYLE="font-weight: medium">
+and specify the source and target. You should create some directories
+in/tmp and practice linking to them. See </SPAN><B>man ln</B><SPAN STYLE="font-weight: medium">
+for further help.</SPAN></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Package
+Management</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">Until Red
+Hat create the RPM package system, if you wanted to add or remove an
+application or service from your Linux server you had to track down
+all the files associated with it and delete them. Installation
+required you to download either a binary compress tar file or the
+source code and compile the program yourself. Thankfully, for those
+without much knowledge of C programming the Red Hat Package Manager
+does most of the work automatically.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">The
+program used to add, remove or list packages installed is called </SPAN><B>rpm</B><SPAN STYLE="font-weight: medium">.
+There are quite a number of commands you can issue to rpm, however we
+will provide you with the basics.</SPAN></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>rpm
+-qa	</B><SPAN STYLE="font-weight: medium">This command gives you a
+complete list of all the packages installed on your system.</SPAN></FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>rpm -qf
+[filename]</B><SPAN STYLE="font-weight: medium">		This command tells
+you what package (if any) a file belongs to.</SPAN></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>rpm -qlp
+[package]	</B><SPAN STYLE="font-weight: medium">This command when run
+on a .rpm file lists the contents of that particular rpm.</SPAN></FONT></FONT></P>
+<P STYLE="margin-left: 1.5in; text-indent: -1.5in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>rpm -i
+[package]	</B><SPAN STYLE="font-weight: medium">This will install the
+rpm file specified by package</SPAN><B>.</B></FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>rpm -Uv
+[package]	</B><SPAN STYLE="font-weight: medium">This will upgrade the
+system with the rpm specified by package.</SPAN></FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>rpm -e
+[package]	</B><SPAN STYLE="font-weight: medium">This will remove the
+rpm specified by package from the system.</SPAN></FONT></FONT></P>
+<P STYLE="margin-left: 2in; text-indent: -2in; margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">One
+thing you will noticed with rpms, is that some are dependent on
+others. For example, you may need libpng-x.y.z.rpm to install
+gimp-x.y.z.rpm. If you try to install the gimp without libpng it
+won't install because it requires libpng. Simply install libpng and
+then the gimp and things should work fine. Sometimes you may use the
+source code for a particular library, to avail of the latest
+features, or maybe because no RPM exists. In that case, you will need
+to use the &#150;</SPAN><B>nodeps</B><SPAN STYLE="font-weight: medium">
+flag on the end of the rpm command, this tells the package manager to
+ignore package dependencies. Another useful flag that you may wish to
+use is the &#150;</SPAN><B>-force</B><SPAN STYLE="font-weight: medium">
+this forces the command whether there are problems or not, be careful
+when using this option.</SPAN></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Tar,
+Gzip and Bzip2</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">There are
+several key compression utilities that you should also be familiar
+with. These are tar, gzip and bzip2. Tar and gzip are generally used
+together or on new systems, tar and bzip2. </FONT></FONT>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">To unpack a
+.tar.gz or .tgz file simply issue the following command:</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">	</SPAN><B>tar
+zxvf myfile.tar.gz</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">The z
+indicates the file is compressed, x means to expand and v provides
+verbose output.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">With
+tar.bz2 files you need to use </SPAN><B>bunzip2</B><SPAN STYLE="font-weight: medium">
+and </SPAN><B>tar.</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">	</SPAN><B>bunzip2
+myfile.tar.bz2</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>	tar
+xvf myfile.tar</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">This time
+around we leave out the z as bunzip2 has already decompressed the
+file. Tar can also be used to create archives,</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">	</SPAN><B>tar
+zcvf /tmp/mytar.tgz /usr/local/ /usr/bin</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">This command
+will compress the contents of /usr/local and /usr/bin into a
+compressed tar in /tmp called mytar.tgz. Use the man pages to view
+other tar, gzip and bzip2 functions.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Pipes,
+redirects, xargs and grep</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">Before we
+move onto user processes, there are a few essential commands and
+features of the Linux shell you need to be aware of. Like in MSDOS
+you can use the &gt; to redirect the output of one program or file to
+another, for example to copy the text file doc.txt to doc2.txt you
+could use:</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">	</SPAN><B>cat
+doc.txt &gt; doc2.txt</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">If you
+wanted to append doc2.txt to doc3.txt you would use double
+&gt;&gt;redirects.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">	</SPAN><B>cat
+doc2.txt &gt;&gt; doc3.txt</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">Like in DOS,
+you can also use pipes to send the output of one command to the input
+of another. For example, if you wanted to search the file doc4.txt
+for the word Corel you would use:</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">	</SPAN><B>cat
+doc4.txt | grep Corel</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">grep is a
+useful tool for searching through files for output, mainly used in
+scripts to parse log files. Finally xargs, is another valuable tool.
+Xargs allows you to take line by line of standard output (from a file
+or program) and parse it through an external program. So for example
+if you wanted to search all the files in the /usr/local/doc directory
+for the word Internet you would use :</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">	</SPAN><B>find
+/usr/local/doc | xargs grep Internet</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">You
+should consult the man pages on xargs and sed. Familiarize yourself
+with these programs! You may also be interested in looking at the
+commands </SPAN><B>sed</B><SPAN STYLE="font-weight: medium">, </SPAN><B>awk
+</B><SPAN STYLE="font-weight: medium">and </SPAN><B>perl.</B><SPAN STYLE="font-weight: medium">
+Simply use the man pages!</SPAN></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>User
+Processes</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">Now
+that you are familiar with some of the basics of Linux we will now
+discuss user processes. Whenever you run a program, whether it is as
+a user or as root, that program becomes a running process with an
+owner. There are two main commands for looking at processes, </SPAN><B>ps</B><SPAN STYLE="font-weight: medium">
+and </SPAN><B>kill</B><SPAN STYLE="font-weight: medium">. </SPAN><B>kill
+</B><SPAN STYLE="font-weight: medium">is the unix command to stop a
+process, you need to be root to kill a process that does not belong
+to you. </SPAN><B>ps </B><SPAN STYLE="font-weight: medium">is a
+command that will list either your running processes or the entire
+list of all processes on the system. Some administrators choose to
+use a hacked version of </SPAN><B>ps </B><SPAN STYLE="font-weight: medium">to
+prevent users learning about other users processes on the system,
+this is not part of the standard Red Hat distribution, to achieve
+that we recommend you search </SPAN><B>deja.com</B><SPAN STYLE="font-weight: medium">.</SPAN></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">Each
+process on the Linux system is given a process ID, and a priority. If
+you execute the command </SPAN><B>ps ux</B><SPAN STYLE="font-weight: medium">
+you will be given a list of your processes.</SPAN></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">avatar    
+446  0.0  0.1  1732  208 tty1     S    Sep15   0:00 -bash</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">avatar    
+457  0.0  0.0  1656    0 tty1     SW   Sep15   0:00 [startx]</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">avatar    
+464  0.0  0.0  2224    0 tty1     SW   Sep15   0:00 [xinit]</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">avatar    
+468  0.0  1.3  3612 1708 tty1     S    Sep15   0:52 wmaker</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">avatar    
+469  0.0  2.5  6828 3244 tty1     S    Sep15   0:01 panel</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">avatar   
+3258  0.0  0.7  2524  900 pts/1    R    10:32   0:00 ps ux</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">In the
+example above we can see the processes owned by the user avatar. The
+first set of numbers is the process ID, these ID are what you would
+give to the kill command to kill the user process. The second and
+third sets of numbers indicate the percentage CPU and memory usage of
+each process. The next two banks of numbers indicate the amount of
+memory used and allocated to each process, then there are a list of
+tty's that the processes are assigned to.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">Finally,
+the start date or time is listed and the program that is running. If
+you wanted a list of all the processes running you would use the </SPAN><B>ps
+aux </B><SPAN STYLE="font-weight: medium">command, or </SPAN><B>ps
+auxf</B><SPAN STYLE="font-weight: medium"> command.</SPAN></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">Processes
+are given a certain level of priority, you can watch processes as
+they are executed and swapped back through the use of the </SPAN><B>top</B><SPAN STYLE="font-weight: medium">
+command. Process priorities range from -20 (lowest) to +20 (highest).
+The utility used to change process priorities is called </SPAN><B>renice</B><SPAN STYLE="font-weight: medium">.</SPAN></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">When
+a program stops running or crashes for some reason, sometimes Linux
+cannot kill the process. This is known as a </SPAN><B>zombied</B><SPAN STYLE="font-weight: medium">
+process. You can sometimes clean up zombied processes by sending the
+process a different signal from SIG_KILL. The SIG_BUS or SIG_HUP
+signals (listed in the man pages for kill or killall) can sometimes
+force a zombied process to its death.</SPAN></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><SPAN STYLE="font-weight: medium">One
+process that you should never want to kill is init, process ID of </SPAN><B>1</B><SPAN STYLE="font-weight: medium">.
+This is always owned by root, killing this process will usually
+restart your system or render it to a halted state.</SPAN></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<BR>
+</P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif"><B>Tasks:</B></FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; line-height: 0.14in"><BR>
+</P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.14in">
+<FONT COLOR="#000000"><FONT FACE="helvetica, sans-serif">This lesson
+contains some key elements to understanding and using the Linux
+operating system. For this lesson's workbook we recommend that
+candidates practice the use of the commands and ask questions to
+their instructor regarding any problems or for further explanation.
+We recommend that instructors provide candidates some time
+experimenting with these commands before moving on to the next
+lesson.</FONT></FONT></P>
+<P STYLE="margin-bottom: 0in; font-weight: medium; line-height: 0.17in">
+<BR>
+</P>
+</BODY>
+</HTML>

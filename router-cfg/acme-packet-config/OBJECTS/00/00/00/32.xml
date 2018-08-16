@@ -1,0 +1,26 @@
+<?xml version='1.0' standalone='yes'?>
+<localPolicy
+	activateTime=''
+	deactivateTime=''
+	state='enabled'
+	anonymousPriority='none'
+	description=''
+	lastModifiedBy='admin@10.254.254.14'
+	lastModifiedDate='2009-04-30 01:11:12'>
+	<to addr='*' type='Hostname'/>
+	<from addr='*' type='Hostname'/>
+	<sourceRealm name='peer-gx'/>
+	<policyAttribute
+		nextHop='10.253.0.240'
+		action='none'
+		isTermRoute='disabled'
+		destRealm=''
+		cost='0'
+		appProtocol=''
+		carrierName=''
+		startTime='0000'
+		endTime='2400'
+		dow='U-S'
+		state='enabled'>
+	</policyAttribute>
+</localPolicy>
